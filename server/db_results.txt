@@ -1,0 +1,37 @@
+{
+  "counts": {
+    "totalCourses": 5
+  },
+  "courseData": [
+    {
+      "id": "69ff38141cad938780ccdbeb",
+      "title": "AI & Machine Learning",
+      "moduleCount": 11,
+      "hasVideos": false
+    },
+    {
+      "id": "69ff38141cad938780ccdbed",
+      "title": "IoT & Robotics",
+      "moduleCount": 0,
+      "hasVideos": false
+    },
+    {
+      "id": "69ff38141cad938780ccdbec",
+      "title": "Cyber Security",
+      "moduleCount": 0,
+      "hasVideos": false
+    },
+    {
+      "id": "69ff38141cad938780ccdbef",
+      "title": "Floyd School Summer Builder Program",
+      "moduleCount": 30,
+      "hasVideos": false
+    },
+    {
+      "id": "69ff38141cad938780ccdbee",
+      "title": "Development (Web/App)",
+      "moduleCount": 0,
+      "hasVideos": false
+    }
+  ]
+}
