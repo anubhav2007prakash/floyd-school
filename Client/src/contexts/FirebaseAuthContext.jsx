@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { auth, googleProvider, signInWithPopup, signOut } from '../firebase';
+import { auth, googleProvider, signInWithPopup, signOut, isFirebaseEnabled } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
 const FirebaseAuthContext = createContext();
@@ -17,6 +17,12 @@ export const FirebaseAuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!isFirebaseEnabled || !auth) {
+      setCurrentUser(null);
+      setLoading(false);
+      return undefined;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
@@ -27,6 +33,10 @@ export const FirebaseAuthProvider = ({ children }) => {
 
   const loginWithGoogle = async () => {
     try {
+      if (!isFirebaseEnabled || !auth || !googleProvider) {
+        throw new Error('Google sign-in is unavailable because Firebase is disabled in frontend-only mode.');
+      }
+
       const result = await signInWithPopup(auth, googleProvider);
       return result.user;
     } catch (error) {
@@ -37,6 +47,7 @@ export const FirebaseAuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
+      if (!auth) return;
       await signOut(auth);
     } catch (error) {
       console.error('Logout error:', error);
