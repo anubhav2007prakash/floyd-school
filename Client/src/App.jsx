@@ -48,6 +48,7 @@ import BootcampGallery from './pages/BootcampGallery.jsx';
 import CourseDetails from './pages/CourseDetails.jsx';
 import FAQPage from './pages/FAQPage.jsx';
 import HackathonPage from './pages/HackathonPage.jsx';
+import HostHackathonPage from './pages/HostHackathonPage.jsx';
 import AdminStudentsPage from './pages/Admin/AdminStudentsPage.jsx';
 import AdminCoursesPage from './pages/Admin/AdminCoursesPage.jsx';
 import AdminCouponsPage from './pages/Admin/AdminCouponsPage.jsx';
@@ -110,7 +111,8 @@ const App = () => {
         '/course',
         '/faq',
         '/bootcamp-gallery',
-        '/hackathon'
+        '/hackathon',
+        '/school-partnerships',
     ];
 
     // 3. Hide the public marketing navbar on all student portal routes AND the explicitly listed paths.
@@ -124,7 +126,6 @@ const App = () => {
         '/contact',
         '/course',
         '/downloads',
-        '/school-partnerships',
         '/online-program',
         '/bootcamp-gallery',
         '/faq',
@@ -272,6 +273,9 @@ const App = () => {
 
                 {/* FAQ Page */}
                 <Route path='/faq' element={<FAQPage />} />
+
+                {/* Host Hackathon Landing Page */}
+                <Route path='/host-hackathon' element={<HostHackathonPage />} />
 
                 {/* Hackathon Page */}
                 <Route path='/hackathon' element={<HackathonPage />} />

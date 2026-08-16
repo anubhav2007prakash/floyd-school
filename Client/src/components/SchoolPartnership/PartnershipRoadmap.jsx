@@ -13,35 +13,35 @@ const FAQS = [
   },
   {
     q: 'How does the free trial work?',
-    a: 'We conduct a 7-day free campus bootcamp with zero commitment. You decide whether to continue after testing.',
+    a: 'We conduct a 7 day free campus bootcamp with zero commitment. You decide whether to continue after testing.',
   },
   {
     q: 'Which classes and age groups do your programs support?',
-    a: 'Classes 7 to 12. Modules are customized by grade level (Robotics for middle school, Career Lab for senior school).',
+    a: 'Classes 7 to 12. Modules are customized by grade level.',
   },
   {
     q: 'How many students can be in a batch?',
-    a: 'Typically 25–40 students per batch. Multiple batches can run simultaneously for larger cohorts.',
+    a: 'Typically 25 to 40 students per batch. Multiple batches can run simultaneously for larger cohorts.',
   },
   {
     q: 'What certifications do students receive?',
-    a: 'Verified digital certificates (e.g., Floyd School AI Practitioner) for LinkedIn and college portfolios.',
+    a: 'Verified digital certificates for LinkedIn and college portfolios.',
   },
   {
     q: 'How do we track student progress?',
-    a: 'Via our real-time admin dashboard tracking attendance, assessment scores, and project deliverables.',
+    a: 'Via our real time admin dashboard tracking attendance, assessment scores, and project deliverables.',
   },
   {
     q: 'What is the pricing for a full program?',
-    a: 'Customized based on cohort size and duration. We offer per-student, per-batch, or annual partnership models.',
+    a: 'Customized based on cohort size and duration. We offer per student, per batch, or annual partnership models.',
   },
   {
     q: 'Is there a national hackathon for students?',
-    a: "Yes! Enrolled students compete in Floyd School's bi-annual National Hackathon.",
+    a: "Yes! Enrolled students compete in Floyd School's National Hackathon.",
   },
   {
     q: 'How soon can Floyd School start at our school?',
-    a: 'Free trial starts within 2–4 weeks. Full program onboarding takes 1–2 weeks post-trial.',
+    a: 'Free trial starts within 2 to 4 weeks. Full program onboarding takes 1 to 2 weeks post trial.',
   },
 ];
 
@@ -125,7 +125,7 @@ const PartnershipRoadmap = () => {
           className="text-center mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest mb-6"
             style={{ background: 'linear-gradient(135deg, rgba(79,70,229,0.1), rgba(14,165,233,0.1))', border: '1px solid rgba(79,70,229,0.2)', color: 'var(--accent-setu2)' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
             SUPPORT DESK
           </span>
           <h2 className="setu-heading font-extrabold text-slate-900 mb-5" style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.15 }}>

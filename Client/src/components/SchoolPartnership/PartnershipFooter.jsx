@@ -17,7 +17,7 @@ const FOOTER_LINKS = [
     links: [
       { name: 'Partner With Us', href: '#partner-form' },
       { name: 'Curriculum Integration', href: '#models' },
-      { name: 'After-School Bootcamps', href: '#models' },
+      { name: 'After School Bootcamps', href: '#models' },
       { name: 'Innovation Hub Setup', href: '#models' },
       { name: 'Book Free Trial', href: '#partner-form' },
     ],
@@ -26,7 +26,7 @@ const FOOTER_LINKS = [
     heading: 'Company',
     links: [
       { name: 'About Floyd School', href: '/about' },
-      { name: 'Host a Hackathon', href: '/hackathon?view=school' },
+      { name: 'Host a Session', href: '#partner-form' },
       { name: 'Courses', href: '/course' },
       { name: 'Contact Us', href: '#partner-form' },
     ],
@@ -49,28 +49,30 @@ const PartnershipFooter = () => {
       {/* Top gradient line */}
       <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent, rgba(108,99,255,0.4), rgba(0,212,255,0.4), transparent)' }} />
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-12 pt-16 pb-10">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-16 pb-6">
         {/* Top section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #6C63FF, #00D4FF)' }}>
-                <span className="text-white font-black text-sm sp-heading">T</span>
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #6C63FF, #00D4FF)' }}
+              >
+                <span className="text-white font-black text-sm sp-heading">F</span>
               </div>
               <span className="sp-heading font-black text-white text-xl">Floyd School</span>
             </div>
-            <p className="sp-body text-slate-500 text-sm leading-relaxed max-w-xs">
-              Empowering the next generation of innovators with AI, Coding, Robotics, and future-skills education — delivered directly at your school campus.
+            <p className="sp-body text-slate-400 text-sm leading-relaxed max-w-xs">
+              Empowering the next generation of innovators with AI, Coding, Robotics, and future skills education, delivered directly at your school campus.
             </p>
             {/* Contact */}
             <div className="space-y-2.5">
-              <a href="tel:+91-8368801220" className="flex items-center gap-2.5 text-slate-500 hover:text-slate-300 transition-colors sp-body text-sm">
+              <a href="tel:+918368801220" className="flex items-center gap-2.5 text-slate-400 hover:text-slate-200 transition-colors sp-body text-sm">
                 <Phone size={14} style={{ color: '#6C63FF' }} />
-                +91-8368801220
+                +91 8368801220
               </a>
-              <a href="mailto:floydschoolhq@gmail.com" className="flex items-center gap-2.5 text-slate-500 hover:text-slate-300 transition-colors sp-body text-sm">
+              <a href="mailto:floydschoolhq@gmail.com" className="flex items-center gap-2.5 text-slate-400 hover:text-slate-200 transition-colors sp-body text-sm">
                 <Mail size={14} style={{ color: '#00D4FF' }} />
                 floydschoolhq@gmail.com
               </a>
@@ -88,7 +90,7 @@ const PartnershipFooter = () => {
                   className="w-9 h-9 rounded-xl flex items-center justify-center transition-colors"
                   style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}
                 >
-                  <s.icon size={16} className="text-slate-500 hover:text-white transition-colors" />
+                  <s.icon size={16} className="text-slate-400 hover:text-white transition-colors" />
                 </motion.a>
               ))}
             </div>
@@ -104,12 +106,12 @@ const PartnershipFooter = () => {
                     {link.href.startsWith('#') ? (
                       <button
                         onClick={() => scrollTo(link.href)}
-                        className="sp-body text-slate-500 hover:text-slate-300 text-sm transition-colors"
+                        className="sp-body text-slate-400 hover:text-slate-200 text-sm transition-colors"
                       >
                         {link.name}
                       </button>
                     ) : (
-                      <a href={link.href} className="sp-body text-slate-500 hover:text-slate-300 text-sm transition-colors">
+                      <a href={link.href} className="sp-body text-slate-400 hover:text-slate-200 text-sm transition-colors">
                         {link.name}
                       </a>
                     )}
@@ -120,16 +122,23 @@ const PartnershipFooter = () => {
           ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <p className="sp-body text-slate-600 text-xs">
+        {/* Bottom copyright bar */}
+        <div className="pt-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <p className="sp-body text-slate-500 text-xs">
             © {new Date().getFullYear()} Floyd School. All rights reserved.
           </p>
-          <div className="flex items-center gap-1 sp-body text-slate-600 text-xs">
-            <span>Built to</span>
-            <span style={{ color: '#FF6B6B' }}>♥</span>
-            <span>empower students across India</span>
+          <div className="flex items-center gap-1.5 sp-body text-slate-500 text-xs">
+            <span>Built with</span>
+            <span className="text-red-500">♥</span>
+            <span>to empower students across India</span>
           </div>
+        </div>
+
+        {/* Giant Centered Footer Branding Banner */}
+        <div className="pt-4 pb-2 text-center overflow-hidden border-t border-white/5">
+          <h1 className="text-[12vw] font-black uppercase tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/10 select-none">
+            FLOYD SCHOOL
+          </h1>
         </div>
       </div>
     </footer>

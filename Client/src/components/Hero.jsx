@@ -94,7 +94,7 @@ const FeatureBar = () => (
             {FEATURES.map((f) => (
                 <div key={f.label} className="flex items-center gap-2.5 text-slate-700">
                     <span className="text-slate-500">{f.icon}</span>
-                    <span className="text-xs md:text-sm font-semibold tracking-tight whitespace-nowrap">{f.label}</span>
+                    <span className="text-xs font-semibold tracking-tight sm:text-sm md:whitespace-nowrap">{f.label}</span>
                 </div>
             ))}
         </div>
@@ -143,7 +143,7 @@ const Hero = () => {
 
     if (isMobile) {
         return (
-            <section id="hero" className="relative min-h-[75vh] flex flex-col items-center justify-center pt-48 pb-8 overflow-hidden bg-white">
+            <section id="hero" className="relative min-h-[75vh] flex flex-col items-center justify-center pt-32 pb-8 overflow-hidden bg-white">
                 <div id="home" className="absolute inset-0" />
                 {/* Subtle gray circle accents */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -159,7 +159,7 @@ const Hero = () => {
                     </div>
 
                     <div className="mb-8">
-                        <h1 className="text-[12vw] font-black leading-[0.88] text-[#0F172A] uppercase tracking-tighter">
+                        <h1 className="text-4xl sm:text-5xl font-black leading-[0.88] text-[#0F172A] uppercase tracking-tighter">
                             MAKE SURE <br/> 
                             YOUR CHILD <br/> 
                             <span className="relative inline-block">

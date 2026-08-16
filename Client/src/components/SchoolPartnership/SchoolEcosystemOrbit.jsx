@@ -30,8 +30,8 @@ const CAMPUS_MEDIA = [
 ];
 
 const CampusMediaFrame = ({
-  frameClassName = 'w-[300px] lg:w-[350px] h-[200px] lg:h-[230px] rounded-t-[150px] rounded-b-3xl border-4',
-  pillClassName = 'text-[11px] px-3.5 py-1',
+  frameClassName = 'w-[380px] lg:w-[460px] h-[260px] lg:h-[310px] rounded-t-[180px] rounded-b-3xl border-4',
+  pillClassName = 'text-xs px-4 py-1.5',
   showGlow = false,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -84,7 +84,7 @@ const CampusMediaFrame = ({
         <span
           className={`inline-flex items-center gap-1.5 setu-heading font-black text-white uppercase tracking-widest bg-slate-900/90 rounded-full border border-white/20 shadow-lg backdrop-blur-md ${pillClassName}`}
         >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-emerald-400" />
           FLOYD SCHOOL
         </span>
       </div>
@@ -95,7 +95,7 @@ const CampusMediaFrame = ({
 
   return (
     <div className="relative group">
-      <div className="absolute -inset-1 rounded-t-[150px] rounded-b-3xl bg-gradient-to-r from-cyan-400 via-indigo-500 to-pink-500 opacity-40 blur-xl group-hover:opacity-75 transition-opacity duration-500" />
+      <div className="absolute -inset-1.5 rounded-t-[180px] rounded-b-3xl bg-gradient-to-r from-cyan-400 via-indigo-500 to-pink-500 opacity-40 blur-xl group-hover:opacity-75 transition-opacity duration-500" />
       {frame}
     </div>
   );
@@ -132,10 +132,10 @@ const ECOSYSTEM_NODES = [
   },
   {
     id: 3,
-    title: 'LMS, NSDC certification & Teacher training',
+    title: 'LMS & Teacher Training',
     subtitle: 'Faculty Empowerment & Certified Diplomas',
-    description: 'Comprehensive teacher upskilling programs paired with NSDC skill credentials and LMS monitoring.',
-    outcomes: ['Faculty Upskilling', 'NSDC Verified Credentials', 'Integrated School LMS'],
+    description: 'Comprehensive teacher upskilling programs paired with Floyd skill credentials and LMS monitoring.',
+    outcomes: ['Faculty Upskilling', 'Floyd Skill Credentials', 'Integrated School LMS'],
     icon: Monitor,
     color: '#A855F7',
     glowColor: 'rgba(168, 85, 247, 0.4)',
@@ -174,9 +174,9 @@ const ECOSYSTEM_NODES = [
   },
   {
     id: 6,
-    title: 'NEP 2020 ready skill education books',
+    title: 'NEP 2020 Skill Curriculum',
     subtitle: 'Structured Curriculum & Workbooks',
-    description: 'CBSE and state board aligned skill workbooks for Classes 6 to 12 with 10-bagless day modules.',
+    description: 'CBSE and state board aligned skill workbooks for Classes 6 to 12 with 10 bagless day modules.',
     outcomes: ['CBSE Aligned Books', '10 Bagless Day Guides', 'Holistic Progress Cards'],
     icon: BookOpen,
     color: '#EC4899',
@@ -264,21 +264,18 @@ const SchoolEcosystemOrbit = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 rounded-[32px] border border-slate-700/60 bg-slate-900/85 py-10 px-8 shadow-[0_35px_120px_-60px_rgba(15,23,42,0.65)]"
+          className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest text-slate-100 bg-slate-800/95 border border-slate-700/80 mb-4 shadow-sm">
-            <Sparkles size={14} className="text-amber-300 animate-spin" />
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 border border-indigo-100/80 mb-4 shadow-sm">
+            <Sparkles size={14} className="text-amber-500" />
             INTEGRATED CAMPUS SKILL HUB
           </span>
-          <h2 className="setu-heading font-extrabold text-white mb-4" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', lineHeight: 1.15 }}>
+          <h2 className="setu-heading font-extrabold text-slate-900" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', lineHeight: 1.15 }}>
             Everything Your School Needs{' '}
-            <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #818cf8 0%, #6366f1 55%, #312e81 100%)' }}>
+            <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #4f46e5 0%, #6366f1 55%, #0284c7 100%)' }}>
               In One Connected Ecosystem
             </span>
           </h2>
-          <p className="setu-body text-slate-300 max-w-2xl mx-auto text-base">
-            Hover or click any offering below to explore how Floyd School transforms your campus into a future-ready innovation center.
-          </p>
         </motion.div>
 
         {/* Orbit Hub Card Container */}
@@ -330,7 +327,7 @@ const SchoolEcosystemOrbit = () => {
           {/* ── MOBILE VERTICAL SCROLL JOURNEY (sm/xs screens) ──────────────────── */}
           <div className="block md:hidden space-y-6">
             <CampusMediaFrame
-              frameClassName="w-full h-[180px] max-w-[280px] mx-auto rounded-t-[100px] rounded-b-2xl border-2"
+              frameClassName="w-full h-[220px] sm:h-[260px] max-w-[320px] sm:max-w-[380px] mx-auto rounded-t-[140px] rounded-b-2xl border-2"
               pillClassName="text-[10px] px-2.5 py-0.5"
             />
 
@@ -361,83 +358,6 @@ const SchoolEcosystemOrbit = () => {
                 );
               })}
             </div>
-          </div>
-
-          {/* ── INTERACTIVE SPOTLIGHT DETAIL SHOWCASE CARD ──────────── */}
-          <div className="mt-8 pt-8 border-t border-slate-100">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeNode.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.35 }}
-                className="rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border relative overflow-hidden"
-                style={{
-                  background: `linear-gradient(135deg, ${activeNode.color}0D 0%, rgba(255,255,255,0.9) 100%)`,
-                  borderColor: `${activeNode.color}35`,
-                  boxShadow: `0 10px 30px ${activeNode.glowColor}20`,
-                }}
-              >
-                {/* Left Colored Accent Bar */}
-                <div
-                  className="absolute left-0 top-0 bottom-0 w-2 rounded-l-3xl"
-                  style={{ background: activeNode.bg }}
-                />
-
-                <div className="space-y-3 max-w-2xl pl-2">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md"
-                      style={{ background: activeNode.bg }}
-                    >
-                      <activeNode.icon size={20} />
-                    </div>
-                    <div>
-                      <span className="setu-body text-[11px] font-bold uppercase tracking-wider" style={{ color: activeNode.color }}>
-                        FEATURED OFFERING
-                      </span>
-                      <h3 className="setu-heading font-extrabold text-slate-900 text-lg sm:text-xl">
-                        {activeNode.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="setu-body text-slate-600 text-sm leading-relaxed">
-                    {activeNode.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {activeNode.outcomes.map((out) => (
-                      <span
-                        key={out}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full setu-body text-xs font-semibold bg-white border shadow-sm text-slate-700"
-                        style={{ borderColor: `${activeNode.color}30` }}
-                      >
-                        <CheckCircle2 size={12} style={{ color: activeNode.color }} />
-                        {out}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right Action Button */}
-                <div className="flex-shrink-0 w-full md:w-auto">
-                  <button
-                    onClick={() => document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="w-full sm:w-auto px-7 py-3.5 rounded-2xl setu-body text-xs font-extrabold text-white flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-all cursor-pointer"
-                    style={{
-                      background: activeNode.bg,
-                      boxShadow: `0 6px 20px ${activeNode.glowColor}`,
-                    }}
-                  >
-                    <span>Request {activeNode.title.split(' ')[0]} Lab</span>
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-
-              </motion.div>
-            </AnimatePresence>
           </div>
 
         </div>

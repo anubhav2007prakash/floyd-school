@@ -35,8 +35,8 @@ const SUCCESS_STORIES = [
   {
     school: 'Modern School, Barakhamba',
     logo: 'MS',
-    challenge: 'Class 11–12 students were unsure about career paths in tech. Internship placements were low.',
-    implementation: 'Career Lab + AI Lab for senior students. 6-month intensive with portfolio building.',
+    challenge: 'Class 11 and 12 students were unsure about career paths in tech. Internship placements were low.',
+    implementation: 'Career Lab + AI Lab for senior students. 6 month intensive with portfolio building.',
     results: '23 students secured internships. 8 got selected in national AI competitions. 100% certification rate.',
     metrics: [
       { icon: Zap, value: '23', label: 'Internships Secured' },
@@ -118,7 +118,7 @@ const WhatSchoolGets = () => {
                   {/* Quote */}
                   <div className="mt-6 p-4 rounded-2xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
                     <p className="sp-body text-slate-400 text-sm italic leading-relaxed">"{story.quote}"</p>
-                    <p className="sp-body text-slate-600 text-xs mt-2">— {story.principal}</p>
+                    <p className="sp-body text-slate-600 text-xs mt-2">{story.principal}</p>
                   </div>
                 </div>
 

@@ -122,16 +122,15 @@ const PartnershipStory = () => {
               color: '#6C63FF',
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-            School Partnership Journey
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+            OUR FOUR MONTH JOURNEY
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4 leading-tight">
-            A premium, scroll-led story of how your
-            <br className="hidden sm:block" /> partnership works
+            How The Four Month Program
+            <br className="hidden sm:block" /> Unfolds On Your Campus
           </h2>
           <p className="mx-auto max-w-2xl text-base text-slate-500 leading-relaxed">
-            Showcasing the eight essential partnership moments that make school labs easy, visible and{' '}
-            <span className="text-transparent bg-clip-text font-semibold" style={{ backgroundImage: 'linear-gradient(90deg, #6C63FF, #0ea5e9)' }}>future-ready.</span>
+            From your zero cost trial week to student project delivery, here is what happens month by month.
           </p>
         </motion.div>
 
@@ -141,43 +140,37 @@ const PartnershipStory = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-col lg:flex-row rounded-3xl overflow-hidden border border-slate-200 shadow-[0_30px_80px_-30px_rgba(15,23,42,0.14)] bg-white"
+          className="hidden lg:grid lg:grid-cols-[0.95fr_1.15fr_0.95fr] gap-3 rounded-[28px] border border-slate-200 shadow-[0_30px_80px_-30px_rgba(15,23,42,0.14)] bg-transparent items-stretch"
         >
-          {/* ── Left Panel: Step List ── */}
-          <div className="lg:w-[42%] flex-shrink-0 border-b lg:border-b-0 lg:border-r border-slate-200 overflow-y-auto">
-            {STORY_STEPS.map((step, i) => {
-              const isActive = i === activeIndex;
-              const isPast = i < activeIndex;
+          {/* ── Left Panel: Steps 1-4 ── */}
+          <div className="h-full self-stretch rounded-[24px] border border-slate-200 bg-white overflow-hidden flex flex-col">
+            {STORY_STEPS.slice(0, 4).map((step, i) => {
+              const itemIndex = i;
+              const isActive = itemIndex === activeIndex;
+              const isPast = itemIndex < activeIndex;
               return (
                 <button
                   key={step.id}
                   type="button"
-                  onClick={() => handleStepClick(i)}
-                  className="w-full text-left flex items-center justify-between gap-4 px-7 py-5 transition-all duration-200 focus:outline-none"
+                  onClick={() => handleStepClick(itemIndex)}
+                  className="w-full text-left flex items-center justify-between gap-4 px-5 py-4 transition-all duration-200 focus:outline-none"
                   style={{
                     background: isActive ? `${step.accent}0d` : 'transparent',
                     borderLeft: isActive ? `4px solid ${step.accent}` : '4px solid transparent',
-                    borderBottom: i < STORY_STEPS.length - 1 ? '1px solid #f1f5f9' : 'none',
+                    borderBottom: i < 3 ? '1px solid #f1f5f9' : 'none',
                   }}
                 >
-                  <div className="flex items-start gap-4 min-w-0">
-                    {/* Step number badge */}
+                  <div className="flex items-start gap-3 min-w-0">
                     <div
-                      className="flex-shrink-0 w-9 h-9 rounded-2xl flex items-center justify-center text-xs font-black mt-0.5 transition-all duration-200"
+                      className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-[10px] font-black mt-0.5 transition-all duration-200"
                       style={{
                         background: isActive ? step.accent : isPast ? '#0f172a' : '#f1f5f9',
                         color: isActive || isPast ? '#fff' : '#64748b',
                       }}
                     >
-                      {String(i + 1).padStart(2, '0')}
+                      {String(itemIndex + 1).padStart(2, '0')}
                     </div>
                     <div className="min-w-0">
-                      <p
-                        className="text-[10px] uppercase tracking-[0.22em] font-semibold mb-0.5"
-                        style={{ color: isActive ? step.accent : isPast ? '#10b981' : '#94a3b8' }}
-                      >
-                        {isPast ? 'Completed' : isActive ? 'In Focus' : 'Coming Up'}
-                      </p>
                       <h3
                         className="text-sm font-bold leading-snug"
                         style={{ color: isActive ? step.accent : '#1e293b' }}
@@ -190,7 +183,7 @@ const PartnershipStory = () => {
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="text-xs text-slate-500 mt-1 leading-relaxed pr-2"
+                          className="text-[11px] text-slate-500 mt-1 leading-relaxed pr-2"
                         >
                           {step.hero}
                         </motion.p>
@@ -198,37 +191,20 @@ const PartnershipStory = () => {
                     </div>
                   </div>
                   {isActive && (
-                    <ChevronRight size={18} className="flex-shrink-0" style={{ color: step.accent }} />
+                    <ChevronRight size={16} className="flex-shrink-0" style={{ color: step.accent }} />
                   )}
                 </button>
               );
             })}
           </div>
 
-          {/* ── Right Panel: Video Player ── */}
-          <div className="flex-1 bg-slate-950 relative overflow-hidden min-h-[420px] lg:min-h-0 flex flex-col">
-
-            {/* Colored glow based on active step */}
+          {/* ── Center Panel: Video Player ── */}
+          <div className="w-full max-w-[560px] justify-self-center bg-slate-950 relative overflow-hidden min-h-[360px] aspect-[16/10] h-full rounded-[24px] border border-slate-200 flex flex-col">
             <div
               className="absolute inset-0 pointer-events-none transition-all duration-700"
               style={{ background: `radial-gradient(circle at 60% 20%, ${current.accent}18 0%, transparent 55%)` }}
             />
 
-            {/* Step badge top-left */}
-            <div className="absolute top-5 left-5 z-20">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.24em]"
-                style={{
-                  background: `${current.accent}22`,
-                  border: `1px solid ${current.accent}44`,
-                  color: current.accent,
-                }}
-              >
-                Step {String(activeIndex + 1).padStart(2, '0')} — {current.title}
-              </span>
-            </div>
-
-            {/* Mute / Unmute button */}
             <button
               type="button"
               onClick={() => {
@@ -243,7 +219,6 @@ const PartnershipStory = () => {
                 : <Volume2 size={16} className="text-white" />}
             </button>
 
-            {/* Video */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -263,14 +238,12 @@ const PartnershipStory = () => {
                   playsInline
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    // Fallback: hide video if it fails
                     e.target.style.display = 'none';
                   }}
                 />
               </motion.div>
             </AnimatePresence>
 
-            {/* Step dots at bottom */}
             <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
               {STORY_STEPS.map((s, i) => (
                 <button
@@ -285,6 +258,62 @@ const PartnershipStory = () => {
                 />
               ))}
             </div>
+          </div>
+
+          {/* ── Right Panel: Steps 5-8 ── */}
+          <div className="h-full self-stretch rounded-[24px] border border-slate-200 bg-white overflow-hidden flex flex-col">
+            {STORY_STEPS.slice(4, 8).map((step, i) => {
+              const itemIndex = i + 4;
+              const isActive = itemIndex === activeIndex;
+              const isPast = itemIndex < activeIndex;
+              return (
+                <button
+                  key={step.id}
+                  type="button"
+                  onClick={() => handleStepClick(itemIndex)}
+                  className="w-full text-left flex items-center justify-between gap-4 px-5 py-4 transition-all duration-200 focus:outline-none"
+                  style={{
+                    background: isActive ? `${step.accent}0d` : 'transparent',
+                    borderLeft: isActive ? `4px solid ${step.accent}` : '4px solid transparent',
+                    borderBottom: i < 3 ? '1px solid #f1f5f9' : 'none',
+                  }}
+                >
+                  <div className="flex items-start gap-3 min-w-0">
+                    <div
+                      className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-[10px] font-black mt-0.5 transition-all duration-200"
+                      style={{
+                        background: isActive ? step.accent : isPast ? '#0f172a' : '#f1f5f9',
+                        color: isActive || isPast ? '#fff' : '#64748b',
+                      }}
+                    >
+                      {String(itemIndex + 1).padStart(2, '0')}
+                    </div>
+                    <div className="min-w-0">
+                      <h3
+                        className="text-sm font-bold leading-snug"
+                        style={{ color: isActive ? step.accent : '#1e293b' }}
+                      >
+                        {step.title}
+                      </h3>
+                      {isActive && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="text-[11px] text-slate-500 mt-1 leading-relaxed pr-2"
+                        >
+                          {step.hero}
+                        </motion.p>
+                      )}
+                    </div>
+                  </div>
+                  {isActive && (
+                    <ChevronRight size={16} className="flex-shrink-0" style={{ color: step.accent }} />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </motion.div>
 

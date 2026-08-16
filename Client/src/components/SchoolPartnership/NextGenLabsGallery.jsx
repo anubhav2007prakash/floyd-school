@@ -182,10 +182,10 @@ const NextGenLabsGallery = () => {
               SCHOOLS-FIRST DELIVERY
             </div>
             <h3 className="setu-heading font-extrabold text-slate-900 text-lg sm:text-xl">
-              Teach NextGen skills during your school's lab period
+              Bring Artificial Intelligence into your school's lab period
             </h3>
             <p className="setu-body text-slate-600 text-sm max-w-2xl">
-              We bring online mentor-led AI, coding, robotics, and STEM sessions straight to your existing lab space.
+              Floyd mentors deliver AI and Machine Learning sessions directly in your existing lab, with more domains on the way.
             </p>
           </div>
 
@@ -197,7 +197,7 @@ const NextGenLabsGallery = () => {
               boxShadow: '0 8px 25px rgba(79, 70, 229, 0.3)',
             }}
           >
-            <span>Schedule Campus Setup Demo</span>
+            <span>Book a Discovery Session</span>
             <ArrowRight size={16} />
           </button>
         </motion.div>

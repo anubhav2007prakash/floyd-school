@@ -8,7 +8,7 @@ const PROGRAMS = [
     title: 'AI & GenAI Lab',
     tagline: 'Coding Intelligent Agents',
     description: 'Neural networks, NLP & prompt engineering. Students build live AI chatbot projects.',
-    grades: 'Grades 8 – 12',
+    grades: 'Grades 8 to 12',
     color: '#8b5cf6',
     glow: 'rgba(139,92,246,0.24)',
     gradient: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
@@ -16,9 +16,9 @@ const PROGRAMS = [
   {
     icon: Lightbulb,
     title: 'Design & Innovation Lab',
-    tagline: 'Solving Real-world Problems',
+    tagline: 'Solving Real World Problems',
     description: 'User research, wireframing, CAD modeling & 3D printing. Design thinking at core.',
-    grades: 'Grades 7 – 12',
+    grades: 'Grades 7 to 12',
     color: '#f97316',
     glow: 'rgba(249,115,22,0.24)',
     gradient: 'linear-gradient(135deg, #f97316, #f59e0b)',
@@ -28,7 +28,7 @@ const PROGRAMS = [
     title: 'Robotics & IoT Lab',
     tagline: 'Programming Physical World',
     description: 'Build microcontroller circuits, automated cars & intelligent climate monitors.',
-    grades: 'Grades 6 – 11',
+    grades: 'Grades 6 to 11',
     color: '#fb7185',
     glow: 'rgba(251,113,133,0.24)',
     gradient: 'linear-gradient(135deg, #fb7185, #f43f5e)',
@@ -38,7 +38,7 @@ const PROGRAMS = [
     title: 'Startup & Incubation Lab',
     tagline: 'Thinking Like Founders',
     description: 'Pitch ideas, validate markets, build business plans & investor presentations.',
-    grades: 'Grades 9 – 12',
+    grades: 'Grades 9 to 12',
     color: '#10b981',
     glow: 'rgba(16,185,129,0.24)',
     gradient: 'linear-gradient(135deg, #10b981, #34d399)',
@@ -48,7 +48,7 @@ const PROGRAMS = [
     title: 'Coding & App Dev Lab',
     tagline: 'Building Fullstack Platforms',
     description: 'Python, HTML/CSS & JavaScript fundamentals. Students ship fully functional web apps.',
-    grades: 'Grades 6 – 12',
+    grades: 'Grades 6 to 12',
     color: '#38bdf8',
     glow: 'rgba(56,189,248,0.24)',
     gradient: 'linear-gradient(135deg, #38bdf8, #0ea5e9)',
@@ -58,7 +58,7 @@ const PROGRAMS = [
     title: 'Career Readiness Lab',
     tagline: 'Onboarding into Industry',
     description: 'Resume crafting, LinkedIn optimization, interview prep & teamwork tools.',
-    grades: 'Grades 10 – 12',
+    grades: 'Grades 10 to 12',
     color: '#7c3aed',
     glow: 'rgba(124,58,237,0.24)',
     gradient: 'linear-gradient(135deg, #7c3aed, #8b5cf6)',
@@ -69,7 +69,7 @@ const STATS = [
   { value: 6, suffix: '', label: 'Career Pathways' },
   { value: 50, suffix: '+', label: 'Real Projects' },
   { value: 20, suffix: '+', label: 'Industry Mentors' },
-  { value: 1, suffix: 'x', label: 'NSDC Certification' },
+  { value: 1, suffix: 'x', label: 'Skill Certification' },
 ];
 
 const heroVariants = {
@@ -109,7 +109,7 @@ const WhyPartnerWithUs = () => {
   return (
     <section
       id="programs"
-      className="relative overflow-visible px-8 py-24 sm:px-12 lg:px-20 lg:py-28"
+      className="relative overflow-x-hidden px-4 py-20 sm:px-8 sm:py-24 lg:px-20 lg:py-28"
       style={{
         background:
           'radial-gradient(circle at 8% 10%, rgba(59,130,246,0.14), transparent 22%), radial-gradient(circle at 92% 18%, rgba(167,139,250,0.12), transparent 24%), linear-gradient(180deg, #f8f9ff 0%, #ffffff 50%, #f7f9ff 100%)',
@@ -127,7 +127,7 @@ const WhyPartnerWithUs = () => {
           </div>
           <div className="mx-auto max-w-3xl">
             <h2 className="font-extrabold text-slate-950 sm:text-5xl lg:text-6xl tracking-tight" style={{ lineHeight: 1.02 }}>
-              Future-Skill Programs <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-sky-500 to-emerald-500">Offered</span>
+              Future Skill Programs <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-sky-500 to-emerald-500">Offered</span>
             </h2>
             <p className="mt-5 text-base leading-8 text-slate-600 sm:text-xl sm:leading-9">
               Custom skill programs with structured student output focus. Combine multiple tracks.
@@ -152,8 +152,8 @@ const WhyPartnerWithUs = () => {
           ))}
         </motion.div>
 
-        <div className="mt-16 grid gap-12 lg:gap-10 overflow-visible">
-          <div className="relative overflow-visible rounded-[2.5rem] border border-white/40 bg-slate-950/10 shadow-[0_45px_120px_rgba(15,23,42,0.16)] backdrop-blur-2xl">
+        <div className="mt-16 grid gap-12 overflow-hidden lg:gap-10">
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/40 bg-slate-950/10 shadow-[0_45px_120px_rgba(15,23,42,0.16)] backdrop-blur-2xl">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(167,139,250,0.16),transparent_28%)]" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent_50%,rgba(15,23,42,0.18))]" />
             <OrbitDisplay active={active} setActive={setActive} activeProgram={activeProgram} />
@@ -272,8 +272,9 @@ const OrbitDisplay = ({ active, setActive, activeProgram }) => {
   }, []);
 
   return (
-    <div className="relative mx-auto flex w-full max-w-[1600px] justify-center overflow-visible px-6 py-8 lg:px-12">
-      <div className="relative h-[880px] w-full overflow-visible">
+    <>
+      <div className="relative mx-auto hidden w-full max-w-[1600px] justify-center overflow-hidden px-6 py-8 lg:block lg:px-12">
+        <div className="relative h-[880px] w-full overflow-hidden">
         {/* SVG connections: hidden on small screens for performance */}
         <svg className="pointer-events-none absolute inset-0 z-5 hidden md:block" viewBox="-600 -450 1200 900" preserveAspectRatio="xMidYMid meet">
           <defs>
@@ -356,7 +357,7 @@ const OrbitDisplay = ({ active, setActive, activeProgram }) => {
         {orbitData.map((prog, i) => (
           <div
             key={prog.title}
-            className="absolute z-30 w-[320px] h-[180px]"
+            className="absolute z-30 hidden h-[180px] w-[320px] lg:block"
             style={{ left: `calc(50% + ${prog.x}px)`, top: `calc(50% + ${prog.y}px)`, transform: 'translate(-50%, -50%)' }}
           >
           <button
@@ -384,40 +385,42 @@ const OrbitDisplay = ({ active, setActive, activeProgram }) => {
           </div>
         ))}
 
-        <div className="lg:hidden absolute inset-x-0 bottom-0 px-6 pb-6">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/30 bg-slate-950/90 px-4 py-6 shadow-[0_30px_90px_rgba(15,23,42,0.18)] backdrop-blur-xl">
-            <div className="flex items-center justify-between px-2 text-sm uppercase tracking-[0.28em] text-slate-300">
-              <span>Explore Labs</span>
-              <span className="text-slate-400">Swipe ?</span>
-            </div>
-            <div className="mt-6 flex gap-4 overflow-x-auto pb-2 pl-2 pr-4 scrollbar-none">
-              {PROGRAMS.map((prog) => (
-                <motion.button
-                  key={prog.title}
-                  type="button"
-                  whileHover={{ scale: 1.03 }}
-                  onHoverStart={() => setActive(prog.title)}
-                  onHoverEnd={() => setActive('AI & GenAI Lab')}
-                  onFocus={() => setActive(prog.title)}
-                  className="min-w-[260px] flex-shrink-0 rounded-[1.75rem] border border-white/15 bg-slate-950/80 p-5 text-left shadow-[0_18px_45px_rgba(15,23,42,0.12)] transition-all duration-300"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-3xl" style={{ background: prog.gradient, boxShadow: `0 10px 30px ${prog.glow}` }}>
-                      <prog.icon size={22} className="text-white" />
-                    </div>
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-200">
-                      {prog.grades}
-                    </span>
+        </div>
+      </div>
+
+      <div className="lg:hidden px-4 py-6">
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/30 bg-slate-950/90 px-4 py-6 shadow-[0_30px_90px_rgba(15,23,42,0.18)] backdrop-blur-xl">
+          <div className="flex items-center justify-between px-2 text-xs uppercase tracking-[0.28em] text-slate-300 sm:text-sm">
+            <span>Explore Labs</span>
+            <span className="text-slate-400">Swipe →</span>
+          </div>
+          <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pl-2 pr-4 scrollbar-none">
+            {PROGRAMS.map((prog) => (
+              <motion.button
+                key={prog.title}
+                type="button"
+                whileHover={{ scale: 1.03 }}
+                onHoverStart={() => setActive(prog.title)}
+                onHoverEnd={() => setActive('AI & GenAI Lab')}
+                onFocus={() => setActive(prog.title)}
+                className="min-w-[260px] max-w-[85vw] flex-shrink-0 snap-center rounded-[1.75rem] border border-white/15 bg-slate-950/80 p-5 text-left shadow-[0_18px_45px_rgba(15,23,42,0.12)] transition-all duration-300"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-3xl" style={{ background: prog.gradient, boxShadow: `0 10px 30px ${prog.glow}` }}>
+                    <prog.icon size={22} className="text-white" />
                   </div>
-                  <h4 className="mt-5 text-lg font-semibold text-white">{prog.title}</h4>
-                  <p className="mt-2 text-sm text-slate-400">{prog.tagline}</p>
-                </motion.button>
-              ))}
-            </div>
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-200">
+                    {prog.grades}
+                  </span>
+                </div>
+                <h4 className="mt-5 text-lg font-semibold text-white">{prog.title}</h4>
+                <p className="mt-2 text-sm text-slate-400">{prog.tagline}</p>
+              </motion.button>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

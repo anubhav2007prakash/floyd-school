@@ -4,7 +4,6 @@ const AI_IMG = '/images/courses/AI&ML.png';
 const IOT_IMG = '/images/courses/IOT.png';
 const WEB_IMG = '/images/courses/WEB DEV.png';
 const CYBER_IMG = '/images/courses/CYBER.png';
-const SUMMER_IMG = '/images/courses/Floyd School Summer Builder Program.png';
 
 export const FALLBACK_COURSES = [
     {
@@ -23,7 +22,7 @@ export const FALLBACK_COURSES = [
         currency: "INR",
         tags: ["AI", "Python", "ML"],
         live: true,
-        deliveryDetails: { inSchool: { bootcamp: "7-Day Deep Dive" } },
+        deliveryDetails: { inSchool: { bootcamp: "7 Day Deep Dive" } },
         curriculum: [
             "Neural Network Architectures",
             "Natural Language Processing",
@@ -33,7 +32,7 @@ export const FALLBACK_COURSES = [
         outcomes: [
             "Build & Deploy LLMs",
             "Optimize Inference Engines",
-            "Real-time Computer Vision"
+            "Real time Computer Vision"
         ],
         registeredCount: 24,
         totalSeats: 50,
@@ -45,8 +44,8 @@ export const FALLBACK_COURSES = [
         image: WEB_IMG,
         icon: 'Code',
         status: 'published',
-        description: "Engineer high-performance full-stack applications with scalable cloud infrastructure. Architect resilient, distributed systems using modern patterns and enterprise-grade deployment pipelines.",
-        detailedDescription: "Architect the modern web. Learn to build resilient, distributed systems using React, Node.js, and advanced cloud patterns used by top-tier tech companies.",
+        description: "Engineer high performance full stack applications with scalable cloud infrastructure. Architect resilient, distributed systems using modern patterns and enterprise grade deployment pipelines.",
+        detailedDescription: "Architect the modern web. Learn to build resilient, distributed systems using React, Node.js, and advanced cloud patterns used by top tier tech companies.",
         color: "#2563EB",
         rating: 4.8,
         duration: "3 month",
@@ -57,14 +56,14 @@ export const FALLBACK_COURSES = [
         deliveryDetails: { inSchool: { bootcamp: "UI/UX Mastery" } },
         curriculum: [
             "Distributed System Design",
-            "High-Performance Frontend",
+            "High Performance Frontend",
             "Microservices Architecture",
             "CI/CD and Cloud Ops"
         ],
         outcomes: [
             "Scalable System Design",
             "Edge Computing Mastery",
-            "Full-cycle Product Launch"
+            "Full cycle Product Launch"
         ],
         registeredCount: 10,
         totalSeats: 50,
@@ -76,8 +75,8 @@ export const FALLBACK_COURSES = [
         image: IOT_IMG,
         icon: 'Terminal',
         status: 'published',
-        description: "Bridge the gap between hardware and software with autonomous systems. Design, build, and program smart robotic networks from the circuit level to advanced high-level control algorithms.",
-        detailedDescription: "Bridge the gap between code and physical reality. Build autonomous robots and smart IoT networks from the circuit level to high-level control algorithms.",
+        description: "Bridge the gap between hardware and software with autonomous systems. Design, build, and program smart robotic networks from the circuit level to advanced high level control algorithms.",
+        detailedDescription: "Bridge the gap between code and physical reality. Build autonomous robots and smart IoT networks from the circuit level to high level control algorithms.",
         color: "#2563EB",
         rating: 4.7,
         duration: "3 month",
@@ -107,7 +106,7 @@ export const FALLBACK_COURSES = [
         image: CYBER_IMG,
         icon: 'Shield',
         status: 'published',
-        description: "Become the shield of the digital world through threat analysis and zero-trust protocols. Master offensive and defensive strategies to protect industrial networks and sensitive data infrastructures.",
+        description: "Become the shield of the digital world through threat analysis and zero trust protocols. Master offensive and defensive strategies to protect industrial networks and sensitive data infrastructures.",
         detailedDescription: "Become the shield of the digital world. Master offensive and defensive security strategies, industrial network protection, and advanced threat hunting.",
         color: "#2563EB",
         rating: 4.9,
@@ -115,7 +114,6 @@ export const FALLBACK_COURSES = [
         price: 1999,
         currency: "INR",
         tags: ["SecOps", "Networking", "Hacking"],
-        comingSoon: true,
         deliveryDetails: { inSchool: { bootcamp: "Cyber Simulation" } },
         curriculum: [
             "Ethical Hacking & Pentesting",
@@ -135,11 +133,11 @@ export const FALLBACK_COURSES = [
     {
         _id: '5',
         title: "Floyd School Summer Builder Program",
-        image: SUMMER_IMG,
+        image: CYBER_IMG,
         icon: 'Rocket',
         status: 'published',
-        description: "A high-octane 30-day summer internship. From foundations of software development to building real AI-powered applications with industry mentors.",
-        detailedDescription: "A high-octane 30-day summer internship designed for students to transition from consumers to creators. Master the foundations of software development, build real-world applications, and integrate cutting-edge AI tools into your projects.",
+        description: "A high octane 30 day summer internship. From foundations of software development to building real AI powered applications with industry mentors.",
+        detailedDescription: "A high octane 30 day summer internship designed for students to transition from consumers to creators. Master the foundations of software development, build real world applications, and integrate cutting edge AI tools into your projects.",
         color: "#2563EB",
         rating: 5.0,
         duration: "1 month",
@@ -148,6 +146,7 @@ export const FALLBACK_COURSES = [
         currency: "INR",
         tags: ["Summer Internship", "Project Based", "Software", "AI"],
         live: true,
+        hideFromBatches: true,
         deliveryDetails: { online: { tutor: "Live Mentorship", lectures: "Project Sessions" } },
         curriculum: [
             "Foundations of Software Development",
@@ -171,17 +170,17 @@ export const schoolBenefits = [
     { title: "Zero Setup Cost", desc: "No infrastructure investment required." },
     { title: "Flexible Scheduling", desc: "Fits your school's academic calendar." },
     { title: "Expert Led", desc: "Industrial veterans delivering training." },
-    { title: "Real-time Tracking", desc: "Performance insights for institutions." },
-    { title: "Offline Impact", desc: "Hands-on in-school mastery." }
+    { title: "Real time Tracking", desc: "Performance insights for institutions." },
+    { title: "Offline Impact", desc: "Hands on in school mastery." }
 ];
 
 export const studentBenefits = [
-    { title: "Self-Paced Mastery", desc: "Learn with 24/7 portal access." },
-    { title: "Global Community", desc: "Connect with world-class engineers." },
-    { title: "Production Portal", desc: "Build in real-world IDEs." },
-    { title: "Direct Mentorship", desc: "1-on-1 support from architects." },
+    { title: "Self Paced Mastery", desc: "Learn with 24/7 portal access." },
+    { title: "Global Community", desc: "Connect with world class engineers." },
+    { title: "Production Portal", desc: "Build in real world IDEs." },
+    { title: "Direct Mentorship", desc: "1 on 1 support from architects." },
     { title: "Independent Portfolio", desc: "Graduate with active GitHub apps." },
-    { title: "Floyd School Online Batches", desc: "High-octane online curriculum." }
+    { title: "Floyd School Online Batches", desc: "High octane online curriculum." }
 ];
 
 export const supportRoles = [
@@ -189,7 +188,7 @@ export const supportRoles = [
         title: "Adaptive Learning Systems",
         role: "Cognitive Engine",
         image: "/images/ecosystem/adaptive_learning.jpg",
-        desc: "Personalized AI-driven learning paths that adapt to individual student progress.",
+        desc: "Personalized AI driven learning paths that adapt to individual student progress.",
         benefits: ["Personalized Pace", "Gap Analysis", "Dynamic Content"],
         icon: 'Brain',
         color: "from-blue-600 to-indigo-600",
@@ -199,7 +198,7 @@ export const supportRoles = [
         title: "Professional Cloud IDE",
         role: "Engineering Workspace",
         image: "/images/ecosystem/cloud_ide.jpg",
-        desc: "Industry-standard cloud development environment for real-world engineering.",
+        desc: "Industry standard cloud development environment for real world engineering.",
         benefits: ["Zero Setup", "Cloud Power", "Collab Tools"],
         icon: 'Code',
         color: "from-blue-500 to-cyan-400",
@@ -210,7 +209,7 @@ export const supportRoles = [
         role: "Industrial Dashboard",
         image: "/images/ecosystem/performance.jpg",
         desc: "Deep insights into student technical growth and skill acquisition metrics.",
-        benefits: ["Real-time Tracking", "Skill Heatmaps", "Progress Reports"],
+        benefits: ["Real time Tracking", "Skill Heatmaps", "Progress Reports"],
         icon: 'Target',
         color: "from-slate-700 to-slate-900",
         delay: 0.2
@@ -229,7 +228,7 @@ export const supportRoles = [
         title: "Enterprise Security Protocols",
         role: "Data Protection",
         image: "/images/ecosystem/security.jpg",
-        desc: "Advanced security training and zero-trust protocol implementation mastery.",
+        desc: "Advanced security training and zero trust protocol implementation mastery.",
         benefits: ["Threat Models", "Zero Trust", "Data Privacy"],
         icon: 'ShieldCheck',
         color: "from-indigo-600 to-purple-600",
@@ -239,7 +238,7 @@ export const supportRoles = [
         title: "Neural Mentorship Network",
         role: "AI Diagnostics",
         image: "/images/ecosystem/mentorship.jpg",
-        desc: "Direct access to AI-augmented mentorship for immediate technical clearing.",
+        desc: "Direct access to AI augmented mentorship for immediate technical clearing.",
         benefits: ["Instant Doubt Clear", "Code Review", "Expert AMA"],
         icon: 'Zap',
         color: "from-slate-800 to-black",
@@ -296,10 +295,10 @@ export const StudentSteps = [
 export const timelineSteps = [
     {
         phase: "Week 01",
-        title: "Zero-Risk Spark",
+        title: "Zero Risk Spark",
         subtitle: "Free Bootcamp",
         icon: 'Zap',
-        description: "Deploy expert mentors for a seven-day intensive bootcamp.",
+        description: "Deploy expert mentors for a seven day intensive bootcamp.",
         color: "bg-blue-500"
     },
     {
@@ -337,7 +336,7 @@ export const valueProps = [
     {
         icon: 'Target',
         title: "Industrial Edge",
-        description: "Industry-standard engineering training that elevates school status."
+        description: "Industry standard engineering training that elevates school status."
     },
     {
         icon: 'GraduationCap',
@@ -352,13 +351,13 @@ export const detailedCurriculums = {
             {
                 month: "01",
                 title: "Python Fundamentals",
-                phaseDescription: "The absolute baseline: build high-performance logic with world-class Python patterns.",
+                phaseDescription: "The absolute baseline: build high performance logic with world class Python patterns.",
                 color: "primary",
                 weeks: [
                     { week: "Week 01", title: "Python from Scratch", description: "Variables, Datatypes and Basic Logic." },
                     { week: "Week 02", title: "Loops & Functions", description: "Automating repetitive tasks with ease." },
-                    { week: "Week 03", title: "Files & Libraries", description: "Handling external data and open-source tools." },
-                    { week: "Week 04", title: "Python Like a Pro", description: "Writing clean, production-level code.", isSpecial: true }
+                    { week: "Week 03", title: "Files & Libraries", description: "Handling external data and open source tools." },
+                    { week: "Week 04", title: "Python Like a Pro", description: "Writing clean, production level code.", isSpecial: true }
                 ]
             },
             {
@@ -400,8 +399,8 @@ export const detailedCurriculums = {
         roadmap: [
             {
                 month: "01",
-                title: "30-Day Builder Roadmap",
-                phaseDescription: "A high-intensity sprint from software fundamentals to AI-powered production apps.",
+                title: "30 Day Builder Roadmap",
+                phaseDescription: "A high intensity sprint from software fundamentals to AI powered production apps.",
                 color: "primary",
                 weeks: [
                     { week: "Week 01", title: "Foundations of Software Development", description: "Mastering the core logic and architecture of modern software development." },
@@ -413,10 +412,10 @@ export const detailedCurriculums = {
         ],
         finalProject: {
             title: "AI Personal Assistant",
-            description: "Build your own voice-activated AI personal assistant that can manage tasks, answer complex queries using GPT-4, and interact with external APIs to fetch real-world data like weather or news.",
-            videoUrl: "https://www.youtube.com/embed/BREYIm9ctQU", // Placeholder video
+            description: "Build your own voice activated AI personal assistant that can manage tasks, answer complex queries using GPT-4, and interact with external APIs to fetch real world data like weather or news.",
+            videoUrl: "https://www.youtube.com/embed/BREYIm9ctQU",
             features: [
-                { icon: "🎙️", label: "Voice Recognition", desc: "Process natural language commands in real-time." },
+                { icon: "🎙️", label: "Voice Recognition", desc: "Process natural language commands in real time." },
                 { icon: "🧠", label: "GPT-4 Integration", desc: "Powered by advanced LLMs for intelligent responses." },
                 { icon: "🔌", label: "API Ecosystem", desc: "Connects with weather, maps, and productivity tools." }
             ]

@@ -35,8 +35,8 @@ const CONTACT_CHANNELS = [
 ];
 
 const QUICK_INFO = [
-  { label: 'For Schools', value: 'Classes 7 – 12' },
-  { label: 'Batch Size', value: '25 – 100+ Students' },
+  { label: 'For Schools', value: 'Classes 7 to 12' },
+  { label: 'Batch Size', value: '25 to 100 Students' },
   { label: 'Response Time', value: 'Within 24 Hours' },
 ];
 
@@ -85,90 +85,80 @@ const PartnershipForm = () => {
 
   return (
     <>
-      {/* ── CTA Banner ──────────────────────────────────────────────── */}
-      <section
-        className="py-24 px-6 lg:px-12 relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #eef2ff 0%, #e0e7ff 45%, #eef2ff 100%)',
-        }}
-      >
-        {/* Animated floating orbs */}
-        <motion.div className="absolute top-0 left-1/4 w-[520px] h-[520px] rounded-full pointer-events-none"
-          animate={{ scale: [1, 1.14, 1], opacity: [0.25, 0.4, 0.25] }}
-          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ background: 'radial-gradient(circle, #818cf8 0%, transparent 70%)', filter: 'blur(40px)' }} />
-        <motion.div className="absolute bottom-0 right-1/4 w-[420px] h-[420px] rounded-full pointer-events-none"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.35, 0.2] }}
-          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          style={{ background: 'radial-gradient(circle, #38bdf8 0%, transparent 70%)', filter: 'blur(40px)' }} />
-        <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full pointer-events-none"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          style={{ background: 'radial-gradient(circle, #f472b6 0%, transparent 70%)', filter: 'blur(50px)' }} />
-
-        <div className="max-w-[1200px] mx-auto relative z-10 text-center">
+      {/* ── CTA Banner (Highlighted) ────────────────────────────────── */}
+      <section className="py-16 px-4 sm:px-6 lg:px-12 relative overflow-hidden bg-slate-50">
+        <div className="max-w-[1240px] mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}
+            className="relative overflow-hidden rounded-[40px] p-10 sm:p-14 lg:p-20 text-center shadow-[0_30px_100px_rgba(15,23,42,0.25)] border border-indigo-500/20"
+            style={{
+              background: 'linear-gradient(135deg, #090d29 0%, #131846 50%, #0c1033 100%)',
+            }}
           >
-            <span
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest mb-8"
-              style={{
-                background: 'rgba(79,70,229,0.08)',
-                border: '1px solid rgba(79,70,229,0.15)',
-                color: 'var(--accent-setu2)',
-              }}
-            >
-              <Sparkles size={12} />
-              GET STARTED TODAY
-            </span>
+            {/* Ambient Background Glowing Orbs */}
+            <motion.div
+              className="absolute -top-24 left-1/4 w-[450px] h-[450px] rounded-full pointer-events-none"
+              animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+              style={{ background: 'radial-gradient(circle, #6366f1 0%, transparent 70%)', filter: 'blur(60px)' }}
+            />
+            <motion.div
+              className="absolute -bottom-24 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
+              animate={{ scale: [1, 1.1, 1], opacity: [0.25, 0.45, 0.25] }}
+              transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+              style={{ background: 'radial-gradient(circle, #ec4899 0%, transparent 70%)', filter: 'blur(60px)' }}
+            />
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full pointer-events-none"
+              animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              style={{ background: 'radial-gradient(circle, #38bdf8 0%, transparent 70%)', filter: 'blur(70px)' }}
+            />
 
-            <h2
-              className="setu-heading font-extrabold text-[var(--dark-setu)] mb-5 max-w-3xl mx-auto"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}
-            >
-              Let's build the future of{' '}
-              <span
-                style={{
-                  background: 'linear-gradient(135deg, #a5b4fc, #67e8f9)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                education together
+            <div className="relative z-10 max-w-3xl mx-auto">
+              <span className="inline-flex items-center gap-2 px-4.5 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-[0.25em] mb-8 bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 shadow-[0_0_20px_rgba(99,102,241,0.25)]">
+                <Sparkles size={14} className="text-amber-400" />
+                GET STARTED TODAY
               </span>
-            </h2>
 
-            <p
-              className="setu-body text-[var(--muted-setu)] max-w-xl mx-auto mb-12"
-              style={{ fontSize: '1.1rem' }}
-            >
-              Start with a free 7-day campus trial. Zero risk, real results.
-            </p>
+              <h2
+                className="setu-heading font-black text-white mb-6 leading-tight"
+                style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', lineHeight: 1.08 }}
+              >
+                Let's build the future of{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-indigo-200 to-amber-300">
+                  education together
+                </span>
+              </h2>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <motion.button
-                whileHover={{ scale: 1.04, boxShadow: '0 0 35px rgba(165,180,252,0.4)' }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-10 py-4 rounded-full setu-body text-base font-bold text-slate-900 cursor-pointer"
-                style={{ background: 'linear-gradient(135deg, #a5b4fc, #67e8f9)' }}
-              >
-                Schedule a Demo →
-              </motion.button>
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                href="https://wa.me/918368801220"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-10 py-4 rounded-full setu-body text-base font-semibold text-white"
-                style={{ border: '1.5px solid rgba(255,255,255,0.25)', background: 'rgba(255,255,255,0.07)' }}
-              >
-                Talk via WhatsApp
-              </motion.a>
+              <p className="setu-body text-slate-300 max-w-xl mx-auto mb-10 text-base sm:text-lg font-medium leading-relaxed">
+                Start with a free 7 day campus trial. Zero risk, real results.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+                <motion.button
+                  whileHover={{ scale: 1.04, boxShadow: '0 12px 40px rgba(99,102,241,0.6)' }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full sm:w-auto px-9 py-4 rounded-full setu-body text-sm sm:text-base font-extrabold text-white cursor-pointer shadow-[0_8px_30px_rgba(99,102,241,0.4)] transition-all"
+                  style={{ background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%)' }}
+                >
+                  Book a Discovery Session →
+                </motion.button>
+                <motion.a
+                  whileHover={{ scale: 1.04, backgroundColor: 'rgba(16,185,129,0.25)' }}
+                  whileTap={{ scale: 0.97 }}
+                  href="https://wa.me/918368801220"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-9 py-4 rounded-full setu-body text-sm sm:text-base font-bold text-emerald-300 border border-emerald-500/40 bg-emerald-500/10 shadow-[0_8px_25px_rgba(16,185,129,0.15)] transition-all"
+                >
+                  Talk via WhatsApp
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -282,7 +272,7 @@ const PartnershipForm = () => {
                   </div>
                   <div className="ml-4 mb-2">
                     <div className="setu-heading font-extrabold text-slate-800 text-sm">Have Questions?</div>
-                    <div className="setu-body text-xs text-slate-500 font-medium">We're here to guide your institution step-by-step.</div>
+                    <div className="setu-body text-xs text-slate-500 font-medium">We're here to guide your institution step by step.</div>
                   </div>
                 </div>
 
@@ -311,7 +301,7 @@ const PartnershipForm = () => {
                           <CheckCircle2 size={36} style={{ color: '#6BCB77' }} />
                         </div>
                         <h3 className="setu-heading font-black text-slate-900 text-2xl mb-2">
-                          You're on the list! 🎉
+                          You're on the list!
                         </h3>
                         <p className="setu-body text-slate-500 mb-6 max-w-sm text-sm">
                           Your partnership request has been submitted. Our regional team will contact you within 24 hours.

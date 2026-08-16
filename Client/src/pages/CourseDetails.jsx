@@ -36,6 +36,7 @@ import api from '../api/axios';
 import SEO from '../components/common/SEO';
 import InstitutionalPartners from '../components/InstitutionalPartners';
 import summerPdf from '../assets/pdf/1monthonlinecourseblue.pdf';
+import useIsMobile from '../hooks/useIsMobile.js';
 
 const iconMap = {
     Cpu: Cpu,
@@ -52,6 +53,7 @@ const CourseDetails = () => {
     const [stats, setStats] = useState({ manualEnrollmentCount: 45, totalSeats: 50 });
     const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
     const [isAvailable, setIsAvailable] = useState(true);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         const foundCourse = FALLBACK_COURSES.find(c => c._id === courseId);
@@ -119,8 +121,6 @@ const CourseDetails = () => {
     if (!course) return <div className="min-h-screen bg-white flex items-center justify-center font-black text-slate-400 uppercase tracking-widest">Loading Course Protocol...</div>;
 
     const Icon = iconMap[course.icon] || Code;
-
-    const isMobile = window.innerWidth < 768;
 
     return (
         <div className={`min-h-screen ${courseId === '5' ? 'bg-black text-white' : 'bg-gradient-to-br from-black via-slate-950 to-black text-white'} selection:bg-blue-600 selection:text-white relative font-['Outfit']`}>

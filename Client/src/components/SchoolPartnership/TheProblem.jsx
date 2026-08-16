@@ -1,368 +1,425 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useMemo, useState, useRef, useCallback } from 'react';
+import { animate, motion, useMotionValue } from 'framer-motion';
 import {
   Layers, Users, BookOpen, Settings, CheckCircle, BarChart3,
-  Cpu, Sparkles, ArrowRight, ShieldCheck, Award, Zap, Terminal, Activity
+  Sparkles, CheckCircle2, ArrowRight, ShieldCheck, Award, Zap
 } from 'lucide-react';
 
-/* ── Interactive Tech Stack Tags for Curriculum Card ── */
-const TECH_TAGS = ['Python', 'Robotics & IoT', 'AI & Machine Learning', 'Cybersecurity', 'Web3 & Cloud'];
-
-/* ── Live Operations Checklist for Operations Card ── */
-const OPS_ITEMS = [
-  'Certified Mentor Recruitment & Training',
-  'Automated Attendance & Assessment Reports',
-  'Hardware Maintenance & Upgrades',
-  'Quarterly Student Exhibition Days',
+const REASONS = [
+  {
+    icon: Layers,
+    title: 'Runs In Your Existing Lab',
+    tagline: 'NO SETUP REQUIRED',
+    description: "The program runs on your school's existing computer lab. There is nothing to install and nothing to source.",
+    badge: '01 / No Setup Required',
+    outcomes: ['Zero Hardware Purchase', 'Instant Computer Lab Sync', 'Zero IT Setup Required'],
+    color: '#8b5cf6',
+    glow: 'rgba(139,92,246,0.24)',
+    gradient: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
+  },
+  {
+    icon: Users,
+    title: 'Expert On Campus Mentors',
+    tagline: 'TRAINED BY FLOYD SCHOOL',
+    description: 'Every class is led by a working technology professional. Floyd handles recruitment, training and continuity.',
+    badge: '02 / Mentors',
+    outcomes: ['Industry Working Professionals', 'Hiring and Training Managed', 'Zero Substitution Hassle'],
+    color: '#38bdf8',
+    glow: 'rgba(56,189,248,0.24)',
+    gradient: 'linear-gradient(135deg, #38bdf8, #0ea5e9)',
+  },
+  {
+    icon: BookOpen,
+    title: 'Industry Aligned Syllabus',
+    tagline: 'FOUR MONTH PROGRAM',
+    description: 'Four months of project based learning, moving from Python foundations to a finished Artificial Intelligence application.',
+    badge: '03 / Curriculum',
+    outcomes: ['Python to AI Project Path', 'Hands On Coding Exercises', 'Student Project Portfolios'],
+    color: '#fb7185',
+    glow: 'rgba(251,113,133,0.24)',
+    gradient: 'linear-gradient(135deg, #fb7185, #f43f5e)',
+  },
+  {
+    icon: Settings,
+    title: 'Zero Burden Operations',
+    tagline: 'MANAGED OPERATIONS',
+    description: 'Scheduling, assessments and parent updates are handled entirely by the Floyd School team.',
+    badge: '04 / Managed Operations',
+    outcomes: ['Timetable Integration', 'Weekly Student Reports', 'Parent Update System'],
+    color: '#10b981',
+    glow: 'rgba(16,185,129,0.24)',
+    gradient: 'linear-gradient(135deg, #10b981, #34d399)',
+  },
+  {
+    icon: CheckCircle,
+    title: 'Built For The NEP 2020 Mandate',
+    tagline: 'NEP AND CBSE ALIGNED',
+    description: 'Supports the Computational Thinking and Artificial Intelligence mandate introduced under NEP 2020.',
+    badge: '05 / NEP Alignment',
+    outcomes: ['CBSE Skill Subject Ready', 'Experiential Learning Directives', 'Complete Board Compliance'],
+    color: '#f97316',
+    glow: 'rgba(249,115,22,0.24)',
+    gradient: 'linear-gradient(135deg, #f97316, #f59e0b)',
+  },
+  {
+    icon: BarChart3,
+    title: 'Real Time Skill Analytics',
+    tagline: 'LIVE DASHBOARDS',
+    description: 'Parents and school leadership receive regular updates on attendance, assessments and project progress.',
+    badge: '06 / Live Analytics',
+    outcomes: ['Admin Progress Dashboard', 'Automated Attendance Logs', 'Skill Growth Benchmark'],
+    color: '#7c3aed',
+    glow: 'rgba(124,58,237,0.24)',
+    gradient: 'linear-gradient(135deg, #7c3aed, #8b5cf6)',
+  },
 ];
 
-const TheProblem = () => {
-  const [activeTech, setActiveTech] = useState(0);
+const STATS = [
+  { value: 100, suffix: '%', label: 'Zero School Setup' },
+  { value: 4, suffix: ' Mos', label: 'Structured Program' },
+  { value: 0, suffix: '', label: 'Faculty Burden' },
+  { value: 100, suffix: '%', label: 'NEP 2020 Aligned' },
+];
+
+const heroVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const ProgramCounter = ({ value, suffix }) => {
+  const motionValue = useMotionValue(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const controls = animate(motionValue, value, {
+      duration: 1.6,
+      ease: [0.22, 1, 0.36, 1],
+    });
+    const unsubscribe = motionValue.on('change', (latest) => setCount(Math.round(latest)));
+
+    return () => {
+      controls.stop();
+      unsubscribe();
+    };
+  }, [motionValue, value]);
 
   return (
-    <section id="why-us" className="py-28 px-6 lg:px-12 relative overflow-hidden bg-slate-950 text-white">
-      {/* ── Dynamic Mesh Background ── */}
-      <div className="absolute inset-0 pointer-events-none opacity-40">
-        <div className="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%)', filter: 'blur(90px)' }} />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(236,72,153,0.2) 0%, transparent 70%)', filter: 'blur(90px)' }} />
-        <div className="absolute top-[40%] right-[30%] w-[400px] h-[400px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%)', filter: 'blur(80px)' }} />
-      </div>
+    <span className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900">
+      {count}
+      {suffix}
+    </span>
+  );
+};
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-10"
-        style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
+const TheProblem = () => {
+  const [active, setActive] = useState('Runs In Your Existing Lab');
+  const activeReason = useMemo(() => REASONS.find((item) => item.title === active) || REASONS[0], [active]);
 
-      <div className="max-w-[1240px] mx-auto relative z-10">
+  return (
+    <section
+      id="why-us"
+      className="relative overflow-x-hidden px-4 py-20 sm:px-8 sm:py-24 lg:px-20 lg:py-28 bg-white"
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,rgba(255,255,255,1),transparent_40%)] blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-72 bg-[radial-gradient(circle_at_bottom,rgba(236,72,153,0.08),transparent_35%)] blur-3xl" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_28%)]" />
 
-        {/* ── Section Header ── */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: -16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 backdrop-blur-md"
-            style={{
-              background: 'rgba(99,102,241,0.12)',
-              border: '1px solid rgba(99,102,241,0.3)',
-              boxShadow: '0 0 20px rgba(99,102,241,0.15)',
-            }}
-          >
-            <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-300">Institutional Advantages</span>
-          </motion.div>
+      <div className="relative mx-auto max-w-[1600px]">
+        {/* Header */}
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} variants={heroVariants} className="space-y-8 text-center">
+          <div className="inline-flex items-center justify-center gap-3 rounded-full border border-white/40 bg-slate-950/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-slate-600 shadow-[0_15px_70px_rgba(15,23,42,0.05)]">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 via-sky-400 to-emerald-400 shadow-[0_0_20px_rgba(56,189,248,0.4)]" />
+            INSTITUTIONAL ADVANTAGES
+          </div>
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-extrabold text-slate-950 sm:text-5xl lg:text-6xl tracking-tight" style={{ lineHeight: 1.02 }}>
+              Why Schools Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-sky-500 to-emerald-500">Floyd School</span>
+            </h2>
+            <p className="mt-5 text-base leading-8 text-slate-600 sm:text-xl sm:leading-9">
+              Real AI and Machine Learning education, delivered on your campus, without adding to your faculty's workload.
+            </p>
+          </div>
+        </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] mb-6"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            Why Top Schools Choose{' '}
-            <span className="text-transparent bg-clip-text"
-              style={{ backgroundImage: 'linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #38bdf8 100%)' }}>
-              Floyd School
-            </span>
-          </motion.h2>
+        {/* Top Highlight Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.08 }}
+          className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {STATS.map((stat) => (
+            <div key={stat.label} className="rounded-3xl border border-white/50 bg-white/80 p-6 backdrop-blur-xl shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
+              <div className="flex items-end gap-3">
+                <ProgramCounter value={stat.value} suffix={stat.suffix} />
+              </div>
+              <p className="mt-3 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">{stat.label}</p>
+            </div>
+          ))}
+        </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
-          >
-            A turnkey tech ecosystem designed to transform school computer labs into future-ready STEM & AI centers without faculty burden.
-          </motion.p>
+        {/* Orbit Grid Display */}
+        <div className="mt-16 grid gap-12 overflow-hidden lg:gap-10">
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/40 bg-slate-950/10 shadow-[0_45px_120px_rgba(15,23,42,0.16)] backdrop-blur-2xl">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(167,139,250,0.16),transparent_28%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent_50%,rgba(15,23,42,0.18))]" />
+            <OrbitDisplay active={active} setActive={setActive} activeReason={activeReason} />
+          </div>
         </div>
-
-        {/* ── Bento Grid Showcase ── */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-
-          {/* CARD 1: Turnkey Lab (Large 7 Columns) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="md:col-span-7 group relative rounded-3xl p-8 overflow-hidden backdrop-blur-xl transition-all duration-500 hover:border-indigo-500/50 flex flex-col justify-between"
-            style={{
-              background: 'linear-gradient(145deg, rgba(30,27,75,0.4) 0%, rgba(15,23,42,0.6) 100%)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-            }}
-          >
-            <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-indigo-500/20 transition-all duration-500" />
-            
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                  <Layers size={24} />
-                </div>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">01 / Turnkey Setup</span>
-              </div>
-
-              <h3 className="text-2xl md:text-3xl font-black text-white mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                Turnkey Lab Implementation
-              </h3>
-              <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg mb-8">
-                We design, install, and maintain AI, Robotics & Coding labs on your campus. Zero hardware sourcing, setup, or technical hassle for your school.
-              </p>
-            </div>
-
-            {/* Interactive Lab Hardware Visual Mock */}
-            <div className="rounded-2xl p-5 border border-white/10 bg-slate-900/80 backdrop-blur-md relative overflow-hidden">
-              <div className="flex items-center justify-between text-xs text-slate-400 mb-4 pb-3 border-b border-white/10">
-                <div className="flex items-center gap-2 font-mono">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="text-emerald-400 font-bold">CAMPUS LAB ACTIVE</span>
-                </div>
-                <span className="text-slate-500">Hardware & Cloud Sync</span>
-              </div>
-
-              <div className="grid grid-cols-3 gap-3">
-                {[
-                  { title: 'AI Workstations', val: '25 Units', icon: Cpu, color: '#818cf8' },
-                  { title: 'Robotics Kits', val: 'IoT & Sensors', icon: Terminal, color: '#f472b6' },
-                  { title: '3D Printers', val: 'Rapid Proto', icon: Zap, color: '#38bdf8' },
-                ].map((hw) => (
-                  <div key={hw.title} className="p-3 rounded-xl bg-white/5 border border-white/5 flex flex-col justify-between">
-                    <hw.icon size={18} style={{ color: hw.color }} className="mb-2" />
-                    <div>
-                      <div className="text-[11px] text-slate-400 font-medium">{hw.title}</div>
-                      <div className="text-xs font-bold text-white mt-0.5">{hw.val}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* CARD 2: Expert Mentors (5 Columns) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="md:col-span-5 group relative rounded-3xl p-8 overflow-hidden backdrop-blur-xl transition-all duration-500 hover:border-sky-500/50 flex flex-col justify-between"
-            style={{
-              background: 'linear-gradient(145deg, rgba(14,165,233,0.08) 0%, rgba(15,23,42,0.6) 100%)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-            }}
-          >
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-sky-500/20 border border-sky-500/30 flex items-center justify-center text-sky-400">
-                  <Users size={24} />
-                </div>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300">02 / Mentors</span>
-              </div>
-
-              <h3 className="text-2xl font-black text-white mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                Expert On-Campus Mentors
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Trained engineering professionals deliver live campus classes. We manage hiring, training, performance & replacements.
-              </p>
-            </div>
-
-            {/* Mentor Badge Visual */}
-            <div className="p-4 rounded-2xl bg-sky-950/40 border border-sky-500/20 space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  {['#818cf8', '#f472b6', '#38bdf8', '#4ade80'].map((c, idx) => (
-                    <div key={idx} className="w-8 h-8 rounded-full border-2 border-slate-900 flex items-center justify-center text-white text-xs font-bold" style={{ background: c }}>
-                      {String.fromCharCode(65 + idx)}
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-white">Dedicated Trainers</div>
-                  <div className="text-[10px] text-sky-300 font-medium">100% Industry Certified</div>
-                </div>
-              </div>
-              <div className="w-full bg-sky-950/60 rounded-full h-2 overflow-hidden border border-sky-500/20">
-                <div className="bg-sky-400 h-full w-[95%]" />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* CARD 3: Industry Curriculum (5 Columns) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-5 group relative rounded-3xl p-8 overflow-hidden backdrop-blur-xl transition-all duration-500 hover:border-pink-500/50 flex flex-col justify-between"
-            style={{
-              background: 'linear-gradient(145deg, rgba(244,63,94,0.08) 0%, rgba(15,23,42,0.6) 100%)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-            }}
-          >
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-pink-400">
-                  <BookOpen size={24} />
-                </div>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300">03 / Curriculum</span>
-              </div>
-
-              <h3 className="text-2xl font-black text-white mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                Industry-Aligned Syllabus
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Updated quarterly to mirror global tech breakthroughs — covering Python, Machine Learning, IoT, App Dev & Entrepreneurship.
-              </p>
-            </div>
-
-            {/* Tech Tags Selector */}
-            <div className="flex flex-wrap gap-2 pt-2">
-              {TECH_TAGS.map((tag, idx) => (
-                <button
-                  key={tag}
-                  onClick={() => setActiveTech(idx)}
-                  className={`text-xs font-bold px-3 py-1.5 rounded-xl border transition-all duration-300 ${
-                    activeTech === idx
-                      ? 'bg-pink-500 text-white border-pink-400 shadow-lg shadow-pink-500/20 scale-105'
-                      : 'bg-white/5 text-slate-400 border-white/10 hover:border-white/20'
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* CARD 4: End-to-End Operations (7 Columns) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:col-span-7 group relative rounded-3xl p-8 overflow-hidden backdrop-blur-xl transition-all duration-500 hover:border-amber-500/50 flex flex-col justify-between"
-            style={{
-              background: 'linear-gradient(145deg, rgba(245,158,11,0.08) 0%, rgba(15,23,42,0.6) 100%)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-            }}
-          >
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
-                  <Settings size={24} />
-                </div>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300">04 / Managed Operations</span>
-              </div>
-
-              <h3 className="text-2xl md:text-3xl font-black text-white mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                Zero-Burden Operations
-              </h3>
-              <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-6">
-                Scheduling, grading, hardware upkeep, parent reports & hackathons — handled 100% by Floyd School's specialized operational team.
-              </p>
-            </div>
-
-            {/* Operations Checklist Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-              {OPS_ITEMS.map((item) => (
-                <div key={item} className="flex items-center gap-2.5 p-3 rounded-xl bg-amber-950/30 border border-amber-500/20 text-xs font-bold text-amber-100">
-                  <ShieldCheck size={16} className="text-amber-400 flex-shrink-0" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* CARD 5: NEP 2020 Compliance (6 Columns) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="md:col-span-6 group relative rounded-3xl p-8 overflow-hidden backdrop-blur-xl transition-all duration-500 hover:border-emerald-500/50 flex flex-col justify-between"
-            style={{
-              background: 'linear-gradient(145deg, rgba(16,185,129,0.08) 0%, rgba(15,23,42,0.6) 100%)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-            }}
-          >
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                  <CheckCircle size={24} />
-                </div>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">05 / NEP Alignment</span>
-              </div>
-
-              <h3 className="text-2xl font-black text-white mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                100% NEP 2020 Compliant
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Fulfills government vocational and experiential learning mandates seamlessly, giving your school a competitive accreditation edge.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3 p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/20">
-              <Award size={28} className="text-emerald-400 flex-shrink-0" />
-              <div>
-                <div className="text-xs font-bold text-white">National Skill Alignment</div>
-                <div className="text-[11px] text-emerald-300 font-medium">Ready for CBSE, ICSE & State Boards</div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* CARD 6: Measurable Outcomes (6 Columns) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="md:col-span-6 group relative rounded-3xl p-8 overflow-hidden backdrop-blur-xl transition-all duration-500 hover:border-purple-500/50 flex flex-col justify-between"
-            style={{
-              background: 'linear-gradient(145deg, rgba(139,92,246,0.08) 0%, rgba(15,23,42,0.6) 100%)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-            }}
-          >
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
-                  <BarChart3 size={24} />
-                </div>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300">06 / Live Analytics</span>
-              </div>
-
-              <h3 className="text-2xl font-black text-white mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                Real-Time Skill Analytics
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Principals & parents receive automated monthly progress reports, student project portfolios & skill benchmark metrics.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-purple-950/40 border border-purple-500/20 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Activity size={22} className="text-purple-400" />
-                <div>
-                  <div className="text-xs font-bold text-white">Student Mastery Rate</div>
-                  <div className="text-[10px] text-purple-300 font-medium">94.8% Project Completion</div>
-                </div>
-              </div>
-              <span className="text-lg font-black text-purple-300">+34% YoY</span>
-            </div>
-          </motion.div>
-
-        </div>
-
       </div>
     </section>
+  );
+};
+
+const HUB_SIZE = 380;
+const CARD_WIDTH = 320;
+const CARD_HEIGHT = 180;
+
+const CARD_POSITIONS = [
+  { title: 'Runs In Your Existing Lab', x: 0, y: -300 },
+  { title: 'Expert On Campus Mentors', x: 380, y: -110 },
+  { title: 'Industry Aligned Syllabus', x: 380, y: 110 },
+  { title: 'Zero Burden Operations', x: 0, y: 300 },
+  { title: 'Built For The NEP 2020 Mandate', x: -380, y: 110 },
+  { title: 'Real Time Skill Analytics', x: -380, y: -110 },
+];
+
+const DRAW_ORDER = [
+  'Runs In Your Existing Lab',
+  'Expert On Campus Mentors',
+  'Industry Aligned Syllabus',
+  'Zero Burden Operations',
+  'Built For The NEP 2020 Mandate',
+  'Real Time Skill Analytics',
+];
+
+const OrbitDisplay = ({ active, setActive, activeReason }) => {
+  const pathRefs = useRef({});
+  const particleRef = useRef(null);
+  const rafRef = useRef(null);
+  const [particle, setParticle] = useState(null);
+  const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+
+  const orbitData = useMemo(() => {
+    return REASONS.map((item) => {
+      const position = CARD_POSITIONS.find((pos) => pos.title === item.title) || CARD_POSITIONS[0];
+      const { x, y } = position;
+
+      const theta = Math.atan2(y, x);
+
+      const startInsetX = Math.cos(theta) * (CARD_WIDTH / 2 - 12);
+      const startInsetY = Math.sin(theta) * (CARD_HEIGHT / 2 - 12);
+      const startX = x - startInsetX;
+      const startY = y - startInsetY;
+
+      const hubRadius = HUB_SIZE / 2 + 6;
+      const endX = Math.cos(theta) * hubRadius;
+      const endY = Math.sin(theta) * hubRadius;
+
+      const control1 = { x: startX * 0.6, y: startY * 0.55 };
+      const control2 = { x: endX * 0.35 + startX * 0.15, y: endY * 0.35 + startY * 0.15 };
+
+      const path = `M ${startX.toFixed(1)} ${startY.toFixed(1)} C ${control1.x.toFixed(1)} ${control1.y.toFixed(1)}, ${control2.x.toFixed(1)} ${control2.y.toFixed(1)}, ${endX.toFixed(1)} ${endY.toFixed(1)}`;
+
+      return { ...item, x, y, startX, startY, endX, endY, path, theta };
+    });
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    let cancelled = false;
+
+    const runPulse = () => {
+      if (cancelled) return;
+      const idx = Math.floor(Math.random() * orbitData.length);
+      const title = orbitData[idx].title;
+      const duration = 2200 + Math.random() * 800;
+      const start = performance.now();
+
+      const pathEl = pathRefs.current[title];
+      if (!pathEl) {
+        setTimeout(runPulse, 5200 + Math.random() * 3000);
+        return;
+      }
+      const length = pathEl.getTotalLength();
+
+      const step = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 2);
+        const point = pathEl.getPointAtLength(eased * length);
+        setParticle({ pathTitle: title, cx: point.x, cy: point.y, opacity: 1 - t });
+        if (t < 1 && !cancelled) rafRef.current = requestAnimationFrame(step);
+        else {
+          setTimeout(() => {
+            setParticle(null);
+            if (!cancelled) setTimeout(runPulse, 5200 + Math.random() * 3000);
+          }, 120);
+        }
+      };
+
+      rafRef.current = requestAnimationFrame(step);
+    };
+
+    const initialTimer = setTimeout(runPulse, 1600 + Math.random() * 900);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(initialTimer);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [orbitData, prefersReducedMotion]);
+
+  const getDelayFor = useCallback((title) => {
+    const idx = DRAW_ORDER.indexOf(title);
+    return idx === -1 ? 0 : idx * 0.16;
+  }, []);
+
+  return (
+    <>
+      <div className="relative mx-auto hidden w-full max-w-[1600px] justify-center overflow-hidden px-6 py-8 lg:block lg:px-12">
+        <div className="relative h-[880px] w-full overflow-hidden">
+          {/* SVG connections */}
+          <svg className="pointer-events-none absolute inset-0 z-5 hidden md:block" viewBox="-600 -450 1200 900" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <filter id="glow-why" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="8" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              {orbitData.map((item, i) => (
+                <linearGradient id={`grad-why-${i}`} key={`grad-why-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor={item.color} stopOpacity="0.98" />
+                  <stop offset="60%" stopColor={item.color} stopOpacity="0.32" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0.12)" stopOpacity="0.12" />
+                </linearGradient>
+              ))}
+            </defs>
+
+            {orbitData.map((item, i) => {
+              const id = `path-why-${i}`;
+              const delay = getDelayFor(item.title);
+              return (
+                <g key={item.title}>
+                  <motion.path
+                    id={id}
+                    ref={(el) => (pathRefs.current[item.title] = el)}
+                    d={item.path}
+                    stroke={`url(#grad-why-${i})`}
+                    strokeWidth={active === item.title ? 3 : 2}
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    style={{ filter: active === item.title ? 'url(#glow-why)' : undefined, opacity: active === item.title ? 1 : 0.18 }}
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: active === item.title ? 1 : 0.28 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.9, delay }}
+                  />
+                </g>
+              );
+            })}
+
+            {particle && (
+              <circle cx={particle.cx} cy={particle.cy} r="6" fill="white" opacity={particle.opacity} filter="url(#glow-why)" />
+            )}
+          </svg>
+
+          {/* Central Hub Card */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-visible">
+            <div className="relative z-20 h-[380px] w-[380px] max-w-full overflow-visible rounded-[3rem] border border-white/15 bg-slate-950/95 p-8 shadow-[0_60px_150px_rgba(15,23,42,0.26)] backdrop-blur-xl">
+              <div
+                className="absolute inset-0 rounded-[3rem]"
+                style={{
+                  background: activeReason.color
+                    ? `radial-gradient(circle at 50% 30%, ${activeReason.color}15, transparent 48%)`
+                    : 'transparent',
+                }}
+              />
+              <div className="absolute inset-10 rounded-full border border-white/10" />
+              <div className="absolute inset-16 rounded-full border border-white/15" />
+              <div className="absolute inset-24 rounded-full border border-white/10" />
+              <div className="absolute left-1/2 top-1/5 h-24 w-24 -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-500/20 via-transparent to-transparent blur-3xl" />
+              <div className="absolute right-16 top-1/2 h-20 w-20 rounded-full bg-gradient-to-br from-cyan-400/15 via-transparent to-transparent blur-3xl" />
+              <div className="absolute left-12 bottom-16 h-16 w-16 rounded-full bg-gradient-to-br from-fuchsia-500/15 via-transparent to-transparent blur-3xl" />
+              <div className="relative z-10 flex h-full w-full flex-col items-center justify-center text-center px-6">
+                <h3 className="text-3xl font-semibold uppercase tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
+                  Why Schools Choose Floyd School
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          {/* 6 Orbiting Cards */}
+          {orbitData.map((item) => (
+            <div
+              key={item.title}
+              className="absolute z-30 hidden h-[180px] w-[320px] lg:block"
+              style={{ left: `calc(50% + ${item.x}px)`, top: `calc(50% + ${item.y}px)`, transform: 'translate(-50%, -50%)' }}
+            >
+              <button
+                type="button"
+                onMouseEnter={() => setActive(item.title)}
+                onMouseLeave={() => setActive('Runs In Your Existing Lab')}
+                className="w-full h-full flex flex-col justify-between overflow-hidden rounded-[2rem] border border-white/15 bg-slate-950/85 p-5 text-left text-slate-100 shadow-[0_24px_60px_rgba(15,23,42,0.18)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl" style={{ background: item.gradient, boxShadow: `0 18px 50px ${item.glow}` }}>
+                    <item.icon size={20} className="text-white" />
+                  </div>
+                  <span className="rounded-full bg-slate-950/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-100 shadow-sm" style={{ border: '1px solid rgba(255,255,255,0.12)' }}>
+                    {item.badge}
+                  </span>
+                </div>
+
+                <div className="space-y-1.5">
+                  <h4 className="text-lg font-semibold text-white leading-tight">{item.title}</h4>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.25em]" style={{ color: item.color }}>
+                    {item.tagline}
+                  </p>
+                </div>
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile view */}
+      <div className="lg:hidden px-4 py-6">
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/30 bg-slate-950/90 px-4 py-6 shadow-[0_30px_90px_rgba(15,23,42,0.18)] backdrop-blur-xl">
+          <div className="flex items-center justify-between px-2 text-xs uppercase tracking-[0.28em] text-slate-300 sm:text-sm">
+            <span>Institutional Advantages</span>
+            <span className="text-slate-400">Swipe →</span>
+          </div>
+          <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pl-2 pr-4 scrollbar-none">
+            {REASONS.map((item) => (
+              <motion.button
+                key={item.title}
+                type="button"
+                whileHover={{ scale: 1.03 }}
+                onHoverStart={() => setActive(item.title)}
+                onHoverEnd={() => setActive('Runs In Your Existing Lab')}
+                onFocus={() => setActive(item.title)}
+                className="min-w-[260px] max-w-[85vw] flex-shrink-0 snap-center rounded-[1.75rem] border border-white/15 bg-slate-950/80 p-5 text-left shadow-[0_18px_45px_rgba(15,23,42,0.12)] transition-all duration-300"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-3xl" style={{ background: item.gradient, boxShadow: `0 10px 30px ${item.glow}` }}>
+                    <item.icon size={22} className="text-white" />
+                  </div>
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-200">
+                    {item.badge}
+                  </span>
+                </div>
+                <h4 className="mt-5 text-lg font-semibold text-white">{item.title}</h4>
+                <p className="mt-2 text-sm text-slate-400">{item.tagline}</p>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

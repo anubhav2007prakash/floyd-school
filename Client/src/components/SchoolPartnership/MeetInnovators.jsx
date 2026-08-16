@@ -30,11 +30,10 @@ const MEDIA_ITEMS = [
 const TRACK = [...MEDIA_ITEMS, ...MEDIA_ITEMS];
 
 const MediaCard = ({ item }) => {
-  const Icon = item.icon;
   return (
     <div
       className="relative flex-shrink-0 rounded-2xl overflow-hidden group cursor-pointer border border-white/10 shadow-lg"
-      style={{ width: '260px', height: '180px', margin: '0 10px', background: '#0f172a' }}
+      style={{ width: '360px', height: '250px', margin: '0 12px', background: '#0f172a' }}
     >
       {/* Media: Image or Video */}
       {item.type === 'video' ? (
@@ -49,39 +48,15 @@ const MediaCard = ({ item }) => {
       ) : (
         <img
           src={item.src}
-          alt={item.label}
+          alt={item.label || 'Startup media'}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       )}
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
-
-      {/* Badge */}
-      <div
-        className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full backdrop-blur-md shadow-md z-10"
-        style={{ background: 'rgba(15,23,42,0.75)', border: `1px solid ${item.color}66` }}
-      >
-        <Icon size={12} style={{ color: item.color }} />
-        <span className="text-[10px] font-bold text-white tracking-wide">{item.label}</span>
-      </div>
-
-      {/* Media Type pill indicator (Video / Photo) */}
-      {item.type === 'video' && (
-        <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-red-500/80 backdrop-blur-md text-[9px] font-black uppercase text-white tracking-wider z-10">
-          ▶ LIVE
-        </div>
-      )}
-
-      {/* Bottom label on hover */}
-      <div className="absolute bottom-0 left-0 right-0 p-3 z-10 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-        <span className="text-white text-xs font-bold block truncate">{item.label}</span>
-      </div>
-
       {/* Top-border accent */}
       <div
         className="absolute top-0 left-0 right-0 h-[2px] z-10"
-        style={{ background: `linear-gradient(90deg, transparent, ${item.color}, transparent)` }}
+        style={{ background: `linear-gradient(90deg, transparent, ${item.color || '#38bdf8'}, transparent)` }}
       />
     </div>
   );
@@ -148,8 +123,8 @@ const MeetInnovators = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-slate-400 text-base max-w-xl mx-auto leading-relaxed mb-6"
         >
-          Where your child's curiosity becomes their{' '}
-          <span className="font-black text-white">Superpower</span>
+          Where student curiosity becomes{' '}
+          <span className="font-black text-white">Real Skill</span>
         </motion.p>
 
         {/* Stats row */}
@@ -191,7 +166,7 @@ const MeetInnovators = () => {
         className="relative overflow-hidden py-2"
         style={{ maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)' }}
       >
-        <div className="flex single-line-marquee" style={{ width: 'max-content' }}>
+        <div className="flex single-line-marquee items-center" style={{ width: 'max-content' }}>
           {TRACK.map((item, i) => (
             <MediaCard key={`single-line-${i}`} item={item} />
           ))}

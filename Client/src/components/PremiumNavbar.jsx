@@ -172,7 +172,15 @@ const PremiumNavbar = memo(({ variant }) => {
                                 ? 'w-full md:w-[90%] lg:w-[85%] rounded-full bg-white/90 backdrop-blur-md border border-gray-200/60 px-6 py-0 h-14 shadow-sm'
                                 : 'w-full rounded-none bg-white/95 backdrop-blur-md px-6 py-0 h-[68px] border-b border-gray-100'}`}
                 >
-                    <div className="w-full max-w-7xl flex items-center justify-between">
+                    <div className="w-full max-w-7xl flex items-center justify-between gap-4">
+
+                        {/* Mobile brand */}
+                        <Link
+                            to="/"
+                            className={`md:hidden font-black text-lg tracking-tight ${isCoursesPage ? 'text-white' : 'text-slate-900'}`}
+                        >
+                            Floyd School
+                        </Link>
 
                         {/* Desktop Nav */}
                         <div className="hidden md:flex items-center justify-center gap-2 relative h-full">

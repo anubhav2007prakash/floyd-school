@@ -8,13 +8,10 @@ import AnnouncementTicker from '../components/SchoolPartnership/AnnouncementTick
 import MeetInnovators from '../components/SchoolPartnership/MeetInnovators';
 import LmsSection from '../components/SchoolPartnership/LmsSection';
 import SchoolEcosystemOrbit from '../components/SchoolPartnership/SchoolEcosystemOrbit';
-import WhyPartnerWithUs from '../components/SchoolPartnership/WhyPartnerWithUs';
-import NationalHackathon from '../components/SchoolPartnership/NationalHackathon';
-import PartnershipDomains from '../components/SchoolPartnership/PartnershipDomains';
-import FourStageLearning from '../components/SchoolPartnership/FourStageLearning';
+import OurBatchesSection from '../components/SchoolPartnership/OurBatchesSection';
 import ProgramRoadmap from '../components/SchoolPartnership/ProgramRoadmap';
 import PartnershipStory from '../components/SchoolPartnership/PartnershipStory';
-import NextGenLabsGallery from '../components/SchoolPartnership/NextGenLabsGallery';
+import TheProblem from '../components/SchoolPartnership/TheProblem';
 import TestimonialsSection from '../components/SchoolPartnership/TestimonialsSection';
 import SchoolBenefits from '../components/SchoolPartnership/SchoolBenefits';
 import GroupProjects from '../components/SchoolPartnership/GroupProjects';
@@ -62,35 +59,26 @@ const SchoolPartnership = () => {
       {/* 2b. Vibrant Announcement Ticker */}
       <AnnouncementTicker />
 
-      {/* 3. Learning Management System */}
-      <LmsSection />
+      {/* 3c. Trusted By Schools logo marquee section */}
+      <BootcampGallery />
 
       {/* 3b. Integrated Campus Ecosystem Orbit Hub */}
       <SchoolEcosystemOrbit />
 
-      {/* 3c. Trusted By Schools logo marquee section */}
-      <BootcampGallery />
-
       {/* 3c. School Partnership Story */}
       <PartnershipStory />
 
-      {/* NextGen Learning Labs gallery (in-school delivery & online mentor-led sessions) */}
-      <NextGenLabsGallery />
+      {/* 3d. Our Batches */}
+      <OurBatchesSection />
 
-      {/* 4. Programs Offered */}
-      <WhyPartnerWithUs />
+      {/* 4. Why Us */}
+      <TheProblem />
 
-      {/* 4b. Four Stage Learning Model */}
-      <FourStageLearning />
+      {/* 3. Learning Management System */}
+      <LmsSection />
 
       {/* 4c. Program Roadmap Timeline */}
       <ProgramRoadmap />
-
-      {/* 5. Partnership Models */}
-      <NationalHackathon />
-
-      {/* 6. Outcomes & Impact */}
-      <PartnershipDomains />
 
       {/* 8. Testimonials */}
       <TestimonialsSection />

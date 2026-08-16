@@ -5,36 +5,36 @@ import { Quote, Star } from 'lucide-react';
 const TESTIMONIALS = [
   {
     role: 'Principal',
-    name: 'Mrs. Sandhya Mukherji',
-    designation: 'Principal, DPS Vasant Kunj',
-    quote: "Floyd School's turnkey labs have elevated our profile. Parents love seeing their children build AI chatbots. A significant boost for admissions.",
-    achievement: 'AI Lab for 120+ students',
+    name: 'School Leadership',
+    initial: 'P',
+    designation: 'Partner School Principal',
+    quote: "Floyd School's programs give our students hands on technology experience directly in our computer labs. A valuable addition to our academic offerings.",
+    achievement: 'AI Lab Program',
     color: '#6C63FF',
     glow: 'rgba(108,99,255,0.15)',
     gradient: 'linear-gradient(135deg, #6C63FF, #818cf8)',
-    emoji: '🏆',
   },
   {
     role: 'Teacher',
-    name: 'Mr. Arvind Gupta',
-    designation: 'Computer Science HOD, Ryan International',
-    quote: "Floyd School handles everything — mentors, scheduling, hardware, evaluations. Our teachers focus on core syllabus while students get cutting-edge training.",
-    achievement: '100% Operations Managed',
+    name: 'Faculty Member',
+    initial: 'T',
+    designation: 'Computer Science HOD',
+    quote: "Floyd School handles everything, including mentors, scheduling, and project evaluation. Our teachers focus on core syllabus while students get specialized training.",
+    achievement: 'Fully Managed Operations',
     color: '#0ea5e9',
     glow: 'rgba(14,165,233,0.15)',
     gradient: 'linear-gradient(135deg, #0ea5e9, #38bdf8)',
-    emoji: '📚',
   },
   {
     role: 'Student',
-    name: 'Aryan Singh',
-    designation: 'Student, Class 10',
-    quote: "Floyd School labs are the best part of my week! We don't just learn theory — we actually build things. Coding feels like a superpower now.",
-    achievement: 'National Hackathon Winner',
+    name: 'Student Builder',
+    initial: 'S',
+    designation: 'Student',
+    quote: "Floyd School labs are an exciting part of our week. We do not just learn theory, we build real projects.",
+    achievement: 'Project Showcase',
     color: '#10b981',
     glow: 'rgba(16,185,129,0.15)',
     gradient: 'linear-gradient(135deg, #10b981, #34d399)',
-    emoji: '🚀',
   },
 ];
 
@@ -55,7 +55,7 @@ const TestimonialsSection = () => {
           className="text-center mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest mb-6"
             style={{ background: 'linear-gradient(135deg, rgba(108,99,255,0.1), rgba(16,185,129,0.1))', border: '1px solid rgba(108,99,255,0.2)', color: 'var(--accent-setu2)' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
             FEEDBACK &amp; REVIEWS
           </span>
           <h2 className="setu-heading font-extrabold text-white mb-5" style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.15 }}>
@@ -81,7 +81,7 @@ const TestimonialsSection = () => {
                 color: activeTab === idx ? '#ffffff' : '#cbd5e1',
                 boxShadow: activeTab === idx ? `0 6px 20px ${t.glow}` : 'none',
               }}>
-              <span>{t.emoji}</span>
+
               {t.role}
             </motion.button>
           ))}
@@ -124,9 +124,9 @@ const TestimonialsSection = () => {
 
                 <div className="pt-5 border-t border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg"
-                      style={{ background: `${TESTIMONIALS[activeTab].color}20` }}>
-                      {TESTIMONIALS[activeTab].emoji}
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-black text-white"
+                      style={{ background: TESTIMONIALS[activeTab].gradient }}>
+                      {TESTIMONIALS[activeTab].initial}
                     </div>
                     <div>
                       <h4 className="setu-heading font-black text-white text-base">{TESTIMONIALS[activeTab].name}</h4>

@@ -6,7 +6,7 @@ const ROADMAP_STEPS = [
     step: '01',
     badge: 'Week 1',
     title: 'Demo Bootcamp',
-    description: 'A 7-day high-energy intro for all students to find their spark. Hands-on, exciting, and completely free.',
+    description: 'A 7 day intro session for all students to find their spark. Hands on, exciting, and completely free.',
     side: 'left',
     icon: Compass,
     color: '#3B82F6',
@@ -17,7 +17,7 @@ const ROADMAP_STEPS = [
     step: '02',
     badge: 'Week 2',
     title: 'Domain Selection',
-    description: 'Guided counseling to pick the technology path that fits their talent and interest. No wrong choices — only right starts.',
+    description: 'Guided counseling to pick the technology path that fits their talent and interest. Clear paths forward for every student.',
     side: 'right',
     icon: CheckCircle,
     color: '#6366F1',
@@ -28,7 +28,7 @@ const ROADMAP_STEPS = [
     step: '03',
     badge: '4 Months',
     title: 'Full Program',
-    description: 'Deep-dive technical training on campus with specialized mentors. 2 classes per week, real projects every month, assignments, quizzes, and continuous progress tracking.',
+    description: 'Technical training on campus with specialized mentors. 2 classes per week, real projects every month, assignments, quizzes, and continuous progress tracking.',
     side: 'left',
     icon: Calendar,
     color: '#8B5CF6',
@@ -39,7 +39,7 @@ const ROADMAP_STEPS = [
     step: '04',
     badge: 'Capstone',
     title: 'National Hackathon',
-    description: 'Students build and showcase products in a 48-hour nationwide inter-school competition. Real judges, real stakes, real recognition.',
+    description: 'Students build and showcase products in a nationwide inter school competition. Real judges, real projects, real recognition.',
     side: 'right',
     icon: Trophy,
     color: '#EC4899',
@@ -50,7 +50,7 @@ const ROADMAP_STEPS = [
     step: '05',
     badge: 'Graduation',
     title: 'Certification',
-    description: 'Official Floyd School Certificate of Completion — awarded for demonstrated skills and completed projects, not just attendance. Carries weight on college applications.',
+    description: 'Official Floyd School Certificate of Completion awarded for demonstrated skills and completed projects, not just attendance. Carries weight on college applications.',
     side: 'left',
     icon: Award,
     color: '#10B981',
@@ -118,7 +118,7 @@ const ProgramRoadmap = () => {
 
           {/* Subtitle */}
           <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-medium">
-            Designed for maximum impact and learning — every step has a purpose.
+            Designed for maximum impact and learning, every step has a purpose.
           </p>
         </motion.div>
 
@@ -140,82 +140,95 @@ const ProgramRoadmap = () => {
               const isLeft = item.side === 'left';
               const Icon = item.icon;
 
+              const card = (
+                <motion.div
+                  initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.65, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -6, scale: 1.015 }}
+                  className="bg-white rounded-3xl p-7 shadow-[0_10px_35px_rgba(0,0,0,0.05)] border border-slate-200/90 transition-all duration-300 relative group-hover:shadow-[0_20px_50px_rgba(59,130,246,0.12)] group-hover:border-blue-200"
+                >
+                  {/* Top Bar Color Accent */}
+                  <div
+                    className="absolute top-0 left-8 right-8 h-1 rounded-full transition-all duration-300 group-hover:left-4 group-hover:right-4"
+                    style={{ background: item.color }}
+                  />
+
+                  {/* Header inside card: Badge & Title */}
+                  <div className="flex items-center justify-between mb-4 pt-1">
+                    <span
+                      className="px-3.5 py-1 rounded-full text-xs font-bold shadow-sm"
+                      style={{
+                        background: item.badgeBg,
+                        color: item.badgeColor,
+                      }}
+                    >
+                      {item.badge}
+                    </span>
+
+                    <div
+                      className="w-10 h-10 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+                      style={{
+                        background: `${item.color}15`,
+                        border: `1px solid ${item.color}30`,
+                      }}
+                    >
+                      <Icon size={20} style={{ color: item.color }} />
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3
+                    className="text-2xl font-black text-slate-900 mb-2 leading-snug"
+                    style={{ fontFamily: "'Outfit', sans-serif" }}
+                  >
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-slate-500 text-sm md:text-base leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              );
+
               return (
                 <div
                   key={item.step}
-                  className="relative flex flex-col md:flex-row items-center justify-between group"
+                  className="relative grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_3rem_minmax(0,1fr)] md:gap-x-6 items-center group"
                 >
-                  {/* Left Side Content Slot */}
-                  <div className={`w-full md:w-[45%] ${isLeft ? 'order-1' : 'order-1 md:order-2'}`}>
+                  {/* Left column */}
+                  <div className={`${isLeft ? 'md:pr-2' : 'hidden md:block'}`}>
+                    {isLeft ? card : null}
+                  </div>
+
+                  {/* Center node on the vertical line */}
+                  <div className={`relative z-10 flex justify-center my-4 md:my-0 ${!isLeft ? 'order-last md:order-none' : ''}`}>
+                    {/* Horizontal connector to card */}
+                    <div
+                      className={`absolute top-1/2 hidden md:block h-0.5 -translate-y-1/2 ${isLeft ? 'right-full mr-0 w-6' : 'left-full ml-0 w-6'}`}
+                      style={{ background: item.color, opacity: 0.45 }}
+                    />
                     <motion.div
-                      initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.4 }}
-                      transition={{ duration: 0.65, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                      whileHover={{ y: -6, scale: 1.015 }}
-                      className="bg-white rounded-3xl p-7 shadow-[0_10px_35px_rgba(0,0,0,0.05)] border border-slate-200/90 transition-all duration-300 relative group-hover:shadow-[0_20px_50px_rgba(59,130,246,0.12)] group-hover:border-blue-200"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-black text-white text-sm shadow-xl border-4 border-white transition-transform duration-300 group-hover:scale-125"
+                      style={{
+                        background: item.color,
+                        boxShadow: `0 0 20px ${item.color}80`,
+                      }}
                     >
-                      {/* Top Bar Color Accent */}
-                      <div
-                        className="absolute top-0 left-8 right-8 h-1 rounded-full transition-all duration-300 group-hover:left-4 group-hover:right-4"
-                        style={{ background: item.color }}
-                      />
-
-                      {/* Header inside card: Badge & Title */}
-                      <div className="flex items-center justify-between mb-4 pt-1">
-                        <span
-                          className="px-3.5 py-1 rounded-full text-xs font-bold shadow-sm"
-                          style={{
-                            background: item.badgeBg,
-                            color: item.badgeColor,
-                          }}
-                        >
-                          {item.badge}
-                        </span>
-
-                        <div
-                          className="w-10 h-10 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-                          style={{
-                            background: `${item.color}15`,
-                            border: `1px solid ${item.color}30`,
-                          }}
-                        >
-                          <Icon size={20} style={{ color: item.color }} />
-                        </div>
-                      </div>
-
-                      {/* Title */}
-                      <h3
-                        className="text-2xl font-black text-slate-900 mb-2 leading-snug"
-                        style={{ fontFamily: "'Outfit', sans-serif" }}
-                      >
-                        {item.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-slate-500 text-sm md:text-base leading-relaxed">
-                        {item.description}
-                      </p>
+                      {item.step}
                     </motion.div>
                   </div>
 
-                  {/* Center Node Circle on Vertical Timeline Line */}
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="z-10 my-4 md:my-0 flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-black text-white text-sm shadow-xl border-4 border-white transition-transform duration-300 group-hover:scale-125"
-                    style={{
-                      background: item.color,
-                      boxShadow: `0 0 20px ${item.color}80`,
-                    }}
-                  >
-                    {item.step}
-                  </motion.div>
-
-                  {/* Empty Spacer Slot on the Opposite Side (Desktop) */}
-                  <div className={`hidden md:block w-[45%] ${isLeft ? 'order-2' : 'order-1'}`} />
+                  {/* Right column */}
+                  <div className={`${isLeft ? 'hidden md:block' : 'md:pl-2 order-first md:order-none'}`}>
+                    {!isLeft ? card : null}
+                  </div>
                 </div>
               );
             })}

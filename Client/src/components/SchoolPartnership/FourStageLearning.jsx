@@ -114,7 +114,7 @@ const FourStageLearning = () => {
             }}
           >
             <Sparkles size={14} className="text-purple-400" />
-            FOUR-STAGE LEARNING MODEL
+            FOUR STAGE LEARNING MODEL
           </span>
 
           {/* Headline */}
@@ -138,7 +138,7 @@ const FourStageLearning = () => {
 
           {/* Subtitle */}
           <p className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-medium">
-            Every Floyd School program follows the same proven framework — from curiosity to creation.
+            Every Floyd School program follows the same proven framework, moving from curiosity to creation.
           </p>
         </motion.div>
 

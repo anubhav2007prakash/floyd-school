@@ -3,9 +3,9 @@ import { Rocket, Sparkles, Award, Star } from 'lucide-react';
 
 const ITEMS = [
   { text: 'Important Announcement • A Proud Milestone', icon: Rocket },
-  { text: 'Empowering 50,000+ Young Learners Nationwide', icon: Star },
-  { text: 'Official NEP 2020 Tech & Skill Partner', icon: Award },
-  { text: 'Transforming School Computer Labs into Next-Gen AI Hubs', icon: Sparkles },
+  { text: 'Empowering Students Across Partner Schools', icon: Star },
+  { text: 'Official NEP 2020 Tech and Skill Partner', icon: Award },
+  { text: 'Transforming School Computer Labs into AI Hubs', icon: Sparkles },
 ];
 
 const AnnouncementTicker = () => {

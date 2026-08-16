@@ -5,9 +5,9 @@ import { Download, Users, User, ChevronLeft, ChevronRight, Calendar, Sparkles, Z
 const NAV_LINKS = [
   { name: 'Programs', id: 'programs' },
   { name: 'Roadmap', id: 'timeline' },
-  { name: 'Domains', id: 'impact' },
+  { name: 'Domains', id: 'online-focus' },
   { name: 'Why Us', id: 'why-us' },
-  { name: 'Host Hackathon', id: 'partner-form' },
+  { name: 'Host a Session', id: 'partner-form' },
 ];
 
 const useScrolledPast = (threshold = 60) => {
@@ -78,13 +78,13 @@ const DYNAMIC_DESIGNS = [
     accentColor: '#fb923c', // Orange badge
     accentTextColor: '#031c18',
     taglineGradient: 'linear-gradient(90deg, #34d399, #fb923c, #facc15)',
-    tagline: 'POWERING THE NEXT GENERATION OF YOUNG FOUNDERS.',
-    eyebrow: 'TURNKEY DEPLOYMENT WITH ZERO SCHOOL EFFORT',
+    tagline: 'REAL CODE. REAL PROJECTS. REAL OUTCOMES.',
+    eyebrow: 'RUN ON CAMPUS. MANAGED ENTIRELY BY FLOYD',
     eyebrowBorder: '#34d399',
     pills: [
-      { text: 'Incubation & Pitching', bg: '#fb923c' },
-      { text: 'Python & Data', bg: '#34d399' },
-      { text: 'STEM Hardware', bg: '#facc15' },
+      { text: 'AI and Machine Learning', bg: '#fb923c' },
+      { text: 'Cybersecurity', bg: '#34d399' },
+      { text: 'IoT and Robotics', bg: '#facc15' },
     ],
     btnGradient: 'linear-gradient(135deg, #10b981, #059669)',
     btnGlow: 'rgba(16,185,129,0.4)',
@@ -139,6 +139,13 @@ const PartnershipHero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const nextDesign = () => setDesignIndex((prev) => (prev + 1) % DYNAMIC_DESIGNS.length);
   const prevDesign = () => setDesignIndex((prev) => (prev - 1 + DYNAMIC_DESIGNS.length) % DYNAMIC_DESIGNS.length);
 
@@ -173,7 +180,7 @@ const PartnershipHero = () => {
               Floyd School
             </span>
             <span className="text-[8px] text-sky-300/80 font-bold tracking-widest mt-0.5 border-t border-white/20 pt-0.5">
-              N · S · D · C PARTNER
+              SCHOOL TECH PARTNER
             </span>
           </div>
 
@@ -351,7 +358,7 @@ const PartnershipHero = () => {
                 fontFamily: "'Outfit', sans-serif",
               }}
             >
-              Transform{' '}
+              Every Student Has{' '}
               <motion.span
                 key={currentDesign.accentColor}
                 initial={{ scale: 0.9 }}
@@ -363,10 +370,10 @@ const PartnershipHero = () => {
                   transform: 'translateY(-6px)',
                 }}
               >
-                YOUR SCHOOL
+                A DESTINATION
               </motion.span>
               <br />
-              Into The Future
+              We Find The Path
             </h1>
 
             {/* Subtitle / User Tagline */}
@@ -383,7 +390,7 @@ const PartnershipHero = () => {
                 {currentDesign.tagline}
               </motion.p>
               <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-xl">
-                Turnkey AI, Coding & Robotics labs — fully installed and managed on your campus. NEP 2020 compliant.
+                AI and Machine Learning, delivered on your campus by Floyd mentors, with no cost to your school.
               </p>
             </div>
 
@@ -412,7 +419,7 @@ const PartnershipHero = () => {
                 }}
               >
                 <Calendar size={17} />
-                Schedule Meeting
+                Book a Discovery Session
               </button>
 
               {/* Design indicator dots */}
@@ -435,7 +442,7 @@ const PartnershipHero = () => {
           {/* ── Right Content: Morphing Photo Frame Layout ──────────────── */}
           <motion.div
             key={`right-${designIndex}`}
-            className="lg:col-span-5 relative flex items-center justify-center"
+            className="lg:col-span-5 relative flex items-center justify-center mt-8 lg:mt-0"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -444,13 +451,13 @@ const PartnershipHero = () => {
             <button
               type="button"
               onClick={prevDesign}
-              className="absolute -left-5 z-30 w-11 h-11 rounded-full flex items-center justify-center bg-black/70 text-white border border-white/20 hover:bg-black/90 transition-all shadow-2xl cursor-pointer"
+              className="absolute left-2 z-30 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-black/70 text-white transition-all hover:bg-black/90 sm:-left-5 shadow-2xl"
             >
               <ChevronLeft size={22} />
             </button>
 
             {/* Dynamic Frame Photo Container */}
-            <div className="relative w-full max-w-[460px] aspect-square p-2">
+            <div className="relative w-full max-w-[300px] sm:max-w-[380px] lg:max-w-[460px] aspect-square p-2">
               
               {/* Outer glow aura */}
               <div
@@ -509,16 +516,12 @@ const PartnershipHero = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white">
                       <p className="text-xs font-bold uppercase tracking-wider text-rose-400">{currentDesign.photos[0].title}</p>
-                      <p className="text-[11px] text-slate-300 mt-0.5">On-campus labs installed & operated 100% by Floyd School</p>
+                      <p className="text-[11px] text-slate-300 mt-0.5">On campus labs installed & operated 100% by Floyd School</p>
                     </div>
                   </div>
                 )}
 
                 {/* Floating badge */}
-                <div className="absolute bottom-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white flex items-center gap-1.5 shadow-lg">
-                  <Sparkles size={12} style={{ color: currentDesign.accentColor }} />
-                  <span>Design Variation #{designIndex + 1}</span>
-                </div>
               </div>
             </div>
 
@@ -526,7 +529,7 @@ const PartnershipHero = () => {
             <button
               type="button"
               onClick={nextDesign}
-              className="absolute -right-5 z-30 w-11 h-11 rounded-full flex items-center justify-center bg-black/70 text-white border border-white/20 hover:bg-black/90 transition-all shadow-2xl cursor-pointer"
+              className="absolute right-2 z-30 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-black/70 text-white transition-all hover:bg-black/90 sm:-right-5 shadow-2xl"
             >
               <ChevronRight size={22} />
             </button>

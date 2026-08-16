@@ -62,7 +62,7 @@ const MockupStudentDashboard = () => (
         <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center font-bold text-white text-[9px]">A</div>
         <div>
           <div className="font-bold leading-none text-white text-[10px]">Abhay Kumar Narayanan</div>
-          <div className="text-[8px] text-white/70">Class 9-A • Student</div>
+          <div className="text-[8px] text-white/70">Class 9 A • Student</div>
         </div>
       </div>
       <div className="flex items-center gap-1.5 bg-white/10 px-2 py-0.5 rounded-full border border-white/20">
@@ -258,7 +258,7 @@ const MockupTeacherPortal = () => (
   <div className="w-full h-full bg-slate-50 flex flex-col font-sans text-[9px] select-none overflow-hidden rounded-2xl border border-slate-200/80 shadow-inner">
     <div className="h-9 px-3 bg-white border-b border-slate-200/60 flex items-center justify-between">
       <div className="font-extrabold text-slate-800 text-[11px]">Faculty & Parent Dashboard</div>
-      <span className="text-[8px] bg-pink-50 text-pink-600 font-bold px-2 py-0.5 rounded-full border border-pink-200">CLASS 9-A</span>
+      <span className="text-[8px] bg-pink-50 text-pink-600 font-bold px-2 py-0.5 rounded-full border border-pink-200">CLASS 9 A</span>
     </div>
 
     <div className="p-2.5 flex-1 space-y-2">
