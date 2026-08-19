@@ -159,9 +159,8 @@ const FAQPage = () => {
           >
             <span className="text-base">← Back</span>
           </button>
-          <div className="font-bold text-lg">
-            <span className="text-blue-500">think</span>
-            <span className="text-orange-500">skool</span>
+          <div className="cursor-pointer" onClick={() => navigate('/')}>
+            <img src="/logo-white.png" alt="Floyd School" className="h-6 w-auto object-contain" />
           </div>
         </div>
       </nav>

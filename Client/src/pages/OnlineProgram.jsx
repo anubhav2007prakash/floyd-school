@@ -12,6 +12,7 @@ import PremiumNavbar from '../components/PremiumNavbar';
 import { FALLBACK_COURSES, supportRoles } from '../constants/siteData';
 import useIsMobile from '../hooks/useIsMobile';
 import SEO from '../components/common/SEO';
+import StudentProjects from '../components/StudentProjects';
 import api from '../api/axios';
 
 const iconMap = {
@@ -134,7 +135,6 @@ const CourseCard = ({ course, onClick }) => {
                     <button className={`text-[10px] font-black uppercase tracking-widest transition-colors ${isComingSoon ? 'text-white/40 cursor-not-allowed' : 'text-slate-400 group-hover:text-white cursor-pointer'}`}>
                         {isComingSoon ? 'Coming Soon' : 'Select TRACK →'}
                     </button>
-                    {!isComingSoon && <span className="text-white font-black text-sm mt-1">₹{course.price}</span>}
                 </div>
                 <span className="text-[9px] font-bold text-white uppercase tracking-widest">{course.duration}</span>
             </div>
@@ -511,7 +511,8 @@ const OnlineProgram = () => {
                     </motion.div>
                 </div>
 
-                {/* Philosophy section removed for cleaner UI */}
+                {/* Student Projects Section */}
+                <StudentProjects />
 
                 {/* Final CTA - Dark Industrial */}
                 <div className="py-48 bg-gradient-to-br from-black via-slate-950 to-black relative overflow-hidden text-center border-t border-white/5">

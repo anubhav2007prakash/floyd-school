@@ -52,6 +52,13 @@ const Footer = () => {
         <div className="absolute inset-0 opacity-[0.03] invert brightness-200 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#e2e8f0 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
         
         <div className="relative z-10 flex flex-col items-center">
+          <Link to="/" className="inline-block mb-8">
+            <img
+              src="/logo-white.png"
+              alt="Floyd School"
+              className="h-7 w-auto object-contain"
+            />
+          </Link>
           {/* Simplified Mobile Links */}
           <div className="w-full mb-16">
             <ul className="flex flex-col items-center gap-6">
@@ -107,6 +114,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-24">
           {/* Brand Column */}
           <div className="lg:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
+            <Link to="/" className="inline-block mb-6 group">
+              <img
+                src="/logo-white.png"
+                alt="Floyd School"
+                className="h-8 md:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+              />
+            </Link>
             <p className="text-slate-500 text-[15px] font-medium tracking-tight mb-12 leading-relaxed max-w-sm">
               Architecting the next generation of global engineering excellence through industrial immersion.
             </p>

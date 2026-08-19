@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Branding = ({ className = "" }) => {
+const Branding = ({ className = "", variant = "dark", height = 24 }) => {
+    const logoSrc = variant === 'light' ? '/logo-white.png' : '/logo-black.png';
     return (
         <span className={`inline-flex items-center ${className}`}>
-            <span className="text-[#2563EB]">think</span>
-            <span className="text-[#F97316]">skool</span>
+            <img src={logoSrc} alt="Floyd School" style={{ height: `${height}px` }} className="object-contain" />
         </span>
     );
 };

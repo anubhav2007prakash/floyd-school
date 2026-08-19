@@ -114,6 +114,7 @@ export const FALLBACK_COURSES = [
         price: 1999,
         currency: "INR",
         tags: ["SecOps", "Networking", "Hacking"],
+        comingSoon: true,
         deliveryDetails: { inSchool: { bootcamp: "Cyber Simulation" } },
         curriculum: [
             "Ethical Hacking & Pentesting",

@@ -160,9 +160,9 @@ const PartnershipStory = () => {
                     borderBottom: i < 3 ? '1px solid #f1f5f9' : 'none',
                   }}
                 >
-                  <div className="flex items-start gap-3 min-w-0">
+                  <div className="flex items-center gap-3.5 min-w-0">
                     <div
-                      className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-[10px] font-black mt-0.5 transition-all duration-200"
+                      className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-[10px] font-black transition-all duration-200"
                       style={{
                         background: isActive ? step.accent : isPast ? '#0f172a' : '#f1f5f9',
                         color: isActive || isPast ? '#fff' : '#64748b',
@@ -170,25 +170,12 @@ const PartnershipStory = () => {
                     >
                       {String(itemIndex + 1).padStart(2, '0')}
                     </div>
-                    <div className="min-w-0">
-                      <h3
-                        className="text-sm font-bold leading-snug"
-                        style={{ color: isActive ? step.accent : '#1e293b' }}
-                      >
-                        {step.title}
-                      </h3>
-                      {isActive && (
-                        <motion.p
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="text-[11px] text-slate-500 mt-1 leading-relaxed pr-2"
-                        >
-                          {step.hero}
-                        </motion.p>
-                      )}
-                    </div>
+                    <h3
+                      className="text-sm font-bold leading-snug truncate"
+                      style={{ color: isActive ? step.accent : '#1e293b' }}
+                    >
+                      {step.title}
+                    </h3>
                   </div>
                   {isActive && (
                     <ChevronRight size={16} className="flex-shrink-0" style={{ color: step.accent }} />
@@ -278,9 +265,9 @@ const PartnershipStory = () => {
                     borderBottom: i < 3 ? '1px solid #f1f5f9' : 'none',
                   }}
                 >
-                  <div className="flex items-start gap-3 min-w-0">
+                  <div className="flex items-center gap-3.5 min-w-0">
                     <div
-                      className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-[10px] font-black mt-0.5 transition-all duration-200"
+                      className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-[10px] font-black transition-all duration-200"
                       style={{
                         background: isActive ? step.accent : isPast ? '#0f172a' : '#f1f5f9',
                         color: isActive || isPast ? '#fff' : '#64748b',
@@ -288,25 +275,12 @@ const PartnershipStory = () => {
                     >
                       {String(itemIndex + 1).padStart(2, '0')}
                     </div>
-                    <div className="min-w-0">
-                      <h3
-                        className="text-sm font-bold leading-snug"
-                        style={{ color: isActive ? step.accent : '#1e293b' }}
-                      >
-                        {step.title}
-                      </h3>
-                      {isActive && (
-                        <motion.p
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="text-[11px] text-slate-500 mt-1 leading-relaxed pr-2"
-                        >
-                          {step.hero}
-                        </motion.p>
-                      )}
-                    </div>
+                    <h3
+                      className="text-sm font-bold leading-snug truncate"
+                      style={{ color: isActive ? step.accent : '#1e293b' }}
+                    >
+                      {step.title}
+                    </h3>
                   </div>
                   {isActive && (
                     <ChevronRight size={16} className="flex-shrink-0" style={{ color: step.accent }} />

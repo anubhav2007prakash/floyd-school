@@ -154,7 +154,7 @@ export default function HostHackathonPage() {
                             For Organizations
                         </span>
                         <h1 className="text-5xl md:text-6xl font-black text-slate-900 leading-[1.1] tracking-tighter mb-6 max-w-4xl mx-auto">
-                            Host a Hackathon <br />
+                            Host aHackathon <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-500">
                                 and Find Innovation.
                             </span>
@@ -302,6 +302,195 @@ export default function HostHackathonPage() {
                                 className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white font-black text-sm uppercase tracking-[0.2em] rounded-xl hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/40"
                             >
                                 Start Registration <ArrowUpRight size={18} />
+                            </motion.button>
+                        </Link>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Partner Schools Section */}
+            <section className="py-20 px-6 bg-gradient-to-b from-slate-50 to-white">
+                <div className="max-w-7xl mx-auto">
+                    {/* Title */}
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+                            Empowering Young Innovators at<br />
+                            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                Partner Schools Across India
+                            </span>
+                        </h2>
+                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                            Floyd School partners with leading educational institutions across India to foster innovation and entrepreneurship.
+                        </p>
+                    </div>
+
+                    {/* Logos Grid */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-center"
+                    >
+                        {/* Logo 1 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/airforce-1.png"
+                                alt="Air Force School"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 2 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/airforce-chakeri.png"
+                                alt="Air Force School Chakeri Kanpur"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 3 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/airforce-2.png"
+                                alt="Air Force School"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 4 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/apparel-home-furnishing.png"
+                                alt="Apparel Made-Ups & Home Furnishing"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 5 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/bwssc.png"
+                                alt="BWSSC"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 6 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/womens-department.png"
+                                alt="Department of Women Affairs"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 7 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/maulana-azad.png"
+                                alt="Maulana Azad Education Foundation"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 8 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/nsdc.png"
+                                alt="NSDC"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 9 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/quality-bharat.png"
+                                alt="Quality Bharat Cell"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 10 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/rasci.png"
+                                alt="RASCI"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 11 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/interim-sector.png"
+                                alt="Interim Sector Council"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 12 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/thsc.png"
+                                alt="THSC"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 13 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/school-logo.png"
+                                alt="Partner School"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+
+                        {/* Logo 14 */}
+                        <div className="flex items-center justify-center h-24 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                            <img
+                                src="/images/partner-logos/essii.png"
+                                alt="ESSII"
+                                className="h-16 object-contain"
+                                onError={(e) => { e.target.style.display = 'none'; }}
+                            />
+                        </div>
+                    </motion.div>
+
+                    {/* CTA Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        viewport={{ once: true }}
+                        className="mt-16 text-center"
+                    >
+                        <p className="text-slate-600 mb-6 text-lg">
+                            Join our growing network of partner schools and unlock innovation potential.
+                        </p>
+                        <Link to="/school-partnerships">
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-black text-sm uppercase tracking-[0.2em] rounded-xl hover:shadow-xl hover:shadow-blue-600/40 transition-all"
+                            >
+                                Become a Partner <ArrowUpRight size={18} />
                             </motion.button>
                         </Link>
                     </motion.div>

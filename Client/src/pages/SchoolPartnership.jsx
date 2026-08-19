@@ -13,7 +13,8 @@ import ProgramRoadmap from '../components/SchoolPartnership/ProgramRoadmap';
 import PartnershipStory from '../components/SchoolPartnership/PartnershipStory';
 import TheProblem from '../components/SchoolPartnership/TheProblem';
 import TestimonialsSection from '../components/SchoolPartnership/TestimonialsSection';
-import SchoolBenefits from '../components/SchoolPartnership/SchoolBenefits';
+import SuccessStories from '../components/SuccessStories';
+import StudentProjects from '../components/SchoolPartnership/StudentProjects';
 import GroupProjects from '../components/SchoolPartnership/GroupProjects';
 import PartnershipRoadmap from '../components/SchoolPartnership/PartnershipRoadmap';
 import PartnershipForm from '../components/SchoolPartnership/PartnershipForm';
@@ -80,11 +81,14 @@ const SchoolPartnership = () => {
       {/* 4c. Program Roadmap Timeline */}
       <ProgramRoadmap />
 
+      {/* 5. Student Projects Showcase */}
+      <StudentProjects />
+
       {/* 8. Testimonials */}
       <TestimonialsSection />
 
-      {/* 9. NEP 2020 Alignment */}
-      <SchoolBenefits />
+      {/* 8b. Transformed By Floyd School */}
+      <SuccessStories variant="dark" />
 
       {/* 10. Partnership Process Timeline */}
       <GroupProjects />

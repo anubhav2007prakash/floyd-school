@@ -49,13 +49,12 @@ import CourseDetails from './pages/CourseDetails.jsx';
 import FAQPage from './pages/FAQPage.jsx';
 import HackathonPage from './pages/HackathonPage.jsx';
 import HostHackathonPage from './pages/HostHackathonPage.jsx';
+import SignupPage from './pages/SignupPage.jsx';
 import AdminStudentsPage from './pages/Admin/AdminStudentsPage.jsx';
 import AdminCoursesPage from './pages/Admin/AdminCoursesPage.jsx';
 import AdminCouponsPage from './pages/Admin/AdminCouponsPage.jsx';
 import ChatbotLeadsPage from './pages/Admin/ChatbotLeadsPage.jsx';
 import ProtectedRoute from './components/auth/ProtectedRoute.jsx';
-
-import { usePortal } from './contexts/PortalProvider.jsx';
 
 import { MotionConfig } from 'framer-motion';
 import useIsMobile from './hooks/useIsMobile.js';
@@ -93,7 +92,6 @@ const HomePage = () => {
 
 const App = () => {
 
-    const portal = usePortal();
     // 1. Get the current path
     const location = useLocation();
 
@@ -113,6 +111,7 @@ const App = () => {
         '/bootcamp-gallery',
         '/hackathon',
         '/school-partnerships',
+        '/signup',
     ];
 
     // 3. Hide the public marketing navbar on all student portal routes AND the explicitly listed paths.
@@ -255,7 +254,10 @@ const App = () => {
                 <Route path='/downloads' element={<DownloadPage />} />
 
                 {/*Login*/}
+                <Route path='/login' element={<StudentLoginPage />} />
                 <Route path='/student/login' element={<StudentLoginPage />} />
+                <Route path='/student/signup' element={<SignupPage />} />
+                <Route path='/signup' element={<SignupPage />} />
 
                 {/* Classroom Login (Separate Auth) */}
                 <Route path='/classes' element={<ClassroomAuthPage />} />

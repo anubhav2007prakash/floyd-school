@@ -46,11 +46,6 @@ const CourseCard = ({ course, isDark, onRegister, onDetails, onEarlyAccess }) =>
                 </h3>
 
                 <div className="mt-auto flex items-center justify-between">
-                    {!isComingSoon && (
-                        <div className={`text-lg font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                            ₹{course.price}
-                        </div>
-                    )}
                     {!isComingSoon ? (
                         <button
                             onClick={(e) => { e.stopPropagation(); onRegister(course._id); }}
@@ -116,9 +111,6 @@ const FeaturedCourseCard = ({ course, isDark, onRegister, onDetails }) => {
                         </span>
                         <span className={`${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
                             {course.curriculum?.length} Modules
-                        </span>
-                        <span className={`text-2xl font-black ${isDark ? 'text-white' : 'text-slate-900'} ml-4`}>
-                            ₹{course.price}
                         </span>
                     </div>
 

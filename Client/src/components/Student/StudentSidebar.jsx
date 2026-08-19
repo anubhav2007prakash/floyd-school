@@ -39,9 +39,9 @@ const StudentSidebar = () => {
           {/* Header */}
           <div className="flex flex-col">
             <div className="flex items-center justify-between mb-8">
-              <Link to="/" className="text-2xl font-black flex items-center tracking-tighter hover:opacity-80 transition-opacity">
-                <span className='text-text-main transition-colors duration-500'>think</span>
-                <span style={{ color: 'var(--accent-primary)' }}>skool</span>
+              <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+                <img src="/logo-black.png" alt="Floyd School" className="h-6 w-auto object-contain dark:hidden" />
+                <img src="/logo-white.png" alt="Floyd School" className="h-6 w-auto object-contain hidden dark:block" />
               </Link>
               <button
                 className="md:hidden p-2.5 text-text-muted hover:text-text-main rounded-full hover:bg-surface-soft transition-all"

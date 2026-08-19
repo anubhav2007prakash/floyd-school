@@ -55,13 +55,11 @@ const PartnershipFooter = () => {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-2">
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #6C63FF, #00D4FF)' }}
-              >
-                <span className="text-white font-black text-sm sp-heading">F</span>
-              </div>
-              <span className="sp-heading font-black text-white text-xl">Floyd School</span>
+              <img
+                src="/logo-white.png"
+                alt="Floyd School"
+                className="h-8 w-auto object-contain"
+              />
             </div>
             <p className="sp-body text-slate-400 text-sm leading-relaxed max-w-xs">
               Empowering the next generation of innovators with AI, Coding, Robotics, and future skills education, delivered directly at your school campus.
@@ -136,7 +134,7 @@ const PartnershipFooter = () => {
 
         {/* Giant Centered Footer Branding Banner */}
         <div className="pt-4 pb-2 text-center overflow-hidden border-t border-white/5">
-          <h1 className="text-[12vw] font-black uppercase tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/10 select-none">
+          <h1 className="text-[10vw] font-black uppercase tracking-tight leading-none whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/10 select-none">
             FLOYD SCHOOL
           </h1>
         </div>

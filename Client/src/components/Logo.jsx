@@ -28,10 +28,8 @@ const Logo = () => {
         <div className="fixed top-0 left-0 z-50 w-full py-3 px-4 sm:py-4 sm:px-6 backdrop-blur-sm shadow-md transition-all duration-300">
             <div className="max-w-7xl mx-auto flex items-center justify-between space-x-4">
                 {/* Logo (Left Side) */}
-                <div className="text-xl sm:text-2xl font-extrabold text-gray-800 flex items-center">
-                    <span className='text-slate-900 font-["Outfit"] tracking-tighter'>think</span>
-                    <span className='inline-block w-1'></span>
-                    <span className='text-[#2563EB] font-["Outfit"] tracking-tighter'>skool</span>
+                <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+                    <img src="/logo-black.png" alt="Floyd School" className="h-7 sm:h-8 object-contain" />
                 </div>
 
                 {/* Login Button (Right Side) */}

@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Radio, Star } from 'lucide-react';
 
 import { FALLBACK_COURSES } from '../../constants/siteData';
@@ -8,7 +9,7 @@ const tabs = [
   { id: 'upcoming', label: 'Coming Soon' },
 ];
 
-const CourseCard = ({ course, isDark }) => {
+const CourseCard = ({ course, isDark, onApply, onViewCurriculum }) => {
   const isComingSoon = !!course.comingSoon;
 
   return (
@@ -105,22 +106,21 @@ const CourseCard = ({ course, isDark }) => {
           <div className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1.5 font-bold text-slate-300">
             {course.curriculum?.length || 4} Modules
           </div>
-          <div className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1.5 font-black text-white">
-            ₹{course.price}
-          </div>
         </div>
 
         <div className="mt-5 flex items-center justify-between gap-4 px-2 pb-2">
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white shadow-[0_12px_30px_rgba(59,130,246,0.35)] transition-transform duration-200 hover:scale-[1.02]"
+            onClick={() => onApply(course._id)}
+            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white shadow-[0_12px_30px_rgba(59,130,246,0.35)] transition-transform duration-200 hover:scale-[1.02] cursor-pointer"
           >
             {isComingSoon ? 'Early Register' : 'Apply Now'}
           </button>
 
           <button
             type="button"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition-colors hover:text-white"
+            onClick={() => onViewCurriculum(course._id)}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition-colors hover:text-white cursor-pointer"
           >
             View Curriculum
             <ArrowRight className="h-4 w-4" />
@@ -132,7 +132,16 @@ const CourseCard = ({ course, isDark }) => {
 };
 
 const OurBatchesSection = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('live');
+
+  const handleApply = (courseId) => {
+    navigate(`/course/${courseId}?openRegistration=true`);
+  };
+
+  const handleViewCurriculum = (courseId) => {
+    navigate(`/course/${courseId}`);
+  };
 
   const filteredCourses = useMemo(() => {
     return FALLBACK_COURSES.filter((course) => {
@@ -175,7 +184,7 @@ const OurBatchesSection = () => {
 
         <div className="flex flex-col gap-12">
           {filteredCourses.map((course) => (
-            <CourseCard key={course._id} course={course} isDark />
+            <CourseCard key={course._id} course={course} isDark onApply={handleApply} onViewCurriculum={handleViewCurriculum} />
           ))}
         </div>
       </div>

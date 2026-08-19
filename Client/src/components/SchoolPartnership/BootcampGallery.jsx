@@ -20,7 +20,7 @@ const MARQUEE_STYLE = `
     100% { transform: translateX(-50%); }
   }
   .marquee-track {
-    animation: marquee-scroll 18s linear infinite;
+    animation: marquee-scroll 40s linear infinite;
     will-change: transform;
   }
   .marquee-track:hover {

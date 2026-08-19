@@ -174,12 +174,16 @@ const PremiumNavbar = memo(({ variant }) => {
                 >
                     <div className="w-full max-w-7xl flex items-center justify-between gap-4">
 
-                        {/* Mobile brand */}
+                        {/* Left Brand Logo */}
                         <Link
                             to="/"
-                            className={`md:hidden font-black text-lg tracking-tight ${isCoursesPage ? 'text-white' : 'text-slate-900'}`}
+                            className="flex items-center flex-shrink-0 group"
                         >
-                            Floyd School
+                            <img
+                                src={isCoursesPage ? "/logo-white.png" : "/logo-black.png"}
+                                alt="Floyd School"
+                                className="h-6 md:h-7 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                            />
                         </Link>
 
                         {/* Desktop Nav */}

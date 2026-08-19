@@ -141,6 +141,7 @@ const ClassroomAuthPage = () => {
 
             <header className="flex justify-between items-center mb-8">
               <div className="flex items-center cursor-pointer group/logo" onClick={handleExit}>
+                <img src="/logo-black.png" alt="Floyd School" className="h-7 w-auto object-contain" />
               </div>
             </header>
 

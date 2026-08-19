@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { name: 'Roadmap', id: 'timeline' },
   { name: 'Domains', id: 'online-focus' },
   { name: 'Why Us', id: 'why-us' },
-  { name: 'Host a Session', id: 'partner-form' },
+  { name: 'Hackathon', id: 'partner-form' },
 ];
 
 const useScrolledPast = (threshold = 60) => {
@@ -154,6 +154,16 @@ const PartnershipHero = () => {
     setIsMenuOpen(false);
   };
 
+  const handleDownloadBrochure = () => {
+    const link = document.createElement('a');
+    link.href = '/Floyd_School_Brochure.pdf';
+    link.download = 'Floyd_School_Brochure.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <style>{`
@@ -173,16 +183,15 @@ const PartnershipHero = () => {
         <div className="max-w-[1350px] mx-auto px-6 h-20 flex items-center justify-between">
           {/* Left Brand */}
           <div
-            className="flex flex-col items-start leading-none cursor-pointer"
+            className="flex flex-col items-start leading-none cursor-pointer group"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <span className="font-black text-white text-xl tracking-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              Floyd School
-            </span>
-            <span className="text-[8px] text-sky-300/80 font-bold tracking-widest mt-0.5 border-t border-white/20 pt-0.5">
-              SCHOOL TECH PARTNER
-            </span>
-          </div>
+            <img
+              src="/logo-white.png"
+              alt="Floyd School"
+              className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+            />
+            </div>
 
           {/* Center Links Capsule */}
           <div
@@ -203,7 +212,7 @@ const PartnershipHero = () => {
           {/* Right Action Buttons */}
           <div className="hidden md:flex items-center gap-2">
             <button
-              onClick={() => alert('Brochure download started!')}
+              onClick={handleDownloadBrochure}
               className="flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer text-sky-300 hover:bg-white/10"
             >
               <Download size={14} /> Download Brochure
@@ -217,7 +226,7 @@ const PartnershipHero = () => {
             </button>
 
             <button
-              onClick={() => (window.location.href = '/student/login?mode=login')}
+              onClick={() => (window.location.href = '/login')}
               className="flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer text-pink-300 border border-pink-400/50 hover:bg-pink-500/10"
             >
               <User size={13} />
@@ -225,7 +234,7 @@ const PartnershipHero = () => {
             </button>
 
             <button
-              onClick={() => (window.location.href = '/student/login?mode=signup')}
+              onClick={() => (window.location.href = '/student/signup')}
               className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold text-white cursor-pointer hover:scale-[1.03] transition-all"
               style={{
                 background: '#B854A2',
@@ -272,7 +281,7 @@ const PartnershipHero = () => {
               ))}
               <div className="pt-2 flex flex-col gap-2">
                 <button
-                  onClick={() => alert('Brochure download started!')}
+                  onClick={handleDownloadBrochure}
                   className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/10 text-xs font-bold text-white"
                 >
                   <Download size={14} /> Download Brochure
@@ -370,10 +379,10 @@ const PartnershipHero = () => {
                   transform: 'translateY(-6px)',
                 }}
               >
-                A DESTINATION
+                A DESTINATION.
               </motion.span>
               <br />
-              We Find The Path
+              We Find The Shortest Path.
             </h1>
 
             {/* Subtitle / User Tagline */}

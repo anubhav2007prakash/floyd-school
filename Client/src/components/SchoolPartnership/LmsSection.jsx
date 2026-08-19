@@ -4,6 +4,27 @@ import { ChevronLeft, ChevronRight, CheckCircle2, User, BookOpen, BarChart3, Clo
 
 const LMS_CARDS = [
   {
+    id: 'live-classes',
+    title: 'Live Interactive Sessions',
+    image: '/images/lms/live_session_student.png',
+    tag: 'LIVE SESSIONS',
+    color: '#3B82F6',
+  },
+  {
+    id: 'mentor-portal',
+    title: 'Mentor Testing & Scoring',
+    image: '/images/lms/mentor_broadcast_portal.png',
+    tag: 'MENTOR PORTAL',
+    color: '#8B5CF6',
+  },
+  {
+    id: 'curriculum-delivery',
+    title: 'Modular AI & ML Curriculum',
+    image: '/images/lms/interactive_ml_session.png',
+    tag: 'HANDS-ON LABS',
+    color: '#10B981',
+  },
+  {
     id: 'dashboard',
     title: 'Student Dashboard',
     mockupType: 'dashboard',
@@ -427,8 +448,24 @@ const LmsSection = () => {
                 className="flex-shrink-0 w-[300px] sm:w-[350px] bg-white rounded-[32px] p-5 border border-slate-200/70 shadow-lg flex flex-col justify-between transition-all duration-300 group cursor-default"
               >
                 {/* Top UI Mockup Frame */}
-                <div className="h-[220px] rounded-2xl overflow-hidden relative border border-slate-200/60 shadow-sm mb-5 group-hover:border-indigo-300 transition-colors">
-                  {renderMockup(card.mockupType)}
+                <div className="h-[220px] rounded-2xl overflow-hidden relative border border-slate-200/60 shadow-sm mb-5 group-hover:border-indigo-300 transition-colors bg-slate-950">
+                  {card.image ? (
+                    <div className="w-full h-full relative overflow-hidden group/img">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                      {card.tag && (
+                        <span className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider bg-black/70 backdrop-blur-md text-white border border-white/20 shadow-md">
+                          {card.tag}
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    renderMockup(card.mockupType)
+                  )}
                 </div>
 
                 {/* Bottom Card Title matching Setu100 */}
