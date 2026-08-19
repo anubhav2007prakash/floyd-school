@@ -1,0 +1,295 @@
+@import 'tailwindcss';
+
+/*
+  Tailwind v4 Theme Registration.
+  We register the color token NAMES with @theme inline.
+  The actual values come from CSS custom properties defined in :root / [data-theme].
+*/
+@theme inline {
+  --color-surface-base: var(--surface-base);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-el: var(--surface-el);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-ubuntu: 'Ubuntu', sans-serif;
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Default: Modern (Light / Warm Orange Tint) ─────────── */
+:root,
+[data-theme='modern'] {
+  --surface-base: #FFFFFF;
+  --surface-soft: #F9FAFB;
+  --surface-el:   #F3F4F6;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --accent-primary: #2563EB;
+  --accent-secondary: #4F46E5;
+}
+
+/* ─── Cyber (Hacker) ────────────────────────────────────────── */
+[data-theme='cyber'] {
+  --surface-base: #000000;
+  --surface-soft: #050505;
+  --surface-el: #111111;
+  --text-main: #FFFFFF;
+  --text-muted: #666666;
+  --accent-primary: #00FF41;
+  --accent-secondary: #FF00FF;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes scan {
+  from {
+    top: 0%;
+  }
+
+  to {
+    top: 100%;
+  }
+}
+
+@keyframes float-orb {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(30px, -50px);
+  }
+
+  66% {
+    transform: translate(-20px, 20px);
+  }
+}
+
+.animate-scan {
+  animation: scan 2s linear infinite;
+}
+
+.animate-float-orb {
+  animation: float-orb 15s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+* {
+  font-family: 'Outfit', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.015em;
+  /* Premium tight tracking */
+}
+
+body {
+  background-color: var(--surface-base);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-legible {
+  @apply text-xs font-bold uppercase tracking-widest leading-relaxed;
+}
+
+/* Custom Premium Scrollbar - Light Glassy Style */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Scrollbar Hide Utility */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+/* Optimized Landing for Navbar Navigation */
+#engineering-programs,
+#infrastructure,
+#support,
+#how-it-works,
+#models {
+  scroll-margin-top: 100px;
+}
+
+/* Global Mobile Optimizations */
+@media (max-width: 768px) {
+    section { 
+        padding: 1rem 1rem; 
+        text-align: center;
+    }
+    
+    h1 { font-size: 2.5rem; line-height: 1.1; }
+    h2 { font-size: 2rem; line-height: 1.2; }
+    h3 { font-size: 1.5rem; }
+    
+    /* Global scroll overflow fix */
+    body, html { 
+        overflow-x: hidden; 
+        width: 100%; 
+        position: relative; 
+    }
+
+    /* Disable heavy marketing animations on mobile (scoped — excludes student portal) */
+    .animate-float-orb,
+    .animate-scan,
+    .animate-marquee,
+    .animate-text-shimmer {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+    }
+}
+
+/* Full animation kill only for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+}
+
+
+/* Landscape Mobile Optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+    section { padding: 2rem 1rem !important; }
+    .hero-text-container { max-width: 90vw !important; }
+    .advantage-card-container { display: flex !important; flex-direction: row !important; overflow-x: auto !important; position: relative !important; height: auto !important; transform: none !important; gap: 1rem !important; padding: 1rem !important; }
+    .advantage-card { position: relative !important; left: auto !important; transform: none !important; width: 220px !important; height: 320px !important; flex-shrink: 0 !important; }
+}
+
+/* Safe area insets for notched phones */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+/* Mac Browser Style Frame */
+.mac-browser-frame {
+    @apply relative bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500;
+}
+
+.mac-browser-dots {
+    @apply absolute top-4 left-5 flex gap-1.5 z-30;
+}
+
+.mac-browser-dot {
+    @apply w-2.5 h-2.5 rounded-full;
+}
+
+.mac-dot-red { @apply bg-[#FF5F56]; }
+.mac-dot-yellow { @apply bg-[#FFBD2E]; }
+.mac-dot-green { @apply bg-[#27C93F]; }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes text-shimmer {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+.animate-text-shimmer {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.35) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-shimmer 2.5s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out both;
+}
+
