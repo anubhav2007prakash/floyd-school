@@ -1,46 +1,73 @@
 import { motion } from 'framer-motion';
-import { Check, ShieldAlert, Award, FileSpreadsheet, Sparkles } from 'lucide-react';
+import { Award, BookOpen, Users, Settings, TrendingUp, Sparkles, Check } from 'lucide-react';
 
-const NEP_POINTS = [
+const SCHOOL_BENEFITS = [
   {
-    icon: Award,
-    title: 'Vocational Subjects Integration',
-    description: 'Structured modules covering AI, coding and hands-on robotics for middle school onward.',
+    icon: Sparkles,
+    title: 'STUDENT ENGAGEMENT',
+    description: 'High interest technology domains that keep students curious and actively involved.',
     color: '#a78bfa',
     glow: 'rgba(167,139,250,0.25)',
     gradient: 'linear-gradient(135deg, #7c3aed, #a78bfa)',
     bg: 'rgba(167,139,250,0.12)',
   },
   {
-    icon: FileSpreadsheet,
-    title: 'Skill Report Cards Mapping',
-    description: 'Evaluation metrics for computational thinking, logical reasoning and design methodologies.',
+    icon: BookOpen,
+    title: 'ACADEMIC ENRICHMENT',
+    description: 'Practical learning that complements and enhances existing computer science education.',
     color: '#38bdf8',
     glow: 'rgba(56,189,248,0.25)',
     gradient: 'linear-gradient(135deg, #0284c7, #38bdf8)',
     bg: 'rgba(56,189,248,0.12)',
   },
   {
-    icon: ShieldAlert,
-    title: 'Experiential Learning Focus',
-    description: 'Active prototype-building satisfies the policy requirement for experiential STEM pedagogy.',
+    icon: Users,
+    title: 'EXPERT MENTORSHIP',
+    description: 'Trained mentors who deliver sessions directly, reducing school recruitment challenges.',
+    color: '#10b981',
+    glow: 'rgba(16,185,129,0.25)',
+    gradient: 'linear-gradient(135deg, #059669, #10b981)',
+    bg: 'rgba(16,185,129,0.12)',
+  },
+  {
+    icon: Settings,
+    title: 'MINIMAL FACULTY BURDEN',
+    description: 'End to end program management so your staff can focus on school operations.',
     color: '#fb7185',
     glow: 'rgba(251,113,133,0.25)',
     gradient: 'linear-gradient(135deg, #e11d48, #fb7185)',
     bg: 'rgba(251,113,133,0.12)',
   },
+  {
+    icon: TrendingUp,
+    title: 'STUDENT PROGRESS',
+    description: 'Regular updates and visibility into student learning and project outcomes.',
+    color: '#fb923c',
+    glow: 'rgba(251,146,60,0.25)',
+    gradient: 'linear-gradient(135deg, #ea580c, #fb923c)',
+    bg: 'rgba(251,146,60,0.12)',
+  },
+  {
+    icon: Award,
+    title: 'SCHOOL INNOVATION',
+    description: 'Positions your school as a leader in forward looking technology education.',
+    color: '#ec4899',
+    glow: 'rgba(236,72,153,0.25)',
+    gradient: 'linear-gradient(135deg, #be185d, #ec4899)',
+    bg: 'rgba(236,72,153,0.12)',
+  },
 ];
 
 const COMPLIANCE_ITEMS = [
-  'Matches CBSE vocational course standards',
-  'Satisfies 10 bagless days requirement',
-  'Provides structural progress data',
+  'Classes 6 to 12 experiential learning',
+  'Managed on-campus delivery model',
+  'Regular student progress insights',
 ];
 
 const SchoolBenefits = () => {
   return (
     <section
-      id="nep-alignment"
+      id="school-benefits"
       className="py-28 px-6 lg:px-12 relative overflow-hidden text-white"
       style={{
         background: 'linear-gradient(135deg, #0d0f2b 0%, #0f172a 40%, #0d1d2e 70%, #0a0f1d 100%)',
@@ -55,10 +82,6 @@ const SchoolBenefits = () => {
         className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 65%)', filter: 'blur(80px)' }}
       />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.07) 0%, transparent 70%)', filter: 'blur(100px)' }}
-      />
 
       {/* Subtle grid */}
       <div
@@ -72,7 +95,7 @@ const SchoolBenefits = () => {
         style={{ background: 'linear-gradient(90deg, transparent, #7c3aed, #38bdf8, #10b981, transparent)' }}
       />
 
-      <div className="max-w-[1200px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+      <div className="max-w-[1240px] mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
         {/* ── Left Panel ── */}
         <motion.div
@@ -80,11 +103,11 @@ const SchoolBenefits = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-5 space-y-7"
+          className="lg:col-span-5 space-y-6"
         >
           {/* Eyebrow pill */}
           <span
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em]"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.2em]"
             style={{
               background: 'rgba(16,185,129,0.12)',
               border: '1px solid rgba(16,185,129,0.35)',
@@ -92,7 +115,7 @@ const SchoolBenefits = () => {
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Compliance and Policy
+            FOR SCHOOL LEADERS
           </span>
 
           {/* Highlighted heading */}
@@ -101,27 +124,27 @@ const SchoolBenefits = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-black leading-tight"
-            style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3rem)' }}
+            className="font-black leading-tight uppercase text-white"
+            style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)' }}
           >
-            <span className="text-white">100% Aligned with </span>
+            TECHNOLOGY LEARNING THAT WORKS{' '}
             <span
               className="text-transparent bg-clip-text"
               style={{
                 backgroundImage: 'linear-gradient(135deg, #a78bfa 0%, #38bdf8 50%, #34d399 100%)',
               }}
             >
-              NEP 2020 Guidelines
+              FOR THE WHOLE SCHOOL.
             </span>
           </motion.h2>
 
           {/* Body text */}
-          <p className="text-slate-300 leading-relaxed text-base md:text-lg">
-            NEP 2020 shifts focus from textbooks to skills. We ensure CBSE and state board compliance with zero friction.
+          <p className="text-slate-300 leading-relaxed text-sm md:text-base font-medium">
+            Floyd School partners with educational institutions to provide structured, mentor led technology education that aligns with academic goals and minimizes operational overhead.
           </p>
 
           {/* Compliance checklist */}
-          <div className="space-y-3 pt-1">
+          <div className="space-y-3 pt-2">
             {COMPLIANCE_ITEMS.map((item, i) => (
               <motion.div
                 key={item}
@@ -129,7 +152,7 @@ const SchoolBenefits = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="flex items-center gap-3 text-slate-200 text-sm font-medium"
+                className="flex items-center gap-3 text-slate-200 text-sm font-semibold"
               >
                 <div
                   className="w-5 h-5 rounded-full flex items-center justify-center text-white flex-shrink-0"
@@ -141,65 +164,37 @@ const SchoolBenefits = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* NEP endorsement badge */}
-          <motion.div
-            whileHover={{ scale: 1.03 }}
-            className="inline-flex items-center gap-3 p-4 rounded-2xl text-sm font-bold"
-            style={{
-              background: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(52,211,153,0.08))',
-              border: '1px solid rgba(16,185,129,0.35)',
-              boxShadow: '0 0 24px rgba(16,185,129,0.12)',
-            }}
-          >
-            <span className="text-emerald-300">Endorsed for NEP 2020 Vocational Track</span>
-          </motion.div>
         </motion.div>
 
-        {/* ── Right Panel — Policy Cards ── */}
-        <div className="lg:col-span-7 space-y-4">
-          {NEP_POINTS.map((pt, idx) => {
+        {/* ── Right Panel — 6 Benefit Cards ── */}
+        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {SCHOOL_BENEFITS.map((pt, idx) => {
             const Icon = pt.icon;
             return (
               <motion.div
                 key={pt.title}
-                initial={{ opacity: 0, x: 28 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -4, boxShadow: `0 0 0 1px ${pt.color}30, 0 20px 40px ${pt.glow}` }}
-                className="group p-6 rounded-3xl flex gap-5 relative overflow-hidden"
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                whileHover={{ y: -3 }}
+                className="group p-5 rounded-2xl flex flex-col justify-between relative overflow-hidden"
                 style={{
                   background: 'rgba(255,255,255,0.05)',
                   border: '1px solid rgba(255,255,255,0.1)',
                   backdropFilter: 'blur(12px)',
-                  transition: 'box-shadow 0.3s, transform 0.3s',
                 }}
               >
-                {/* Left colour accent bar */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-3xl" style={{ background: pt.gradient }} />
-
-                {/* Hover wash */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none"
-                  style={{ background: pt.bg }}
-                />
-
-                {/* Icon */}
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: -6 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative z-10 w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: pt.bg, border: `1px solid ${pt.color}30` }}
-                >
-                  <Icon size={22} style={{ color: pt.color }} />
-                </motion.div>
-
-                {/* Text */}
-                <div className="relative z-10">
-                  <h3 className="font-bold text-white text-base mb-1">{pt.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{pt.description}</p>
+                <div className="flex items-center gap-3.5 mb-2.5">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: pt.bg, border: `1px solid ${pt.color}30` }}
+                  >
+                    <Icon size={18} style={{ color: pt.color }} />
+                  </div>
+                  <h3 className="font-bold text-white text-sm uppercase tracking-wide">{pt.title}</h3>
                 </div>
+                <p className="text-slate-400 text-xs leading-relaxed font-normal">{pt.description}</p>
               </motion.div>
             );
           })}

@@ -1,192 +1,333 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Radio, Star } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  ArrowRight, 
+  Users, 
+  Calendar, 
+  Layers, 
+  Sparkles, 
+  BookOpen, 
+  ShieldCheck, 
+  Clock, 
+  Sliders, 
+  Cpu, 
+  Target, 
+  FileText,
+  School,
+  CheckCircle2
+} from 'lucide-react';
 
-import { FALLBACK_COURSES } from '../../constants/siteData';
-
-const tabs = [
-  { id: 'live', label: 'Live' },
-  { id: 'upcoming', label: 'Coming Soon' },
-];
-
-const CourseCard = ({ course, isDark, onApply, onViewCurriculum }) => {
-  const isComingSoon = !!course.comingSoon;
-
-  return (
-    <div
-      className={`group relative overflow-hidden rounded-[28px] border p-4 shadow-[0_30px_90px_rgba(2,6,23,0.6)] ${
-        isDark
-          ? 'border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.12),transparent_25%),linear-gradient(135deg,#0a0f1a_0%,#0d1016_100%)]'
-          : 'border-slate-200 bg-white'
-      }`}
-    >
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500" />
-
-      <div className="flex min-h-[420px] flex-col justify-between">
-        <div className="flex items-center justify-between px-2 pb-5 pt-2 text-[10px] font-black uppercase tracking-[0.22em] text-slate-300">
-          <span className="opacity-90">FLOYD SCHOOL</span>
-          <span
-            className={`rounded-full px-2.5 py-1 text-[10px] ${
-              isComingSoon ? 'bg-white/5 text-slate-300' : 'bg-blue-600/20 text-blue-300'
-            }`}
-          >
-            {isComingSoon ? 'Coming Soon' : 'Live'}
-          </span>
-        </div>
-
-        <div className="flex flex-1 flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex-1 px-2 pb-2 lg:pb-0">
-            <div className="mb-5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-              <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-300" />
-              {isComingSoon ? 'Early Access' : 'Live Batch'}
-            </div>
-
-            <h3 className="max-w-[540px] text-3xl font-black uppercase leading-[0.9] tracking-[-0.05em] text-white sm:text-4xl lg:text-[3.5rem]">
-              {course.title.includes('AI') && course.title.includes('Machine') ? (
-                <>
-                  <span className="block">Foundations of</span>
-                  <span className="block bg-gradient-to-r from-[#d7f2ff] via-[#d7d6ff] to-[#f6d4ff] bg-clip-text text-transparent">
-                    AI &amp; MACHINE
-                  </span>
-                  <span className="block">LEARNING</span>
-                </>
-              ) : course.title.includes('Web') ? (
-                <>
-                  <span className="block">Foundations of</span>
-                  <span className="block bg-gradient-to-r from-[#f9d5ff] via-[#f6a8ff] to-[#d0dcff] bg-clip-text text-transparent">
-                    WEB
-                  </span>
-                  <span className="block">DEVELOPMENT</span>
-                </>
-              ) : course.title.includes('IoT') ? (
-                <>
-                  <span className="block">Foundations of</span>
-                  <span className="block bg-gradient-to-r from-[#d7f2ff] via-white to-[#dce7ff] bg-clip-text text-transparent">
-                    IOT &amp;
-                  </span>
-                  <span className="block">ROBOTICS</span>
-                </>
-              ) : (
-                <>
-                  <span className="block">Foundations of</span>
-                  <span className="block bg-gradient-to-r from-[#d7f2ff] via-[#bffae1] to-[#d3fcff] bg-clip-text text-transparent">
-                    CYBER
-                  </span>
-                  <span className="block">SECURITY</span>
-                </>
-              )}
-            </h3>
-          </div>
-
-          <div className="relative mx-auto h-[240px] w-full max-w-[360px] flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#1c1d30] via-[#0f172a] to-[#111827] sm:h-[260px] sm:max-w-[400px] lg:mx-0 lg:h-[280px] lg:max-w-[440px]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),transparent_65%)]" />
-            <img
-              src={course.image}
-              alt={course.title}
-              className="absolute inset-0 h-full w-full object-contain object-center p-3 opacity-95"
-              style={{
-                filter: 'contrast(1.08) saturate(1.2)',
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="mt-6 flex flex-wrap items-center gap-3 px-2 pb-1 text-sm text-slate-200">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1.5 font-bold">
-            <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
-            {course.rating} Rating
-          </div>
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1.5 font-bold text-emerald-300">
-            <Radio className="h-3.5 w-3.5" />
-            {isComingSoon ? 'Coming Soon' : 'Live Sessions'}
-          </div>
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1.5 font-bold text-slate-300">
-            {course.duration}
-          </div>
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1.5 font-bold text-slate-300">
-            {course.curriculum?.length || 4} Modules
-          </div>
-        </div>
-
-        <div className="mt-5 flex items-center justify-between gap-4 px-2 pb-2">
-          <button
-            type="button"
-            onClick={() => onApply(course._id)}
-            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white shadow-[0_12px_30px_rgba(59,130,246,0.35)] transition-transform duration-200 hover:scale-[1.02] cursor-pointer"
-          >
-            {isComingSoon ? 'Early Register' : 'Apply Now'}
-          </button>
-
-          <button
-            type="button"
-            onClick={() => onViewCurriculum(course._id)}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition-colors hover:text-white cursor-pointer"
-          >
-            View Curriculum
-            <ArrowRight className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+/* ─── LIVE PROGRAM DATA ───────────────────────────────────────── */
+const LIVE_PROGRAM = {
+  id: 'ai-ml',
+  badge: 'ON CAMPUS PROGRAM',
+  status: 'LIVE SCHOOL PROGRAM',
+  title: 'FOUNDATIONS OF\nAI & MACHINE\nLEARNING',
+  description: 'A four month, mentor led program where students explore AI, Machine Learning and AI Innovation through practical learning and real projects.',
+  pills: ['4 MONTHS', 'CLASSES 6 TO 12', 'PROJECT BASED'],
+  image: '/images/courses/ai_ml_robot.png',
+  imageAlt: 'Floyd Foundations of AI & Machine Learning',
+  curriculumId: '1',
+  category: 'AI & Machine Learning'
 };
+
+/* ─── UPCOMING PROGRAMS DATA ──────────────────────────────────── */
+const UPCOMING_PROGRAMS = [
+  {
+    id: 'cybersecurity',
+    badge: 'ON CAMPUS PROGRAM',
+    status: 'UPCOMING SCHOOL PROGRAM',
+    title: 'FOUNDATIONS OF\nCYBER\nSECURITY',
+    description: 'A four month practical program introducing students to digital security, ethical cybersecurity and responsible technology practices.',
+    pills: ['4 MONTHS', 'CLASSES 6 TO 12', 'PROJECT BASED'],
+    image: '/images/courses/CYBER.png',
+    imageAlt: 'Floyd Foundations of Cybersecurity',
+    curriculumId: '4',
+    category: 'Cybersecurity'
+  },
+  {
+    id: 'web-dev',
+    badge: 'ON CAMPUS PROGRAM',
+    status: 'UPCOMING SCHOOL PROGRAM',
+    title: 'FOUNDATIONS OF\nWEB\nDEVELOPMENT',
+    description: 'A four month project based program where students learn to design, code and build modern websites and web applications.',
+    pills: ['4 MONTHS', 'CLASSES 6 TO 12', 'PROJECT BASED'],
+    image: '/images/courses/WEB DEV.png',
+    imageAlt: 'Floyd Foundations of Web Development',
+    curriculumId: '2',
+    category: 'Web Development'
+  },
+  {
+    id: 'iot-robotics',
+    badge: 'ON CAMPUS PROGRAM',
+    status: 'UPCOMING SCHOOL PROGRAM',
+    title: 'FOUNDATIONS OF\nIoT &\nROBOTICS',
+    description: 'A four month hands on program where students combine electronics, sensors, programming and robotics to build real systems.',
+    pills: ['4 MONTHS', 'CLASSES 6 TO 12', 'PROJECT BASED'],
+    image: '/images/courses/IOT.png',
+    imageAlt: 'Floyd Foundations of IoT & Robotics',
+    curriculumId: '3',
+    category: 'IoT & Robotics'
+  }
+];
 
 const OurBatchesSection = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('live');
+  const [activeTab, setActiveTab] = useState('live'); // 'live' | 'upcoming'
 
-  const handleApply = (courseId) => {
-    navigate(`/course/${courseId}?openRegistration=true`);
+  const scrollToPartnerForm = () => {
+    document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleViewCurriculum = (courseId) => {
-    navigate(`/course/${courseId}`);
+  const handleViewCurriculum = (curriculumId = '1') => {
+    navigate(`/course/${curriculumId}`);
   };
-
-  const filteredCourses = useMemo(() => {
-    return FALLBACK_COURSES.filter((course) => {
-      if (course.hideFromBatches) return false;
-      if (activeTab === 'live') return !course.comingSoon;
-      return !!course.comingSoon;
-    });
-  }, [activeTab]);
 
   return (
-    <section id="online-focus" className="relative overflow-hidden bg-white py-20 lg:py-28">
-      <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'radial-gradient(#94a3b8 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-      <div className="absolute left-0 top-0 h-[700px] w-[700px] -ml-[350px] -mt-[350px] rounded-full bg-blue-600/5 blur-[100px]" />
-      <div className="absolute bottom-0 right-0 h-[600px] w-[600px] -mr-[300px] -mb-[300px] rounded-full bg-purple-600/5 blur-[80px]" />
+    <section id="online-focus" className="relative overflow-hidden py-24 lg:py-32 border-t border-white/5" style={{ background: 'linear-gradient(180deg, #000000 0%, #010c1f 40%, #021530 70%, #020b1a 100%)' }}>
+      {/* Background Decorative Mesh */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-10"
+        style={{ backgroundImage: 'radial-gradient(#4f88c7 1px, transparent 1px)', backgroundSize: '32px 32px' }}
+      />
+      <div className="absolute left-0 top-0 h-[600px] w-[600px] -ml-[300px] -mt-[300px] rounded-full bg-blue-600/15 blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 h-[600px] w-[600px] -mr-[300px] -mb-[300px] rounded-full bg-blue-800/15 blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] w-[800px] rounded-full bg-indigo-900/10 blur-[160px] pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        
+        {/* ── 1. SECTION HEADER ── */}
         <div className="mb-14 text-center">
-          <h2 className="text-5xl font-black uppercase tracking-tighter text-slate-900 md:text-6xl lg:text-8xl">
-            Our Batches
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4 bg-purple-500/15 text-purple-300 border border-purple-500/30">
+            <Sparkles size={13} className="text-pink-400" />
+            ON CAMPUS OFFERINGS
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white">
+            OUR SCHOOL PROGRAMS
           </h2>
-          <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-blue-500" />
+          <p className="mt-4 text-slate-300 text-sm sm:text-base font-medium max-w-2xl mx-auto leading-relaxed">
+            Practical technology education delivered directly on your school campus for Classes 6 to 12.
+          </p>
         </div>
 
-        <div className="mb-12 flex justify-center gap-3">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setActiveTab(tab.id)}
-              className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
-                activeTab === tab.id
-                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-600/25'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
-              }`}
+        {/* ── 2. TWO TABS: LIVE | UPCOMING ── */}
+        <div className="mb-14 flex justify-center">
+          <div className="flex items-center gap-2 bg-white/5 p-1.5 rounded-2xl border border-white/10 backdrop-blur-xl shadow-2xl">
+            {[
+              { id: 'live', label: 'LIVE' },
+              { id: 'upcoming', label: 'UPCOMING' },
+            ].map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                  }}
+                  className={`relative px-7 py-3 rounded-xl text-xs sm:text-sm font-black uppercase tracking-widest transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-purple-600/30 scale-102'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {tab.label}
+                  {tab.id === 'live' && (
+                    <span className="ml-2 inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ── 3. TAB CONTENT ── */}
+        <AnimatePresence mode="wait">
+          
+          {/* ── TAB 1: LIVE PROGRAM ── */}
+          {activeTab === 'live' && (
+            <motion.div
+              key="live"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-5xl mx-auto"
             >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+              <div className="group relative overflow-hidden rounded-[32px] border border-purple-500/30 bg-gradient-to-b from-[#0e1230] via-[#090b1e] to-[#060818] p-8 sm:p-12 shadow-[0_30px_90px_rgba(2,6,23,0.8)]">
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500" />
 
-        <div className="flex flex-col gap-12">
-          {filteredCourses.map((course) => (
-            <CourseCard key={course._id} course={course} isDark onApply={handleApply} onViewCurriculum={handleViewCurriculum} />
-          ))}
-        </div>
+                <div className="flex flex-col justify-between h-full">
+                  {/* Top Row */}
+                  <div className="flex items-center justify-between pb-8 border-b border-white/10 text-xs font-black uppercase tracking-[0.22em] text-slate-400">
+                    <span className="opacity-90">FLOYD SCHOOL</span>
+                    <span className="rounded-full bg-emerald-500/15 px-3.5 py-1 text-[11px] font-black text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      {LIVE_PROGRAM.status}
+                    </span>
+                  </div>
+
+                  {/* Middle Main Content */}
+                  <div className="py-8 grid lg:grid-cols-12 gap-8 items-center">
+                    <div className="lg:col-span-7">
+                      <div className="mb-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-purple-400">
+                        <span className="inline-block h-2 w-2 rounded-full bg-purple-400 animate-pulse" />
+                        {LIVE_PROGRAM.badge}
+                      </div>
+
+                      <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase leading-[1.08] tracking-tight text-white whitespace-pre-line mb-4">
+                        {LIVE_PROGRAM.title}
+                      </h3>
+
+                      <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-medium mb-8 max-w-xl">
+                        {LIVE_PROGRAM.description}
+                      </p>
+
+                      {/* Information Pills */}
+                      <div className="flex flex-wrap gap-2.5">
+                        {LIVE_PROGRAM.pills.map((pill, pIdx) => (
+                          <span
+                            key={pIdx}
+                            className="px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider bg-purple-500/15 border border-purple-500/30 text-purple-200"
+                          >
+                            {pill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* AI Robot Graphic Image */}
+                    <div className="lg:col-span-5">
+                      <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900 shadow-2xl h-[260px] sm:h-[300px]">
+                        <img
+                          src={LIVE_PROGRAM.image}
+                          alt={LIVE_PROGRAM.imageAlt}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] font-bold text-white/90 uppercase tracking-widest bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-white/10">
+                          <span>{LIVE_PROGRAM.category}</span>
+                          <span className="text-emerald-400">Classes 6 to 12</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                    <button
+                      type="button"
+                      onClick={() => navigate(`/course/${LIVE_PROGRAM.curriculumId}`)}
+                      className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-8 py-4 text-xs sm:text-sm font-black uppercase tracking-widest text-white shadow-xl shadow-purple-600/30 transition-all hover:scale-[1.02] cursor-pointer"
+                    >
+                      EXPLORE PROGRAM
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleViewCurriculum(LIVE_PROGRAM.curriculumId)}
+                      className="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-bold text-slate-300 hover:text-white px-4 py-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
+                    >
+                      VIEW CURRICULUM →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* ── TAB 3: UPCOMING PROGRAMS ── */}
+          {activeTab === 'upcoming' && (
+            <motion.div
+              key="upcoming"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
+              {UPCOMING_PROGRAMS.map((prog) => (
+                <div
+                  key={prog.id}
+                  className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-[#0d1024] to-[#070918] p-7 shadow-2xl flex flex-col justify-between hover:border-indigo-500/40 transition-all"
+                >
+                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500" />
+
+                  <div>
+                    {/* Top Row */}
+                    <div className="flex items-center justify-between pb-5 border-b border-white/10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                      <span>FLOYD SCHOOL</span>
+                      <span className="rounded-full bg-cyan-500/15 px-2.5 py-0.5 text-[9px] font-black text-cyan-300 border border-cyan-500/30">
+                        {prog.status}
+                      </span>
+                    </div>
+
+                    {/* Image */}
+                    <div className="relative my-5 rounded-2xl overflow-hidden border border-white/10 bg-slate-900 h-[180px]">
+                      <img
+                        src={prog.image}
+                        alt={prog.imageAlt}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                      <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[9px] font-bold text-white/90 uppercase tracking-widest bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
+                        <span>{prog.category}</span>
+                        <span className="text-cyan-300">Upcoming</span>
+                      </div>
+                    </div>
+
+                    <div className="mb-2 text-[9px] font-black uppercase tracking-[0.2em] text-indigo-400">
+                      {prog.badge}
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-black uppercase leading-tight tracking-tight text-white whitespace-pre-line mb-3">
+                      {prog.title}
+                    </h3>
+
+                    <p className="text-xs text-slate-300 leading-relaxed font-medium mb-6 line-clamp-3">
+                      {prog.description}
+                    </p>
+
+                    {/* Information Pills */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {prog.pills.map((pill, pIdx) => (
+                        <span
+                          key={pIdx}
+                          className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white/5 border border-white/10 text-slate-300"
+                        >
+                          {pill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="pt-5 border-t border-white/10 flex flex-col gap-2.5">
+                    <button
+                      type="button"
+                      onClick={scrollToPartnerForm}
+                      className="w-full py-3 rounded-xl font-black text-xs uppercase tracking-wider text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:scale-[1.01] transition-all shadow-md shadow-blue-600/30 cursor-pointer text-center"
+                    >
+                      REGISTER INTEREST
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleViewCurriculum(prog.curriculumId)}
+                      className="text-center py-2 text-xs font-bold text-slate-400 hover:text-white transition-colors cursor-pointer"
+                    >
+                      VIEW CURRICULUM →
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          )}
+
+        </AnimatePresence>
+
       </div>
     </section>
   );

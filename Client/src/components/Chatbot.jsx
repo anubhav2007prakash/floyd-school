@@ -53,14 +53,13 @@ const Chatbot = () => {
     if (step === 0) {
       setStep(1);
       botReply(
-        'Hello \ud83d\udc4b Welcome to Floyd School\n\nWe help students build real technology projects like AI systems, apps, and smart devices \u2014 not just learn theory.\n\nWhat are you looking for today?',
+        'Hello 👋\n\nExploring the right technology path for your student?\n\nI can help you find the right starting point.',
         [
-          { label: '\ud83e\udd16 AI & Machine Learning (Live)', val: 'ai' },
-          { label: '\ud83c\udf10 Web Development', val: 'web' },
-          { label: '\ud83d\udd10 Cybersecurity', val: 'cyber' },
-          { label: '\u2699\ufe0f IoT & Robotics', val: 'iot' },
-          { label: '\ud83e\udd14 Not Sure Yet', val: 'notsure' },
-          { label: '\ud83c\udfeb School / Institution Partnership', val: 'school' },
+          { label: 'Explore AI & Machine Learning', val: 'ai' },
+          { label: 'Explore Web & App Development', val: 'web' },
+          { label: 'Explore Robotics & IoT', val: 'iot' },
+          { label: 'Explore Cybersecurity', val: 'cyber' },
+          { label: 'Talk to Floyd School', val: 'talk' },
         ]
       );
     } else if (step === 1) {
@@ -69,62 +68,35 @@ const Chatbot = () => {
         setUserPath('direct_ai');
         setStep(2);
         botReply(
-          'Great choice! \ud83d\ude80\n\nOur AI & Machine Learning program is currently LIVE.\n\nStudents build real systems like:\n\u2022 AI Face Recognition System\n\u2022 Spam Detection Models\n\u2022 Computer Vision Applications\n\nHands-on learning, not theory.',
+          'AI & Machine Learning is a strong starting point for students interested in technology, problem solving and innovation.\n\nStudents explore Python, AI, Machine Learning, Generative AI and Computer Vision while building practical projects.',
           [
-            { label: '\ud83d\udccb View details', val: 'collect' },
-            { label: '\ud83c\udf9e Book a demo', val: 'collect' },
-            { label: '\ud83d\udcac Talk to a mentor', val: 'collect' },
+            { label: 'View Program', val: 'view_ai' },
+            { label: 'Talk to Our Team', val: 'collect' },
           ]
         );
       } else if (val === 'web' || val === 'cyber' || val === 'iot') {
         setSelectedCourse(val === 'web' ? 'Web Development' : val === 'cyber' ? 'Cybersecurity' : 'IoT & Robotics');
-        setUserPath('redirected_to_ai');
+        setUserPath('tech_track');
         setStep(2);
         botReply(
-          "That's a great area to explore! \ud83c\udf1f\n\nThis program is not live yet \u2014 coming soon.\n\nMeanwhile, many students start with AI/ML to build strong foundations early.\n\nWould you like to explore our LIVE AI/ML program?",
+          "Hands-on technology education delivered directly on campus, where students learn with Floyd mentors and build real technology projects.",
           [
-            { label: '\u2705 Yes, show me!', val: 'ai_redir' },
-            { label: '\u274c Not now', val: 'collect' },
+            { label: 'View Curriculum', val: 'view_ai' },
+            { label: 'Talk to Our Team', val: 'collect' },
           ]
         );
-      } else if (val === 'notsure') {
-        setSelectedCourse('Not Sure');
-        setUserPath('redirected_to_ai');
-        setStep(2);
-        botReply(
-          'No problem at all! \ud83d\ude0a\n\nWhat would you like your child to gain?',
-          [
-            { label: '\ud83d\udee0 Build real projects', val: 'ai_redir' },
-            { label: '\ud83d\ude80 Future-ready skills', val: 'ai_redir' },
-            { label: '\ud83d\udd0d Just exploring', val: 'ai_redir' },
-          ]
-        );
-      } else if (val === 'school') {
-        setSelectedCourse('School Partnership');
-        setUserPath('partnership_inquiry');
-        setStep(2);
-        botReply(
-          "Got it \ud83d\udc4b\n\nYou're looking for our school partnership program.\n\nThis chat is for student enrollments.\n\nYou can find 'Partner With Us' section on the top menu of the landing page.",
-          [
-            { label: '\ud83d\udd17 Open that page', val: 'open_page' },
-            { label: '\ud83e\udd1d Talk to our team', val: 'collect' },
-          ]
-        );
+      } else if (val === 'talk') {
+        setSelectedCourse('General Inquiry');
+        setUserPath('talk_team');
+        setStep(4);
+        botReply('To connect you with our team, please share your details: 📝');
       }
     } else if (step === 2) {
-      if (val === 'ai_redir') {
-        setSelectedCourse('AI & Machine Learning');
-        botReply(
-          'Excellent! \ud83d\udd25\n\nOur AI & Machine Learning program is currently LIVE.\n\nStudents build real systems like:\n\u2022 AI Face Recognition System\n\u2022 Spam Detection Models\n\u2022 Computer Vision Applications',
-          [
-            { label: '\ud83d\udccb View details', val: 'collect' },
-            { label: '\ud83c\udf9e Book a demo', val: 'collect' },
-            { label: '\ud83d\udcac Talk to a mentor', val: 'collect' },
-          ]
-        );
-      } else if (val === 'collect' || val === 'open_page') {
+      if (val === 'view_ai') {
+        window.location.href = '/course/1';
+      } else if (val === 'collect') {
         setStep(4);
-        botReply('To guide you better, could you share a few details? \ud83d\udcdd');
+        botReply('To connect you with our team, could you share a few details? 📝');
       }
     }
   };

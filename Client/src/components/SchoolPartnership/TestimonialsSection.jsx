@@ -56,16 +56,16 @@ const TestimonialsSection = () => {
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest mb-6"
             style={{ background: 'linear-gradient(135deg, rgba(108,99,255,0.1), rgba(16,185,129,0.1))', border: '1px solid rgba(108,99,255,0.2)', color: 'var(--accent-setu2)' }}>
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            FEEDBACK &amp; REVIEWS
+            FROM OUR SCHOOL COMMUNITY
           </span>
-          <h2 className="setu-heading font-extrabold text-white mb-5" style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.15 }}>
-            Hear from Our{' '}
+          <h2 className="setu-heading font-black text-white mb-5 uppercase tracking-tight" style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.15 }}>
+            HEAR IT FROM THE PEOPLE{' '}
             <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #6C63FF, #0ea5e9)' }}>
-              Partners
+              WHO EXPERIENCE FLOYD.
             </span>
           </h2>
-          <p className="setu-body text-slate-400 max-w-2xl mx-auto" style={{ fontSize: '1.05rem' }}>
-            Real feedback from principals, teachers, and students.
+          <p className="setu-body text-slate-400 max-w-2xl mx-auto text-sm md:text-base font-medium leading-relaxed">
+            Principals, teachers and students share what happens when technology learning moves from the textbook into the hands of students.
           </p>
         </motion.div>
 

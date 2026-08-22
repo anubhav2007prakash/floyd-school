@@ -123,14 +123,19 @@ const PartnershipStory = () => {
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-            OUR FOUR MONTH JOURNEY
+            THE FOUR MONTH JOURNEY
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4 leading-tight">
-            How The Four Month Program
-            <br className="hidden sm:block" /> Unfolds On Your Campus
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4 leading-tight uppercase">
+            FROM FIRST DISCOVERY{' '}
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ backgroundImage: 'linear-gradient(135deg, #6C63FF 0%, #0ea5e9 100%)' }}
+            >
+              TO REAL PROJECTS.
+            </span>
           </h2>
-          <p className="mx-auto max-w-2xl text-base text-slate-500 leading-relaxed">
-            From your zero cost trial week to student project delivery, here is what happens month by month.
+          <p className="mx-auto max-w-2xl text-base text-slate-500 leading-relaxed font-medium">
+            A structured four month learning experience designed to help students explore, learn, build and demonstrate their technology skills.
           </p>
         </motion.div>
 

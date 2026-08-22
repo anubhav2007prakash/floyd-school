@@ -8,21 +8,18 @@ const CYBER_IMG = '/images/courses/CYBER.png';
 export const FALLBACK_COURSES = [
     {
         _id: '1',
-        title: "Foundation of AI and Machine Learning",
-        image: AI_IMG,
+        title: "FOUNDATIONS OF AI & MACHINE LEARNING",
+        image: '/images/courses/ai_ml_robot.png',
         featured: true,
         icon: 'Cpu',
         status: 'published',
-        description: "Learn how AI actually works and build it yourself. From Python basics to real machine learning models and computer vision. No prior experience needed.",
-        detailedDescription: "Learn how AI actually works and build it yourself. From Python basics to real machine learning models and computer vision. No prior experience needed.",
+        description: "A hands on AI & Machine Learning program delivered on campus by Floyd mentors, with practical learning and real student projects.",
+        detailedDescription: "A hands on AI & Machine Learning program delivered on campus by Floyd mentors, with practical learning and real student projects.",
         color: "#2563EB",
-        rating: 4.9,
-        duration: "3 month",
-        price: 3999,
-        currency: "INR",
-        tags: ["AI", "Python", "ML"],
+        duration: "4 Months",
+        tags: ["AI", "Python", "ML", "Project Based"],
         live: true,
-        deliveryDetails: { inSchool: { bootcamp: "7 Day Deep Dive" } },
+        deliveryDetails: { inSchool: { bootcamp: "1 Day Immersion", program: "4 Month Guided Program" } },
         curriculum: [
             "Neural Network Architectures",
             "Natural Language Processing",
@@ -30,139 +27,106 @@ export const FALLBACK_COURSES = [
             "Reinforcement Learning"
         ],
         outcomes: [
-            "Build & Deploy LLMs",
-            "Optimize Inference Engines",
-            "Real time Computer Vision"
-        ],
-        registeredCount: 24,
-        totalSeats: 50,
-        prerequisites: "Basic Python knowledge suggested"
+            "Build & Deploy AI Models",
+            "Real World Student Projects",
+            "National Hackathon Representation"
+        ]
     },
     {
         _id: '2',
-        title: "Foundation of Web Development",
-        image: WEB_IMG,
+        title: "CODING & WEB DEVELOPMENT",
+        image: '/images/courses/WEB DEV.png',
         icon: 'Code',
         status: 'published',
-        description: "Engineer high performance full stack applications with scalable cloud infrastructure. Architect resilient, distributed systems using modern patterns and enterprise grade deployment pipelines.",
-        detailedDescription: "Architect the modern web. Learn to build resilient, distributed systems using React, Node.js, and advanced cloud patterns used by top tier tech companies.",
+        description: "A practical coding and web development program where students build interactive web applications and software tools from scratch.",
+        detailedDescription: "A practical coding and web development program where students build interactive web applications and software tools from scratch.",
         color: "#2563EB",
-        rating: 4.8,
-        duration: "3 month",
-        price: 1999,
-        currency: "INR",
-        tags: ["React", "Node", "Cloud"],
-        comingSoon: true,
-        deliveryDetails: { inSchool: { bootcamp: "UI/UX Mastery" } },
+        duration: "4 Months",
+        tags: ["Web Dev", "React", "JavaScript", "Project Based"],
+        deliveryDetails: { inSchool: { bootcamp: "1 Day Immersion", program: "4 Month Guided Program" } },
         curriculum: [
-            "Distributed System Design",
-            "High Performance Frontend",
-            "Microservices Architecture",
-            "CI/CD and Cloud Ops"
+            "Modern Web Architectures",
+            "Frontend Systems & UI Design",
+            "Backend APIs & Databases",
+            "Full Product Launch"
         ],
         outcomes: [
-            "Scalable System Design",
-            "Edge Computing Mastery",
-            "Full cycle Product Launch"
-        ],
-        registeredCount: 10,
-        totalSeats: 50,
-        prerequisites: "Familiarity with JS is helpful"
+            "Build Real Web Applications",
+            "Frontend & Backend Mastery",
+            "Live Project Portfolios"
+        ]
     },
     {
         _id: '3',
-        title: "Foundation of IoT and Robotics",
-        image: IOT_IMG,
+        title: "IOT & ROBOTICS",
+        image: '/images/courses/IOT.png',
         icon: 'Terminal',
         status: 'published',
-        description: "Bridge the gap between hardware and software with autonomous systems. Design, build, and program smart robotic networks from the circuit level to advanced high level control algorithms.",
-        detailedDescription: "Bridge the gap between code and physical reality. Build autonomous robots and smart IoT networks from the circuit level to high level control algorithms.",
+        description: "A hands on IoT and robotics program where students program microcontrollers, sensors, and build automated physical systems.",
+        detailedDescription: "A hands on IoT and robotics program where students program microcontrollers, sensors, and build automated physical systems.",
         color: "#2563EB",
-        rating: 4.7,
-        duration: "3 month",
-        price: 1999,
-        currency: "INR",
-        tags: ["Embedded", "C++", "Sensors"],
-        comingSoon: true,
-        deliveryDetails: { inSchool: { bootcamp: "Hardware Lab" } },
+        duration: "4 Months",
+        tags: ["Robotics", "IoT", "Sensors", "Project Based"],
+        deliveryDetails: { inSchool: { bootcamp: "1 Day Immersion", program: "4 Month Guided Program" } },
         curriculum: [
-            "Embedded C++ Programming",
-            "Robotic Kinematics & ROS",
-            "IoT Protocol Engineering",
-            "Sensor Fusion Algorithms"
+            "Microcontroller Programming",
+            "Sensor Networks & Telemetry",
+            "Automated Robotic Systems",
+            "Physical Computing Prototypes"
         ],
         outcomes: [
-            "Build Autonomous Drones",
-            "Smart City Infrastructure",
-            "Industrial Robot Control"
-        ],
-        registeredCount: 10,
-        totalSeats: 50,
-        prerequisites: "Logic and math fundamentals"
+            "Program Physical Robots",
+            "IoT Smart Systems",
+            "Hardware Innovation Showcases"
+        ]
     },
     {
         _id: '4',
-        title: "Foundation of Cyber Security",
-        image: CYBER_IMG,
+        title: "CYBERSECURITY & DIGITAL SAFETY",
+        image: '/images/courses/CYBER.png',
         icon: 'Shield',
         status: 'published',
-        description: "Become the shield of the digital world through threat analysis and zero trust protocols. Master offensive and defensive strategies to protect industrial networks and sensitive data infrastructures.",
-        detailedDescription: "Become the shield of the digital world. Master offensive and defensive security strategies, industrial network protection, and advanced threat hunting.",
+        description: "A comprehensive digital safety and cybersecurity program teaching students security fundamentals, ethical hacking principles, and network protection.",
+        detailedDescription: "A comprehensive digital safety and cybersecurity program teaching students security fundamentals, ethical hacking principles, and network protection.",
         color: "#2563EB",
-        rating: 4.9,
-        duration: "3 month",
-        price: 1999,
-        currency: "INR",
-        tags: ["SecOps", "Networking", "Hacking"],
-        comingSoon: true,
-        deliveryDetails: { inSchool: { bootcamp: "Cyber Simulation" } },
+        duration: "4 Months",
+        tags: ["Cybersecurity", "Network Safety", "Ethical Hacking", "Project Based"],
+        deliveryDetails: { inSchool: { bootcamp: "1 Day Immersion", program: "4 Month Guided Program" } },
         curriculum: [
-            "Ethical Hacking & Pentesting",
-            "Zero Trust Architecture",
-            "Cryptographic Engineering",
-            "Cloud Security Protocols"
+            "Network Architecture & Protocols",
+            "Digital Safety & Defense",
+            "Ethical Hacking Foundations",
+            "Security Threat Analysis"
         ],
         outcomes: [
-            "Incident Response Mastery",
-            "Secure System Architecture",
-            "Regulatory Compliance Lead"
-        ],
-        registeredCount: 10,
-        totalSeats: 50,
-        prerequisites: "Networking basics recommended"
+            "Secure System Defense",
+            "Network Protection",
+            "Cyber Safety Best Practices"
+        ]
     },
     {
         _id: '5',
-        title: "Floyd School Summer Builder Program",
-        image: CYBER_IMG,
+        title: "GENERATIVE AI & AI APPLICATIONS",
+        image: '/startup_media/photo_5.jpg',
         icon: 'Rocket',
         status: 'published',
-        description: "A high octane 30 day summer internship. From foundations of software development to building real AI powered applications with industry mentors.",
-        detailedDescription: "A high octane 30 day summer internship designed for students to transition from consumers to creators. Master the foundations of software development, build real world applications, and integrate cutting edge AI tools into your projects.",
+        description: "An interactive program exploring generative AI tools, prompt engineering, and intelligent application building for future innovators.",
+        detailedDescription: "An interactive program exploring generative AI tools, prompt engineering, and intelligent application building for future innovators.",
         color: "#2563EB",
-        rating: 5.0,
-        duration: "1 month",
-        price: 2499,
-        originalPrice: 4999,
-        currency: "INR",
-        tags: ["Summer Internship", "Project Based", "Software", "AI"],
-        live: true,
-        hideFromBatches: true,
-        deliveryDetails: { online: { tutor: "Live Mentorship", lectures: "Project Sessions" } },
+        duration: "4 Months",
+        tags: ["GenAI", "LLMs", "AI Apps", "Project Based"],
+        deliveryDetails: { inSchool: { bootcamp: "1 Day Immersion", program: "4 Month Guided Program" } },
         curriculum: [
-            "Foundations of Software Development",
-            "Building Real Applications",
-            "AI Tool & Smart Applications",
-            "Final Project & Demo Day"
+            "Generative AI Models & LLMs",
+            "Prompt Engineering & Workflows",
+            "Intelligent Application Building",
+            "Autonomous Agents"
         ],
         outcomes: [
-            "Summer Internship Certificate",
-            "Industry Ready Portfolio",
-            "AI Implementation Skills"
-        ],
-        registeredCount: 24,
-        totalSeats: 50,
-        prerequisites: "No prior coding experience required"
+            "Build Custom AI Tools",
+            "LLM Applications",
+            "Hands-on AI Products"
+        ]
     }
 ];
 

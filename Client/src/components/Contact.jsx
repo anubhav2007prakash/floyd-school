@@ -228,10 +228,10 @@ const Contact = () => {
                                     <FiMail className="text-2xl" />
                                 </div>
                                 <a
-                                    href="mailto:floydschoolhq@gmail.com"
+                                    href="mailto:info@floydschool.in"
                                     className="text-lg font-black text-blue-600 hover:text-slate-900 transition tracking-tight"
                                 >
-                                    <span className="text-blue-600">floydschoolhq</span>@gmail.com
+                                    <span className="text-blue-600">info</span>@floydschool.in
                                 </a>
                             </motion.div>
 

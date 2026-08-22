@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Calendar, Settings, PlayCircle } from 'lucide-react';
+import { Sparkles, Calendar, Settings, PlayCircle, Hammer, Award, Compass, Search } from 'lucide-react';
 
 const TIMELINE_STEPS = [
   {
     step: '01',
-    title: 'Partnership Inquiry',
-    description: 'Submit the form or call us. We schedule a briefing with your administration.',
-    icon: Sparkles,
+    badge: '01 DISCOVER',
+    title: 'DISCOVERY & ALIGNMENT',
+    description: "We understand your school's goals, existing computer lab facilities and student profile.",
+    icon: Search,
     color: '#6C63FF',
     glow: 'rgba(108,99,255,0.22)',
     gradient: 'linear-gradient(135deg, #6C63FF, #818cf8)',
@@ -14,8 +15,9 @@ const TIMELINE_STEPS = [
   },
   {
     step: '02',
-    title: 'On-Campus Free Trial',
-    description: '7-day free bootcamp at your campus. Experience our pedagogy and mentor quality firsthand.',
+    badge: '02 EXPERIENCE',
+    title: 'COMPLIMENTARY 1 DAY IMMERSION',
+    description: "Students and faculty experience Floyd School's hands on approach on campus.",
     icon: Calendar,
     color: '#0ea5e9',
     glow: 'rgba(14,165,233,0.22)',
@@ -24,30 +26,54 @@ const TIMELINE_STEPS = [
   },
   {
     step: '03',
-    title: 'Lab Design & Deployment',
-    description: 'Sign agreement, select modules. We install customized lab infrastructure.',
+    badge: '03 DESIGN',
+    title: 'PROGRAM SELECTION & PLANNING',
+    description: 'Choose the right technology domains, schedule and batch structure for your students.',
     icon: Settings,
-    color: '#f43f5e',
-    glow: 'rgba(244,63,94,0.22)',
-    gradient: 'linear-gradient(135deg, #f43f5e, #fb7185)',
-    bg: 'rgba(244,63,94,0.08)',
+    color: '#a855f7',
+    glow: 'rgba(168,85,247,0.22)',
+    gradient: 'linear-gradient(135deg, #a855f7, #c084fc)',
+    bg: 'rgba(168,85,247,0.08)',
   },
   {
     step: '04',
-    title: 'Live Lab Delivery',
-    description: 'Mentors commence weekly classes mapped to your timetable. Track via admin dashboard.',
+    badge: '04 LEARN',
+    title: 'MENTOR LED PROGRAM',
+    description: 'Trained Floyd mentors conduct regular hands on technology sessions in your school.',
     icon: PlayCircle,
     color: '#10b981',
     glow: 'rgba(16,185,129,0.22)',
     gradient: 'linear-gradient(135deg, #10b981, #34d399)',
     bg: 'rgba(16,185,129,0.08)',
   },
+  {
+    step: '05',
+    badge: '05 BUILD',
+    title: 'PROJECT DEVELOPMENT',
+    description: 'Students apply their learning to create, refine and document real world projects.',
+    icon: Hammer,
+    color: '#f59e0b',
+    glow: 'rgba(245,158,11,0.22)',
+    gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
+    bg: 'rgba(245,158,11,0.08)',
+  },
+  {
+    step: '06',
+    badge: '06 SHOWCASE',
+    title: 'SHOWCASE & CERTIFICATION',
+    description: 'Students present their work, participate in hackathons and receive Floyd certificates.',
+    icon: Award,
+    color: '#ec4899',
+    glow: 'rgba(236,72,153,0.22)',
+    gradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
+    bg: 'rgba(236,72,153,0.08)',
+  },
 ];
 
-const containerVariants = { hidden: {}, show: { transition: { staggerChildren: 0.12 } } };
+const containerVariants = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } };
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.97 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 25, scale: 0.97 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const GroupProjects = () => {
@@ -59,66 +85,65 @@ const GroupProjects = () => {
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[350px] h-[350px] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%)', filter: 'blur(50px)' }} />
 
-      <div className="max-w-[1200px] mx-auto relative z-10">
+      <div className="max-w-[1280px] mx-auto relative z-10">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-          className="text-center mb-20">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest mb-6"
-            style={{ background: 'linear-gradient(135deg, rgba(79,70,229,0.1), rgba(14,165,233,0.1))', border: '1px solid rgba(79,70,229,0.2)', color: 'var(--accent-setu2)' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-            PROCESS FLOW
+          className="text-center mb-16">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest mb-4 bg-indigo-50 border border-indigo-100 text-indigo-600 shadow-sm">
+            <Sparkles size={14} className="text-amber-500" />
+            PARTNERSHIP JOURNEY
           </span>
-          <h2 className="setu-heading font-extrabold text-slate-900 mb-5" style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.15 }}>
-            Simple Onboarding{' '}
+          <h2 className="setu-heading font-black text-slate-900 mb-4 uppercase tracking-tight" style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.15 }}>
+            FROM FIRST CONVERSATION{' '}
             <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #6C63FF, #0ea5e9)' }}>
-              Timeline
+              TO FIRST CLASS.
             </span>
           </h2>
-          <p className="setu-body text-slate-500 max-w-2xl mx-auto" style={{ fontSize: '1.05rem' }}>
-            We handle 100% of logistics so your school starts without friction.
+          <p className="setu-body text-slate-600 max-w-2xl mx-auto text-sm md:text-base font-medium leading-relaxed">
+            A simple, structured process that helps your school introduce practical technology education without operational complexity.
           </p>
         </motion.div>
 
-        {/* Cards */}
+        {/* 6 Step Cards Grid */}
         <motion.div variants={containerVariants} initial="hidden" whileInView="show" viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
 
-          {/* Connector line (desktop) */}
-          <div className="absolute top-10 left-10 right-10 h-px hidden lg:block pointer-events-none"
-            style={{ background: 'linear-gradient(90deg, #6C63FF, #0ea5e9, #f43f5e, #10b981)' }} />
+          {TIMELINE_STEPS.map((step) => {
+            const Icon = step.icon;
+            return (
+              <motion.div key={step.step} variants={cardVariants}
+                whileHover={{ y: -6, boxShadow: `0 0 0 1px ${step.color}25, 0 16px 40px ${step.glow}` }}
+                className="group relative z-10 p-7 rounded-3xl flex flex-col bg-slate-50 border border-slate-200/80 overflow-hidden hover:bg-white transition-all duration-300"
+              >
+                {/* Hover wash */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"
+                  style={{ background: step.bg }} />
 
-          {TIMELINE_STEPS.map((step, idx) => (
-            <motion.div key={step.step} variants={cardVariants}
-              whileHover={{ y: -6, boxShadow: `0 0 0 1px ${step.color}25, 0 16px 40px ${step.glow}` }}
-              className="group relative z-10 p-6 rounded-3xl flex flex-col bg-white overflow-hidden"
-              style={{ border: '1px solid rgba(148,163,184,0.18)', transition: 'box-shadow 0.3s, transform 0.3s' }}
-            >
-              {/* Hover wash */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"
-                style={{ background: step.bg }} />
+                <div className="relative z-10 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700 shadow-sm">
+                      {step.badge}
+                    </span>
+                    <div
+                      className="w-10 h-10 rounded-2xl flex items-center justify-center text-white shadow-md"
+                      style={{ background: step.gradient }}
+                    >
+                      <Icon size={18} />
+                    </div>
+                  </div>
 
-              <div className="relative z-10 space-y-4">
-                {/* Step number + Icon */}
-                <div className="flex items-center justify-between">
-                  <motion.div whileHover={{ scale: 1.12, rotate: -8 }} transition={{ duration: 0.3 }}
-                    className="w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ background: step.gradient, boxShadow: `0 6px 18px ${step.glow}` }}>
-                    <step.icon size={22} className="text-white" />
-                  </motion.div>
-                  <span className="setu-heading font-black text-3xl" style={{ color: `${step.color}15` }}>
-                    {step.step}
-                  </span>
+                  <div>
+                    <h3 className="text-base font-black text-slate-900 mb-2 uppercase tracking-wide">
+                      {step.title}
+                    </h3>
+                    <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-
-                <h3 className="setu-heading font-bold text-slate-900 text-lg">{step.title}</h3>
-                <p className="setu-body text-slate-500 text-xs leading-relaxed">{step.description}</p>
-              </div>
-
-              {/* Bottom accent bar (grows on hover) */}
-              <div className="mt-6 h-0.5 w-0 group-hover:w-full transition-all duration-500 rounded-full"
-                style={{ background: step.gradient }} />
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

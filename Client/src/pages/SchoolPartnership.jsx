@@ -4,7 +4,7 @@ import Lenis from 'lenis';
 import SEO from '../components/common/SEO';
 import PartnershipHero from '../components/SchoolPartnership/PartnershipHero';
 import BootcampGallery from '../components/SchoolPartnership/BootcampGallery';
-import AnnouncementTicker from '../components/SchoolPartnership/AnnouncementTicker';
+
 import MeetInnovators from '../components/SchoolPartnership/MeetInnovators';
 import LmsSection from '../components/SchoolPartnership/LmsSection';
 import SchoolEcosystemOrbit from '../components/SchoolPartnership/SchoolEcosystemOrbit';
@@ -12,6 +12,9 @@ import OurBatchesSection from '../components/SchoolPartnership/OurBatchesSection
 import ProgramRoadmap from '../components/SchoolPartnership/ProgramRoadmap';
 import PartnershipStory from '../components/SchoolPartnership/PartnershipStory';
 import TheProblem from '../components/SchoolPartnership/TheProblem';
+import StudentPhilosophy from '../components/SchoolPartnership/StudentPhilosophy';
+import SchoolBenefits from '../components/SchoolPartnership/SchoolBenefits';
+import StudentBenefits from '../components/SchoolPartnership/StudentBenefits';
 import TestimonialsSection from '../components/SchoolPartnership/TestimonialsSection';
 import SuccessStories from '../components/SuccessStories';
 import StudentProjects from '../components/SchoolPartnership/StudentProjects';
@@ -47,8 +50,8 @@ const SchoolPartnership = () => {
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       <SEO
-        title="School Partnerships — Floyd School | Future-Ready Tech Labs"
-        description="Partner with Floyd School to deploy AI, Coding, Robotics, and Entrepreneurship education on your campus. Fully managed labs, certified mentors, and NEP-aligned modules."
+        title="School Partnerships — Floyd School of Technology"
+        description="Hands on technology education for Classes 6 to 12. Partner with Floyd School for expert-led AI, Coding, Robotics, and Cybersecurity programs."
       />
 
       {/* 1. Full-screen Hero */}
@@ -57,8 +60,6 @@ const SchoolPartnership = () => {
       {/* 1b. Meet Our Innovators photo gallery */}
       <MeetInnovators />
 
-      {/* 2b. Vibrant Announcement Ticker */}
-      <AnnouncementTicker />
 
       {/* 3c. Trusted By Schools logo marquee section */}
       <BootcampGallery />
@@ -75,14 +76,23 @@ const SchoolPartnership = () => {
       {/* 4. Why Us */}
       <TheProblem />
 
+      {/* 4b. For School Leaders */}
+      <SchoolBenefits />
+
       {/* 3. Learning Management System */}
       <LmsSection />
 
       {/* 4c. Program Roadmap Timeline */}
       <ProgramRoadmap />
 
+      {/* 4d. The Floyd Approach: Action Over Observation */}
+      <StudentPhilosophy />
+
       {/* 5. Student Projects Showcase */}
       <StudentProjects />
+
+      {/* 5b. What Students Gain */}
+      <StudentBenefits />
 
       {/* 8. Testimonials */}
       <TestimonialsSection />

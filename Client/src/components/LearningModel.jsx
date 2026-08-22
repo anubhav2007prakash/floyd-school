@@ -8,37 +8,37 @@ const STAGES = [
     {
         id: 'ignite',
         title: 'Ignite',
-        subtitle: '7-Day offline Bootcamp',
-        description: 'Students discover coding through fun challenges and mini projects. A high-energy start to their tech journey.',
+        subtitle: '1-Day Technology Immersion',
+        description: 'Students discover emerging technology through hands on challenges and live demos. A high-energy start to their tech journey.',
         icon: Zap,
-        metrics: ['7 Days Intense', 'Fun Challenges', 'Mini Projects'],
+        metrics: ['1-Day Immersion', 'Interactive Challenges', 'Hands-on Demos'],
         mockup: 'ignite'
     },
     {
         id: 'learn',
         title: 'Learn',
-        subtitle: '90-Day Guided Program',
-        description: 'Live classes 3 times a week building strong coding fundamentals. A 3-month comprehensive path to mastery.',
+        subtitle: '4-Month Guided Program',
+        description: 'Structured mentor-led sessions building strong foundations in AI, Coding, Robotics and Cybersecurity.',
         icon: Brain,
-        metrics: ['3 Months Path', '3x Classes/Week', 'Fundamentals'],
+        metrics: ['4-Month Program', 'Mentor-Led Sessions', 'Core Foundations'],
         mockup: 'learn'
     },
     {
         id: 'build',
         title: 'Build',
         subtitle: 'Projects & Hackathons',
-        description: 'Students apply their skills by building real coding projects. After completion of course we organise hackathons for students.',
+        description: 'Students apply their skills by building real working projects. After completion of course modules we organise hackathons for students.',
         icon: Code2,
-        metrics: ['Real-world Apps', 'Industrial Projects', 'Hackathons'],
+        metrics: ['Real-world Projects', 'Interactive Labs', 'Hackathons'],
         mockup: 'build'
     },
     {
         id: 'showcase',
         title: 'Showcase',
         subtitle: 'Certification & Recognition',
-        description: 'Students present their work and earn completion certificates. Building their identity as young engineers.',
+        description: 'Students present their work and earn verified certificates from Floyd School recognizing their practical accomplishments.',
         icon: Award,
-        metrics: ['Global Certificate', 'Public Portfolio', 'Recognition'],
+        metrics: ['Verified Certificate', 'Student Portfolio', 'Recognition'],
         mockup: 'showcase'
     }
 ];
@@ -56,16 +56,16 @@ const MockupDisplay = ({ id }) => {
                                     <Zap size={18} />
                                 </div>
                                 <div>
-                                    <div className="text-[15px] font-bold text-white tracking-tight">Bootcamp Explorer</div>
-                                    <div className="text-[10px] text-slate-500 font-semibold uppercase tracking-widest">7 Days to Logic Mastery</div>
+                                    <div className="text-[15px] font-bold text-white tracking-tight">Technology Immersion</div>
+                                    <div className="text-[10px] text-slate-500 font-semibold uppercase tracking-widest">1 Day to Discovery</div>
                                 </div>
                             </div>
                         </div>
                         <div className="space-y-3">
                             {[
-                                { day: 'Day 1', task: 'Computational Thinking', status: 'Completed' },
-                                { day: 'Day 3', task: 'Logic Gates & Circuits', status: 'Live' },
-                                { day: 'Day 7', task: 'First Mini-Engine build', status: 'Locked' }
+                                { day: 'Phase 1', task: 'Interactive Tech Demo', status: 'Completed' },
+                                { day: 'Phase 2', task: 'Hands-on Building Activity', status: 'Live' },
+                                { day: 'Phase 3', task: 'Student Discovery & Showcase', status: 'Next' }
                             ].map((item, i) => (
                                 <div key={i} className={`p-4 rounded-xl border flex items-center justify-between transition-colors ${item.status === 'Live' ? 'bg-blue-500/10 border-blue-500/30' : 'bg-white/[0.02] border-white/5 opacity-50'}`}>
                                     <div className="flex flex-col">
@@ -88,7 +88,7 @@ const MockupDisplay = ({ id }) => {
                                 </div>
                                 <div className="text-[15px] font-bold text-white tracking-tight">Path to Engineer</div>
                             </div>
-                            <div className="px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-[9px] font-bold text-amber-400 uppercase tracking-widest">3 Months</div>
+                            <div className="px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-[9px] font-bold text-amber-400 uppercase tracking-widest">4 Months</div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             {[

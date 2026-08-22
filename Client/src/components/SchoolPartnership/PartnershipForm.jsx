@@ -4,38 +4,39 @@ import api from '../../api/axios';
 import { Phone, Mail, Instagram, CheckCircle2, ArrowRight, Sparkles, HelpCircle } from 'lucide-react';
 
 const DOMAINS = [
-  'Foundations of Web Development',
   'AI & Machine Learning',
+  'Coding & Web Development',
   'Cybersecurity',
   'IoT & Robotics',
-  'Entrepreneurship & Startup',
+  'Generative AI',
+  'Innovation & STEM',
   'Career Readiness',
-  'Custom Curriculum',
+  'Custom Program',
 ];
 
 const CONTACT_CHANNELS = [
   {
     icon: Phone,
-    label: 'Call Us',
-    value: '+91-8368801220',
-    href: 'tel:+91-8368801220',
+    label: 'Phone',
+    value: '+91 8368801220',
+    href: 'tel:+918368801220',
   },
   {
     icon: Mail,
     label: 'Email',
-    value: 'floydschoolhq@gmail.com',
-    href: 'mailto:floydschoolhq@gmail.com',
+    value: 'info@floydschool.in',
+    href: 'mailto:info@floydschool.in',
   },
   {
     icon: Instagram,
     label: 'Instagram',
-    value: '@floydschool.in',
-    href: 'https://instagram.com/floydschool.in',
+    value: '@floydschoolhq',
+    href: 'https://instagram.com/floydschoolhq',
   },
 ];
 
 const QUICK_INFO = [
-  { label: 'For Schools', value: 'Classes 7 to 12' },
+  { label: 'For Schools', value: 'Classes 6 to 12' },
   { label: 'Batch Size', value: '25 to 100 Students' },
   { label: 'Response Time', value: 'Within 24 Hours' },
 ];
@@ -47,6 +48,7 @@ const PartnershipForm = () => {
     designation: '',
     phone: '',
     city: '',
+    classes: 'Classes 6 to 12',
     domain: DOMAINS[0],
     students: '',
     requirements: '',
@@ -58,8 +60,8 @@ const PartnershipForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.schoolName || !formData.contactPerson || !formData.phone) {
-      alert('Please fill in School Name, Contact Person, and Phone Number.');
+    if (!formData.schoolName || !formData.contactPerson || !formData.phone || !formData.designation || !formData.city) {
+      alert('Please fill in all required fields (School Name, Contact Person, Designation, Phone, City).');
       return;
     }
     setIsSubmitting(true);
@@ -67,7 +69,7 @@ const PartnershipForm = () => {
       const response = await api.post('/school-partnership/lead', formData);
       if (response.data.success) {
         setIsSubmitted(true);
-        setFormData({ schoolName: '', contactPerson: '', designation: '', phone: '', city: '', domain: DOMAINS[0], students: '', requirements: '' });
+        setFormData({ schoolName: '', contactPerson: '', designation: '', phone: '', city: '', classes: 'Classes 6 to 12', domain: DOMAINS[0], students: '', requirements: '' });
       }
     } catch {
       setIsSubmitted(true);
@@ -121,21 +123,21 @@ const PartnershipForm = () => {
             <div className="relative z-10 max-w-3xl mx-auto">
               <span className="inline-flex items-center gap-2 px-4.5 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-[0.25em] mb-8 bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 shadow-[0_0_20px_rgba(99,102,241,0.25)]">
                 <Sparkles size={14} className="text-amber-400" />
-                GET STARTED TODAY
+                GET STARTED WITH FLOYD
               </span>
 
               <h2
-                className="setu-heading font-black text-white mb-6 leading-tight"
+                className="setu-heading font-black text-white mb-6 uppercase tracking-tight"
                 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', lineHeight: 1.08 }}
               >
-                Let's build the future of{' '}
+                GIVE STUDENTS THE{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-indigo-200 to-amber-300">
-                  education together
+                  OPPORTUNITY TO BUILD.
                 </span>
               </h2>
 
-              <p className="setu-body text-slate-300 max-w-xl mx-auto mb-10 text-base sm:text-lg font-medium leading-relaxed">
-                Start with a free 7 day campus trial. Zero risk, real results.
+              <p className="setu-body text-slate-300 max-w-xl mx-auto mb-8 text-base sm:text-lg font-medium leading-relaxed">
+                Begin with a complimentary 1 day technology immersion and experience Floyd School's hands on approach on your campus.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -156,9 +158,13 @@ const PartnershipForm = () => {
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-9 py-4 rounded-full setu-body text-sm sm:text-base font-bold text-emerald-300 border border-emerald-500/40 bg-emerald-500/10 shadow-[0_8px_25px_rgba(16,185,129,0.15)] transition-all"
                 >
-                  Talk via WhatsApp
+                  Talk to Floyd School
                 </motion.a>
               </div>
+
+              <p className="text-xs text-slate-400 font-semibold mt-6 uppercase tracking-wider">
+                Designed for Classes 6 to 12
+              </p>
             </div>
           </motion.div>
         </div>
@@ -214,13 +220,13 @@ const PartnershipForm = () => {
                 {/* Title & Eyebrow */}
                 <div>
                   <span className="inline-block px-3.5 py-1.5 rounded-full setu-body text-[11px] font-bold uppercase tracking-widest text-[var(--accent-setu2)] bg-[var(--accent-setu2)]/15 mb-4 border border-[var(--accent-setu2)]/30">
-                    PARTNERSHIP INQUIRY
+                    SCHOOL PARTNERSHIP
                   </span>
-                  <h2 className="setu-heading font-extrabold text-slate-900 leading-tight mb-3" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}>
-                    Ready to partner with us?
+                  <h2 className="setu-heading font-black text-slate-900 leading-tight mb-3 uppercase tracking-tight" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>
+                    LET'S EXPLORE WHAT FLOYD CAN BUILD WITH YOUR SCHOOL.
                   </h2>
-                  <p className="setu-body text-slate-600 text-base font-medium">
-                    Our regional team responds within 24 hours.
+                  <p className="setu-body text-slate-600 text-sm md:text-base font-medium leading-relaxed">
+                    Tell us a little about your school and your students. Our team will understand your requirements and help you identify the right starting point.
                   </p>
                 </div>
 
@@ -235,9 +241,14 @@ const PartnershipForm = () => {
                 </div>
 
                 {/* Contact Channels */}
-                <div className="p-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-[var(--accent-setu2)]/15 space-y-3 shadow-sm">
-                  <div className="setu-body text-xs font-bold uppercase tracking-wider text-slate-500">Contact Channels</div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div className="p-5 rounded-2xl bg-white/80 backdrop-blur-sm border border-[var(--accent-setu2)]/15 space-y-3 shadow-sm">
+                  <div className="setu-heading text-xs sm:text-sm font-black uppercase tracking-wider text-slate-900">
+                    LET'S START WITH A CONVERSATION.
+                  </div>
+                  <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                    Whether you are a school leader, teacher, parent or student, we would love to hear from you.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
                     {CONTACT_CHANNELS.map((ch) => (
                       <a
                         key={ch.label}
@@ -246,7 +257,7 @@ const PartnershipForm = () => {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 group p-2 rounded-xl hover:bg-[#EF8E80]/10 transition-colors"
                       >
-                        <div className="w-7 h-7 rounded-lg bg-[var(--accent-setu2)]/15 flex items-center justify-center text-[var(--accent-setu2)]">
+                        <div className="w-7 h-7 rounded-lg bg-[var(--accent-setu2)]/15 flex items-center justify-center text-[var(--accent-setu2)] flex-shrink-0">
                           <ch.icon size={14} />
                         </div>
                         <div className="truncate">
@@ -258,7 +269,7 @@ const PartnershipForm = () => {
                   </div>
                 </div>
 
-                {/* Vector Person Graphic (Matching the photo layout) */}
+                {/* Vector Person Graphic */}
                 <div className="relative pt-4 flex items-end">
                   <div className="relative">
                     <img
@@ -278,7 +289,7 @@ const PartnershipForm = () => {
 
               </div>
 
-              {/* ── Right Column: Floating White Card Form (Exact photo style) ── */}
+              {/* ── Right Column: Floating White Card Form ── */}
               <div className="lg:col-span-7">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.98 }}
@@ -304,7 +315,7 @@ const PartnershipForm = () => {
                           You're on the list!
                         </h3>
                         <p className="setu-body text-slate-500 mb-6 max-w-sm text-sm">
-                          Your partnership request has been submitted. Our regional team will contact you within 24 hours.
+                          Your partnership request has been submitted. Our team will contact you within 24 hours.
                         </p>
                         <button
                           onClick={() => setIsSubmitted(false)}
@@ -360,14 +371,15 @@ const PartnershipForm = () => {
                           {/* Designation */}
                           <div>
                             <label className="block setu-body text-xs font-bold text-slate-700 mb-1.5">
-                              Designation
+                              Designation *
                             </label>
                             <input
                               name="designation"
                               type="text"
+                              required
                               value={formData.designation}
                               onChange={handleChange}
-                              placeholder="Your designation"
+                              placeholder="e.g. Principal / Director / CS HOD"
                               className={inputClass}
                               style={inputStyle}
                             />
@@ -393,11 +405,12 @@ const PartnershipForm = () => {
                           {/* City */}
                           <div>
                             <label className="block setu-body text-xs font-bold text-slate-700 mb-1.5">
-                              City
+                              City *
                             </label>
                             <input
                               name="city"
                               type="text"
+                              required
                               value={formData.city}
                               onChange={handleChange}
                               placeholder="Your city"
@@ -406,10 +419,45 @@ const PartnershipForm = () => {
                             />
                           </div>
 
-                          {/* Preferred Domain */}
+                          {/* Classes */}
                           <div>
                             <label className="block setu-body text-xs font-bold text-slate-700 mb-1.5">
-                              Preferred Domain
+                              Classes
+                            </label>
+                            <select
+                              name="classes"
+                              value={formData.classes}
+                              onChange={handleChange}
+                              className={inputClass}
+                              style={{ ...inputStyle, cursor: 'pointer' }}
+                            >
+                              <option value="Classes 6 to 12">Classes 6 to 12 (All)</option>
+                              <option value="Classes 6 to 8">Classes 6 to 8 (Middle School)</option>
+                              <option value="Classes 9 to 10">Classes 9 to 10 (Secondary)</option>
+                              <option value="Classes 11 to 12">Classes 11 to 12 (Senior Secondary)</option>
+                            </select>
+                          </div>
+
+                          {/* Approx Students */}
+                          <div>
+                            <label className="block setu-body text-xs font-bold text-slate-700 mb-1.5">
+                              Approximate Students
+                            </label>
+                            <input
+                              name="students"
+                              type="number"
+                              value={formData.students}
+                              onChange={handleChange}
+                              placeholder="e.g. 50, 100, 200"
+                              className={inputClass}
+                              style={inputStyle}
+                            />
+                          </div>
+
+                          {/* Areas of Interest */}
+                          <div className="md:col-span-2">
+                            <label className="block setu-body text-xs font-bold text-slate-700 mb-1.5">
+                              Areas of Interest
                             </label>
                             <select
                               name="domain"
@@ -426,40 +474,24 @@ const PartnershipForm = () => {
                             </select>
                           </div>
 
-                          {/* Approx Students */}
-                          <div>
-                            <label className="block setu-body text-xs font-bold text-slate-700 mb-1.5">
-                              Approx. Students
-                            </label>
-                            <input
-                              name="students"
-                              type="number"
-                              value={formData.students}
-                              onChange={handleChange}
-                              placeholder="Number of students"
-                              className={inputClass}
-                              style={inputStyle}
-                            />
-                          </div>
-
-                          {/* Specific Requirements */}
+                          {/* Tell Us About Your Requirements */}
                           <div className="md:col-span-2">
                             <label className="block setu-body text-xs font-bold text-slate-700 mb-1.5">
-                              Specific Requirements
+                              Tell Us About Your Requirements
                             </label>
                             <textarea
                               name="requirements"
                               rows={3}
                               value={formData.requirements}
                               onChange={handleChange}
-                              placeholder="Any specific requirements or questions..."
+                              placeholder="Tell us about your school's goals, existing lab setup, or specific programs of interest..."
                               className={`${inputClass} resize-none`}
                               style={inputStyle}
                             />
                           </div>
                         </div>
 
-                        {/* Coral / Salmon Peach Button (as in photo) */}
+                        {/* Submit Button */}
                         <div className="pt-2">
                           <motion.button
                             type="submit"
@@ -478,7 +510,7 @@ const PartnershipForm = () => {
                               </>
                             ) : (
                               <>
-                                Submit Partnership Request
+                                Request a Discovery Session
                                 <ArrowRight size={16} />
                               </>
                             )}

@@ -4,73 +4,74 @@ import { ChevronLeft, ChevronRight, CheckCircle2, User, BookOpen, BarChart3, Clo
 
 const LMS_CARDS = [
   {
-    id: 'live-classes',
+    id: 'live-sessions',
     title: 'Live Interactive Sessions',
     image: '/images/lms/live_session_student.png',
     tag: 'LIVE SESSIONS',
     color: '#3B82F6',
   },
   {
-    id: 'mentor-portal',
-    title: 'Mentor Testing & Scoring',
-    image: '/images/lms/mentor_broadcast_portal.png',
-    tag: 'MENTOR PORTAL',
-    color: '#8B5CF6',
-  },
-  {
-    id: 'curriculum-delivery',
-    title: 'Modular AI & ML Curriculum',
-    image: '/images/lms/interactive_ml_session.png',
-    tag: 'HANDS-ON LABS',
-    color: '#10B981',
-  },
-  {
-    id: 'dashboard',
+    id: 'student-dashboard',
     title: 'Student Dashboard',
     mockupType: 'dashboard',
-    color: '#3B82F6',
-  },
-  {
-    id: 'courses',
-    title: 'My Courses',
-    mockupType: 'courses',
+    tag: 'STUDENT DASHBOARD',
     color: '#8B5CF6',
   },
   {
-    id: 'quiz',
-    title: 'Quiz Analytics',
-    mockupType: 'quiz',
+    id: 'project-workspace',
+    title: 'Project Workspace',
+    mockupType: 'courses',
+    tag: 'PROJECT WORKSPACE',
     color: '#10B981',
   },
   {
-    id: 'session',
-    title: 'Session Reports',
-    mockupType: 'session',
+    id: 'assessments',
+    title: 'Assessments & Quizzes',
+    mockupType: 'quiz',
+    tag: 'ASSESSMENTS',
     color: '#00D4FF',
   },
   {
-    id: 'progress',
-    title: 'Student Progress',
-    mockupType: 'progress',
-    color: '#F59E0B',
-  },
-  {
-    id: 'teacher',
-    title: 'Teacher Portal',
-    mockupType: 'teacher',
+    id: 'mentor-support',
+    title: 'Mentor Support & Q&A Hub',
+    mockupType: 'qa',
+    tag: 'MENTOR SUPPORT',
     color: '#EC4899',
   },
   {
-    id: 'qa',
-    title: 'Q&A Hub',
-    mockupType: 'qa',
-    color: '#14B8A6',
+    id: 'progress-insights',
+    title: 'Progress Insights & Reports',
+    mockupType: 'progress',
+    tag: 'PROGRESS INSIGHTS',
+    color: '#F59E0B',
   },
   {
-    id: 'referrals',
-    title: 'Student Referrals',
-    mockupType: 'referrals',
-    color: '#FB7185',
+    id: 'admin-analytics',
+    title: 'Platform Analytics',
+    mockupType: 'adminAnalytics',
+    tag: 'ADMIN PORTAL',
+    color: '#6366F1',
+  },
+  {
+    id: 'admin-broadcast',
+    title: 'Global Broadcast',
+    mockupType: 'adminBroadcast',
+    tag: 'ADMIN PORTAL',
+    color: '#EC4899',
+  },
+  {
+    id: 'admin-users',
+    title: 'User Account Management',
+    mockupType: 'adminUsers',
+    tag: 'ADMIN PORTAL',
+    color: '#0EA5E9',
+  },
+  {
+    id: 'admin-settings',
+    title: 'System Settings',
+    mockupType: 'adminSettings',
+    tag: 'ADMIN PORTAL',
+    color: '#10B981',
   },
 ];
 
@@ -343,18 +344,247 @@ const MockupStudentReferrals = () => (
   </div>
 );
 
+/* ── Admin Portal Mockups ── */
+const AdminSidebar = ({ active }) => (
+  <div className="w-[110px] shrink-0 bg-white border-r border-slate-100 flex flex-col py-2 px-1.5 gap-0.5">
+    <div className="flex items-center gap-1.5 px-1.5 py-2 mb-1">
+      <span className="font-black text-[9px] text-slate-900 tracking-tight leading-none">FLOYD SCHOOL</span>
+      <span className="text-[7px] font-bold text-indigo-600 bg-indigo-50 px-1 rounded">Admin</span>
+    </div>
+    {['Analytics','User Governance','Attendance Software','Access Requests','Student Registrations','Guest Details','Courses','Lead Intel','Chatbot Leads','School Partners','Offline Schools','Hackathon Leads','Success Engine','Live Monitor','Recordings','Payments','Broadcast','System Settings'].map((item) => (
+      <div key={item} className={`px-1.5 py-[3px] rounded text-[7px] font-semibold truncate ${
+        item === active ? 'bg-slate-900 text-white' : 'text-slate-500 hover:bg-slate-50'
+      }`}>{item}</div>
+    ))}
+    <div className="mt-auto px-1.5 py-1">
+      <div className="text-[7px] font-bold text-rose-500">→ Sign Out</div>
+    </div>
+  </div>
+);
+
+const AdminTopBar = ({ page }) => (
+  <div className="h-8 bg-white border-b border-slate-100 flex items-center justify-between px-2 shrink-0">
+    <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-full px-2 py-0.5">
+      <span className="text-[7px] text-slate-400">🔍</span>
+      <span className="text-[7px] text-slate-400">Search platform...</span>
+    </div>
+    <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        <span className="text-[7px] font-bold text-emerald-700">⚡ Latency: 24ms</span>
+      </div>
+      <div className="text-right">
+        <div className="text-[7px] font-bold text-slate-800">Abhay Admin</div>
+        <div className="text-[6px] text-slate-400">Primary Controller</div>
+      </div>
+      <div className="w-5 h-5 rounded-full bg-indigo-600 flex items-center justify-center text-white text-[7px] font-bold">O</div>
+    </div>
+  </div>
+);
+
+const MockupAdminAnalytics = () => (
+  <div className="w-full h-full bg-slate-50 flex font-sans text-[9px] select-none overflow-hidden">
+    <AdminSidebar active="Analytics" />
+    <div className="flex-1 flex flex-col overflow-hidden">
+      <AdminTopBar />
+      <div className="flex-1 p-2.5 overflow-hidden space-y-2">
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="font-black text-[13px] text-slate-900">Platform <span className="text-indigo-600">Analytics</span></div>
+            <div className="text-[7px] text-slate-400 uppercase tracking-widest font-bold">Global System Performance & User Growth Matrix</div>
+          </div>
+          <span className="text-[7px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">● LIVE PLATFORM FEED</span>
+        </div>
+        <div className="grid grid-cols-4 gap-1.5">
+          {[
+            { icon: '👤', label: 'TOTAL USERS', val: '33', pct: '+12%', color: '#6366F1' },
+            { icon: '$', label: 'TOTAL ENROLLMENTS', val: '72', pct: '+8%', color: '#10B981' },
+            { icon: '⚡', label: 'ACTIVE STUDENTS', val: '22', pct: '+24%', color: '#F59E0B' },
+            { icon: '🔧', label: 'PENDING SUPPORT', val: '9', pct: '-5%', color: '#EF4444' },
+          ].map((s) => (
+            <div key={s.label} className="bg-white rounded-xl border border-slate-100 p-2 flex flex-col gap-1 shadow-sm">
+              <div className="flex justify-between items-center">
+                <span className="text-base">{s.icon}</span>
+                <span className={`text-[7px] font-bold ${s.pct.startsWith('+') ? 'text-emerald-600' : 'text-rose-500'}`}>{s.pct}</span>
+              </div>
+              <div className="text-[6px] font-bold text-slate-400 uppercase tracking-wider">{s.label}</div>
+              <div className="text-xl font-black" style={{ color: s.color }}>{s.val}</div>
+            </div>
+          ))}
+        </div>
+        <div className="bg-white rounded-xl border border-slate-100 p-2 shadow-sm">
+          <div className="text-[8px] font-black text-slate-800 mb-1.5">📈 New Signups (Last 7 Days)</div>
+          <div className="flex items-end gap-1 h-12">
+            {[55, 75, 60, 90, 70, 80, 45].map((h, i) => (
+              <div key={i} className="flex-1 rounded-t-sm" style={{ height: `${h}%`, background: i === 1 || i === 3 ? '#6366F1' : '#C7D2FE' }} />
+            ))}
+          </div>
+          <div className="flex justify-between mt-1">
+            {['DAY 1','DAY 2','DAY 3','DAY 4','DAY 5','DAY 6','DAY 7'].map(d => (
+              <span key={d} className="text-[6px] text-slate-400">{d}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const MockupAdminBroadcast = () => (
+  <div className="w-full h-full bg-slate-50 flex font-sans text-[9px] select-none overflow-hidden">
+    <AdminSidebar active="Broadcast" />
+    <div className="flex-1 flex flex-col overflow-hidden">
+      <AdminTopBar />
+      <div className="flex-1 p-2.5 overflow-hidden">
+        <div className="text-center mb-2">
+          <div className="font-black text-[14px] text-slate-900">Global <span className="text-indigo-600">Broadcast</span></div>
+          <div className="text-[7px] text-slate-400">Send platform-wide alerts and announcements to students, mentors, or all users.</div>
+        </div>
+        <div className="bg-white rounded-xl border border-slate-100 p-2.5 shadow-sm space-y-2">
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <div className="text-[7px] font-bold text-slate-600 mb-1">Target Audience</div>
+              <div className="flex gap-1">
+                {['GLOBAL','STUDENTS','MENTORS'].map((a, i) => (
+                  <div key={a} className={`px-1.5 py-0.5 rounded text-[6px] font-bold flex flex-col items-center gap-0.5 border ${
+                    i === 0 ? 'bg-indigo-50 border-indigo-300 text-indigo-700' : 'border-slate-200 text-slate-500'
+                  }`}>
+                    <span>{a === 'GLOBAL' ? '🌐' : a === 'STUDENTS' ? '🎓' : '💬'}</span>
+                    <span>{a}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="text-[7px] font-bold text-slate-600 mb-1">Alert Level</div>
+              <div className="flex gap-1">
+                {['INFO','WARNING','SUCCESS'].map((l, i) => (
+                  <div key={l} className={`px-1.5 py-0.5 rounded text-[6px] font-bold ${
+                    i === 0 ? 'bg-slate-900 text-white' : 'border border-slate-200 text-slate-500'
+                  }`}>{l}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="text-[7px] font-bold text-slate-600 mb-0.5">Broadcast Title</div>
+            <div className="w-full border border-slate-200 rounded-lg px-2 py-1 text-[7px] text-slate-400">e.g. Schedule Update for AI Workshop</div>
+          </div>
+          <div>
+            <div className="text-[7px] font-bold text-slate-600 mb-0.5">Message Content</div>
+            <div className="w-full border border-slate-200 rounded-lg px-2 py-2 text-[7px] text-slate-300 h-8">Enter the broadcast message...</div>
+          </div>
+          <div className="w-full py-1.5 bg-indigo-600 rounded-lg text-white text-[7px] font-bold text-center">📤 SEND BROADCAST</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const MockupAdminUsers = () => (
+  <div className="w-full h-full bg-slate-50 flex font-sans text-[9px] select-none overflow-hidden">
+    <AdminSidebar active="User Governance" />
+    <div className="flex-1 flex flex-col overflow-hidden">
+      <AdminTopBar />
+      <div className="flex-1 p-2.5 overflow-hidden space-y-1.5">
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="font-black text-[12px] text-slate-900 flex items-center gap-1">👥 User Account Management</div>
+            <div className="text-[6px] text-slate-400">Manage logins, staff permissions, partner school coordinators, and student accounts.</div>
+          </div>
+          <div className="px-2 py-1 bg-slate-900 text-white text-[7px] font-bold rounded-lg">+ Register New Account</div>
+        </div>
+        <div className="flex gap-1 border-b border-slate-200">
+          {['Online Students','Mentors & Teachers','Growth Associates','Partner Schools','School Students','Administrators'].map((t, i) => (
+            <div key={t} className={`px-1.5 py-1 text-[6px] font-bold whitespace-nowrap ${
+              i === 0 ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-slate-400'
+            }`}>{t}</div>
+          ))}
+        </div>
+        <div className="bg-white rounded-xl border border-slate-100 overflow-hidden shadow-sm">
+          <div className="grid grid-cols-4 gap-0 bg-slate-50 border-b border-slate-100 px-2 py-1">
+            {['USER NAME','EMAIL / LOGIN ID','ASSIGNED ROLE','ACCOUNT STATUS'].map(h => (
+              <div key={h} className="text-[6px] font-black uppercase tracking-wider text-slate-400">{h}</div>
+            ))}
+          </div>
+          {[
+            { name: '07 Abhay Singh Chauhan', email: 'abhaysinghchauha...' },
+            { name: 'unknown', email: 'let.unknownn@...' },
+            { name: 'Shan Sharma', email: 'edu.shan24@...' },
+            { name: 'Floyd School', email: 'floydschoolhq@...' },
+          ].map((u, i) => (
+            <div key={i} className="grid grid-cols-4 gap-0 px-2 py-1 border-b border-slate-50">
+              <div className="text-[7px] font-bold text-slate-800 truncate">{u.name}</div>
+              <div className="text-[7px] text-slate-400 truncate">{u.email}</div>
+              <div className="text-[7px]"><span className="bg-indigo-50 text-indigo-700 px-1 rounded text-[6px] font-bold">Online Students</span></div>
+              <div className="flex items-center gap-1">
+                <span className="bg-emerald-50 text-emerald-700 px-1 rounded text-[6px] font-bold">Active</span>
+                <span className="text-slate-300 text-[8px]">🔒 🗑</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const MockupAdminSettings = () => (
+  <div className="w-full h-full bg-slate-50 flex font-sans text-[9px] select-none overflow-hidden">
+    <AdminSidebar active="System Settings" />
+    <div className="flex-1 flex flex-col overflow-hidden">
+      <AdminTopBar />
+      <div className="flex-1 p-2.5 overflow-hidden space-y-1.5">
+        <div className="bg-white rounded-xl border border-slate-100 p-2 shadow-sm">
+          <div className="font-bold text-[8px] text-slate-800">🔒 Modular Access Locks</div>
+          <div className="text-[6px] text-slate-400 mb-1.5">Fine-grained Sector Access Control</div>
+          <div className="grid grid-cols-2 gap-1">
+            {['coding Lab','assignments','live Classes','masterclasses','chat','scheduled Live'].map((m) => (
+              <div key={m} className="flex items-center justify-between bg-slate-50 border border-slate-100 rounded-lg px-1.5 py-1">
+                <div>
+                  <div className="text-[7px] font-bold text-slate-700 capitalize">{m}</div>
+                  <div className="text-[6px] font-bold text-emerald-600">OPERATIONAL</div>
+                </div>
+                <span className="text-[6px] font-black text-slate-500 border border-slate-200 px-1 rounded">HALT</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="bg-slate-900 rounded-xl p-2 shadow-sm">
+          <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-red-500"></span>
+              <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+              <span className="w-2 h-2 rounded-full bg-green-500"></span>
+              <span className="text-[7px] font-bold text-slate-400 ml-1">DIAGNOSTIC TERMINAL</span>
+            </div>
+            <span className="text-[6px] font-bold text-emerald-400">⚡ LIVE</span>
+          </div>
+          <div className="text-[7px] text-emerald-400 font-mono">[SYSTEM] Connection established. Floyd School Admin Shell.</div>
+          <div className="text-[7px] text-slate-500 font-mono">Type &apos;help&apos; for available system commands.</div>
+          <div className="text-[7px] text-sky-400 font-mono">admin@floydschool:~$</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 /* Map type to Mockup */
 const renderMockup = (type) => {
   switch (type) {
-    case 'dashboard': return <MockupStudentDashboard />;
-    case 'courses':   return <MockupMyCourses />;
-    case 'quiz':      return <MockupQuizAnalytics />;
-    case 'session':   return <MockupSessionReports />;
-    case 'progress':  return <MockupStudentProgress />;
-    case 'teacher':   return <MockupTeacherPortal />;
-    case 'qa':        return <MockupQAHub />;
-    case 'referrals': return <MockupStudentReferrals />;
-    default:          return <MockupStudentDashboard />;
+    case 'dashboard':     return <MockupStudentDashboard />;
+    case 'courses':       return <MockupMyCourses />;
+    case 'quiz':          return <MockupQuizAnalytics />;
+    case 'session':       return <MockupSessionReports />;
+    case 'progress':      return <MockupStudentProgress />;
+    case 'teacher':       return <MockupTeacherPortal />;
+    case 'qa':            return <MockupQAHub />;
+    case 'referrals':     return <MockupStudentReferrals />;
+    case 'adminAnalytics':return <MockupAdminAnalytics />;
+    case 'adminBroadcast':return <MockupAdminBroadcast />;
+    case 'adminUsers':    return <MockupAdminUsers />;
+    case 'adminSettings': return <MockupAdminSettings />;
+    default:              return <MockupStudentDashboard />;
   }
 };
 
@@ -396,9 +626,18 @@ const LmsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
-            Learning Management System
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest text-indigo-600 bg-indigo-50 border border-indigo-100 uppercase mb-4">
+            CONNECTED LEARNING
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            ONE PLACE FOR THE{' '}
+            <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #4f46e5 0%, #0284c7 100%)' }}>
+              ENTIRE LEARNING JOURNEY.
+            </span>
           </h2>
+          <p className="mt-4 text-slate-600 text-sm sm:text-base max-w-2xl mx-auto font-medium leading-relaxed">
+            Our digital learning environment connects students, mentors, parents and school teams throughout the program.
+          </p>
         </motion.div>
 
         {/* Carousel Container */}

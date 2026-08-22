@@ -90,7 +90,7 @@ const MeetInnovators = () => {
           className="inline-flex items-center gap-2 mb-4"
         >
           <span className="w-8 h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent, #38bdf8)' }} />
-          <span className="text-[10px] font-black tracking-[0.25em] uppercase text-cyan-400">Our Young Learners</span>
+          <span className="text-[10px] font-black tracking-[0.25em] uppercase text-cyan-400">OUR STUDENTS</span>
           <span className="w-8 h-[1.5px]" style={{ background: 'linear-gradient(90deg, #38bdf8, transparent)' }} />
         </motion.div>
 
@@ -100,10 +100,10 @@ const MeetInnovators = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-5xl font-black text-white mb-3 leading-tight"
+          className="text-4xl md:text-5xl font-black text-white mb-3 leading-tight tracking-tight uppercase"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          Meet Our{' '}
+          WHERE CURIOSITY BECOMES{' '}
           <span
             style={{
               background: 'linear-gradient(90deg, #B854A2 0%, #38bdf8 100%)',
@@ -111,7 +111,7 @@ const MeetInnovators = () => {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Innovators
+            REAL SKILL.
           </span>
         </motion.h2>
 
@@ -121,10 +121,9 @@ const MeetInnovators = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-slate-400 text-base max-w-xl mx-auto leading-relaxed mb-6"
+          className="text-slate-400 text-base max-w-2xl mx-auto leading-relaxed mb-6"
         >
-          Where student curiosity becomes{' '}
-          <span className="font-black text-white">Real Skill</span>
+          Students discover technology beyond the textbook, explore their interests and learn by creating things that actually work.
         </motion.p>
 
         {/* Stats row */}
@@ -133,16 +132,17 @@ const MeetInnovators = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex items-center justify-center gap-8"
+          className="flex flex-wrap items-center justify-center gap-6 sm:gap-10"
         >
           {[
-            { val: '1,000+', label: 'Active Students', color: '#B854A2' },
-            { val: '50+',    label: 'Partner Schools', color: '#38bdf8' },
-            { val: '5+',     label: 'Tech Domains',    color: '#a78bfa' },
+            { val: '1,000+', label: 'STUDENTS REACHED', color: '#B854A2' },
+            { val: '50+',    label: 'SCHOOL PARTNERS', color: '#38bdf8' },
+            { val: '6+',     label: 'TECHNOLOGY DOMAINS',    color: '#a78bfa' },
+            { val: '200+',   label: 'PROJECTS BUILT', color: '#10b981' },
           ].map((s) => (
             <div key={s.label} className="flex flex-col items-center">
               <span className="text-xl font-black" style={{ color: s.color }}>{s.val}</span>
-              <span className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider mt-0.5">{s.label}</span>
+              <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">{s.label}</span>
             </div>
           ))}
         </motion.div>

@@ -18,7 +18,7 @@ const PROGRAMS = [
     title: 'Design & Innovation Lab',
     tagline: 'Solving Real World Problems',
     description: 'User research, wireframing, CAD modeling & 3D printing. Design thinking at core.',
-    grades: 'Grades 7 to 12',
+    grades: 'Grades 6 to 12',
     color: '#f97316',
     glow: 'rgba(249,115,22,0.24)',
     gradient: 'linear-gradient(135deg, #f97316, #f59e0b)',

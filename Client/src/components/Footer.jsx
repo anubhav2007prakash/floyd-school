@@ -121,8 +121,8 @@ const Footer = () => {
                 className="h-8 md:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
               />
             </Link>
-            <p className="text-slate-500 text-[15px] font-medium tracking-tight mb-12 leading-relaxed max-w-sm">
-              Architecting the next generation of global engineering excellence through industrial immersion.
+            <p className="text-slate-400 text-sm font-medium tracking-tight mb-8 leading-relaxed max-w-sm">
+              Floyd School brings practical technology education into schools, helping students explore, build and develop the skills they need for a technology driven future.
             </p>
 
             <div className="flex space-x-4">
@@ -130,7 +130,7 @@ const Footer = () => {
                 { icon: FaFacebookF, href: 'https://www.facebook.com/floydschool.in' },
                 { icon: FaTwitter, href: 'https://x.com/floydschool' },
                 { icon: FaLinkedinIn, href: 'https://www.linkedin.com/company/floydschool/' },
-                { icon: FaInstagram, href: 'https://www.instagram.com/floydschool.in?igsh=MWlhOWlpc2ZuOGd6&utm_source=qr' }
+                { icon: FaInstagram, href: 'https://instagram.com/floydschoolhq' }
               ].map(({ icon: Icon, href }, index) => (
                 <a
                   key={index}
@@ -179,9 +179,12 @@ const Footer = () => {
         </div>
 
         {/* Digital Signature: The Large Wave Logo */}
-        <div className="w-full relative border-t border-white/5 pt-16">
+        <div className="w-full relative border-t border-white/5 pt-16 text-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <WaveText text="floyd school" />
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-slate-500 mt-4">
+              EVERY STUDENT HAS A DESTINATION. WE FIND THE SHORTEST PATH.
+            </p>
         </div>
       </div>
     </footer>

@@ -4,44 +4,44 @@ import { ChevronDown, Search, HelpCircle } from 'lucide-react';
 
 const FAQS = [
   {
-    q: 'Does Floyd School require any existing infrastructure from our school?',
-    a: 'No. We provide mentors, teaching materials, and hardware kits. Your school only needs to provide classroom space.',
+    q: 'What is Floyd School?',
+    a: 'Floyd School provides hands on technology education for students from Classes 6 to 12. We partner with schools to deliver mentor led learning in Artificial Intelligence, Coding, Cybersecurity, Robotics and modern technology domains.',
   },
   {
-    q: 'Will our existing teachers need to be involved?',
-    a: 'No. Floyd School mentors independently manage and run all sessions.',
+    q: 'Which classes is the program suitable for?',
+    a: 'Our programs are specifically designed for students in Classes 6 to 12, with curricula and project complexity tailored to each age group.',
   },
   {
-    q: 'How does the free trial work?',
-    a: 'We conduct a 7 day free campus bootcamp with zero commitment. You decide whether to continue after testing.',
+    q: 'What is the complimentary 1 day technology immersion?',
+    a: 'The 1 day technology immersion is an introductory, on campus experience where students explore a technology domain through hands on activities and discover what excites them before beginning a full program.',
   },
   {
-    q: 'Which classes and age groups do your programs support?',
-    a: 'Classes 7 to 12. Modules are customized by grade level.',
+    q: 'How is the 4 month program structured?',
+    a: 'The four month program consists of regular mentor led sessions, practical exercises, interactive assignments and a capstone project where students build and showcase a working technology solution.',
   },
   {
-    q: 'How many students can be in a batch?',
-    a: 'Typically 25 to 40 students per batch. Multiple batches can run simultaneously for larger cohorts.',
+    q: 'What infrastructure does the school need to provide?',
+    a: 'The school only needs to provide access to its existing computer lab with standard internet connectivity. Floyd mentors bring the curriculum, software environments and project resources.',
   },
   {
-    q: 'What certifications do students receive?',
-    a: 'Verified digital certificates for LinkedIn and college portfolios.',
+    q: 'Who conducts the classes?',
+    a: 'All sessions are led directly by trained Floyd mentors who specialize in technology domains and practical instruction.',
   },
   {
-    q: 'How do we track student progress?',
-    a: 'Via our real time admin dashboard tracking attendance, assessment scores, and project deliverables.',
+    q: 'Do students get certificates?',
+    a: 'Yes. Students who successfully complete the program and build their required projects receive a certificate from Floyd School recognizing their skills and practical accomplishments.',
   },
   {
-    q: 'What is the pricing for a full program?',
-    a: 'Customized based on cohort size and duration. We offer per student, per batch, or annual partnership models.',
+    q: 'Can students participate in hackathons?',
+    a: 'Yes. Students have opportunities to participate in hackathons and project showcases where they can present their work and learn collaboratively.',
   },
   {
-    q: 'Is there a national hackathon for students?',
-    a: "Yes! Enrolled students compete in Floyd School's National Hackathon.",
+    q: 'How can schools track student progress?',
+    a: 'Through our learning platform, mentors and school teams maintain visibility into attendance, activity submissions, assessment scores and project milestones.',
   },
   {
-    q: 'How soon can Floyd School start at our school?',
-    a: 'Free trial starts within 2 to 4 weeks. Full program onboarding takes 1 to 2 weeks post trial.',
+    q: 'How does a school get started?',
+    a: 'Schools can begin by requesting a discovery session through our partnership form. Our team connects with school leadership to plan the complimentary 1 day immersion and recommend appropriate programs.',
   },
 ];
 
@@ -89,7 +89,7 @@ const FAQItem = ({ faq, idx, isOpen, onToggle }) => {
             className="overflow-hidden">
             <div className="flex gap-3 px-6 pb-6">
               <div className="w-0.5 flex-shrink-0 rounded-full self-stretch" style={{ background: `${color}30` }} />
-              <p className="setu-body text-slate-600 leading-relaxed text-sm">{faq.a}</p>
+              <p className="setu-body text-slate-600 leading-relaxed text-sm font-medium">{faq.a}</p>
             </div>
           </motion.div>
         )}
@@ -123,19 +123,18 @@ const PartnershipRoadmap = () => {
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
           className="text-center mb-14">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest mb-6"
-            style={{ background: 'linear-gradient(135deg, rgba(79,70,229,0.1), rgba(14,165,233,0.1))', border: '1px solid rgba(79,70,229,0.2)', color: 'var(--accent-setu2)' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-            SUPPORT DESK
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full setu-body text-xs font-bold uppercase tracking-widest mb-4 bg-indigo-50 border border-indigo-100 text-indigo-600 shadow-sm">
+            <HelpCircle size={14} className="text-indigo-600" />
+            PARTNERSHIP FAQ
           </span>
-          <h2 className="setu-heading font-extrabold text-slate-900 mb-5" style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.15 }}>
-            Questions?{' '}
+          <h2 className="setu-heading font-black text-slate-900 mb-4 uppercase tracking-tight" style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.15 }}>
+            EVERYTHING SCHOOL LEADERS, PARENTS{' '}
             <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #6C63FF, #0ea5e9)' }}>
-              We've got answers.
+              AND STUDENTS NEED TO KNOW.
             </span>
           </h2>
-          <p className="setu-body text-slate-500 max-w-2xl mx-auto" style={{ fontSize: '1.05rem' }}>
-            Quick answers to common partnership questions.
+          <p className="setu-body text-slate-600 max-w-2xl mx-auto text-sm md:text-base font-medium leading-relaxed">
+            Find clear answers about programs, campus requirements, mentors, student projects and getting started with Floyd School.
           </p>
 
           {/* Animated search */}

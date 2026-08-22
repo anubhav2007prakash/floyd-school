@@ -24,88 +24,105 @@ import girl3 from '../assets/avatars/girl3.avif';
 const PROJECTS_DATA = [
   {
     id: 1,
-    title: "Snake Game",
-    category: "Game Development",
-    description: "A classic Snake game built with modern web technologies — smooth controls, score tracking, and addictive gameplay.",
-    image: "/projects/snake_game.png",
-    tech: ["JavaScript", "HTML5", "CSS3"],
-    stats: { stars: 142, forks: 28, views: "950" },
-    featured: false,
+    title: "Smart Irrigation System",
+    category: "IoT & Automation",
+    description: "Students combine sensors, programming and automation to create a system that responds to real world soil and weather conditions.",
+    image: "/projects/IoT-For-Home-Automation.jpg",
+    tech: ["IoT", "Sensors", "ESP32", "Automation"],
+    stats: { stars: 198, forks: 45, views: "1.4k" },
+    featured: true,
     color: "green",
     author: {
-      name: "Priya Sharma",
-      avatar: girl1,
-      course: "Web Dev Bootcamp"
+      name: "Aarav Mehta & Team",
+      avatar: boy1,
+      course: "IoT & Robotics"
     },
-    liveUrl: "https://snakegame1-nine.vercel.app/"
+    liveUrl: "#"
   },
   {
     id: 2,
-    title: "AI Expense Coach",
-    category: "Full Stack Development",
-    description: "An AI-powered personal finance coach that helps users track expenses, set budgets, and get smart spending insights.",
+    title: "AI Crop Disease Detector",
+    category: "AI & Machine Learning",
+    description: "A machine learning vision model trained on plant leaf datasets to detect agricultural diseases in real time with high accuracy.",
     image: "/projects/E_commerce.png",
-    tech: ["React", "Node.js", "AI API", "Firebase"],
-    stats: { stars: 189, forks: 32, views: "1.1k" },
+    tech: ["Python", "TensorFlow", "Computer Vision"],
+    stats: { stars: 245, forks: 52, views: "2.1k" },
     featured: true,
     color: "blue",
     author: {
-      name: "Rahul Verma",
-      avatar: boy1,
-      course: "Full Stack Web Dev"
+      name: "Rohan Sharma & Diya Sen",
+      avatar: boy2,
+      course: "AI & Machine Learning"
     },
-    liveUrl: "https://ai-expense-coach--shansharma.replit.app/"
-  },
-  {
-    id: 5,
-    title: "Todo App",
-    category: "Productivity",
-    description: "A clean and intuitive todo application to manage daily tasks with priority levels, deadlines, and progress tracking.",
-    image: "/projects/task_management.jpg",
-    tech: ["React", "CSS3", "LocalStorage"],
-    stats: { stars: 98, forks: 21, views: "620" },
-    featured: false,
-    color: "purple",
-    author: {
-      name: "Sneha Patel",
-      avatar: girl2,
-      course: "Web Dev Bootcamp"
-    },
-    liveUrl: "https://todo-app-delta-one-65.vercel.app/"
+    liveUrl: "#"
   },
   {
     id: 3,
-    title: "School Website",
-    category: "Web Development",
-    description: "A fully responsive school website featuring course listings, faculty profiles, admissions info, and a modern design.",
-    image: "/projects/IoT-For-Home-Automation.jpg",
-    tech: ["HTML5", "CSS3", "JavaScript"],
-    stats: { stars: 176, forks: 34, views: "1.4k" },
+    title: "Autonomous Obstacle Rover",
+    category: "Robotics",
+    description: "Hardware robotics rover built with ultrasonic sensors, motor drivers, and obstacle navigation logic.",
+    image: "/projects/task_management.jpg",
+    tech: ["Robotics", "Arduino", "Embedded C++"],
+    stats: { stars: 182, forks: 38, views: "1.2k" },
     featured: true,
-    color: "orange",
+    color: "purple",
     author: {
-      name: "Kavya Reddy",
-      avatar: girl3,
-      course: "Web Dev Bootcamp"
+      name: "Sneha Patel & Kabir Roy",
+      avatar: girl1,
+      course: "Robotics Lab"
     },
-    liveUrl: "https://floydschool-bootcamp-webdev-project.vercel.app/"
+    liveUrl: "#"
   },
   {
     id: 4,
-    title: "Netflix Clone",
-    category: "Full Stack Development",
-    description: "A fully functional Netflix clone with movie browsing, trailer playback, user authentication, and personalized recommendations.",
+    title: "Cyber Intrusion Analyzer",
+    category: "Cybersecurity",
+    description: "Network packet inspector and vulnerability scanner detecting unauthorized port activities and malicious traffic.",
     image: "/projects/netflix_clone.png",
-    tech: ["React", "Node.js", "MongoDB", "TMDB API", "Stripe"],
-    stats: { stars: 342, forks: 89, views: "3.2k" },
+    tech: ["Cybersecurity", "Python", "Network Protocols"],
+    stats: { stars: 210, forks: 41, views: "1.8k" },
     featured: true,
     color: "red",
     author: {
       name: "Vikram Singh",
-      avatar: boy2,
-      course: "Full Stack Web Dev"
+      avatar: boy3,
+      course: "Cybersecurity Track"
     },
-    liveUrl: "https://netfixcopy9.vercel.app/"
+    liveUrl: "#"
+  },
+  {
+    id: 5,
+    title: "Smart Campus Energy Monitor",
+    category: "STEM & Innovation",
+    description: "An IoT-enabled dashboard tracking and optimizing school electricity consumption across classrooms.",
+    image: "/projects/IoT-For-Home-Automation.jpg",
+    tech: ["IoT", "Cloud Analytics", "React"],
+    stats: { stars: 176, forks: 30, views: "1.5k" },
+    featured: false,
+    color: "orange",
+    author: {
+      name: "Kavya Reddy & Team",
+      avatar: girl2,
+      course: "STEM & Innovation"
+    },
+    liveUrl: "#"
+  },
+  {
+    id: 6,
+    title: "Adaptive Traffic Signal Controller",
+    category: "Coding & Applied AI",
+    description: "AI-powered vision model adjusting signal timings dynamically based on intersection vehicle density.",
+    image: "/projects/snake_game.png",
+    tech: ["AI", "OpenCV", "Automation"],
+    stats: { stars: 230, forks: 48, views: "1.9k" },
+    featured: false,
+    color: "cyan",
+    author: {
+      name: "Ananya Gupta & Team",
+      avatar: girl3,
+      course: "Coding & Applied AI"
+    },
+    liveUrl: "#"
   }
 ];
 

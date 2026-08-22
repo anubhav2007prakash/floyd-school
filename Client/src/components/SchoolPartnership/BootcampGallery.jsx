@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Sparkles, CheckCircle, Star } from 'lucide-react';
+import { Sparkles, CheckCircle } from 'lucide-react';
 
 import logo1 from '../../assets/logos/1.png';
 import logo2 from '../../assets/logos/2.jpg';
@@ -29,35 +29,31 @@ const MARQUEE_STYLE = `
 `;
 
 const BootcampGallery = () => {
-  /* Duplicate the list — the animation moves exactly -50% so the loop is seamless */
-  const loopLogos = [...LOGO_IMAGES, ...LOGO_IMAGES, ...LOGO_IMAGES, ...LOGO_IMAGES,
-                     ...LOGO_IMAGES, ...LOGO_IMAGES, ...LOGO_IMAGES, ...LOGO_IMAGES];
+  /* Duplicate the list so -50% lands exactly back at the start */
+  const loopLogos = [
+    ...LOGO_IMAGES, ...LOGO_IMAGES, ...LOGO_IMAGES, ...LOGO_IMAGES,
+    ...LOGO_IMAGES, ...LOGO_IMAGES, ...LOGO_IMAGES, ...LOGO_IMAGES
+  ];
 
   return (
-    <section className="py-20 relative overflow-hidden bg-[#0A0F1D] text-white">
+    <section className="py-24 relative overflow-hidden bg-white text-slate-900 border-y border-slate-200/80">
       {/* Inject keyframes */}
       <style>{MARQUEE_STYLE}</style>
 
-      {/* Ambient Color Orbs */}
+      {/* Subtle Pastel Ambient Orbs */}
       <div
-        className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 70%)', filter: 'blur(80px)' }}
+        className="absolute top-1/2 left-0 -translate-y-1/2 w-[450px] h-[450px] rounded-full pointer-events-none opacity-40"
+        style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%)', filter: 'blur(90px)' }}
       />
       <div
-        className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(236,72,153,0.12) 0%, transparent 70%)', filter: 'blur(80px)' }}
-      />
-
-      {/* Grid Overlay */}
-      <div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)', backgroundSize: '32px 32px' }}
+        className="absolute top-1/2 right-0 -translate-y-1/2 w-[450px] h-[450px] rounded-full pointer-events-none opacity-40"
+        style={{ background: 'radial-gradient(circle, rgba(236,72,153,0.15) 0%, transparent 70%)', filter: 'blur(90px)' }}
       />
 
-      {/* Top glowing border line */}
+      {/* Subtle Dot Pattern */}
       <div
-        className="absolute top-0 left-0 right-0 h-[2px]"
-        style={{ background: 'linear-gradient(90deg, transparent, #38BDF8, #A855F7, #EC4899, transparent)' }}
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{ backgroundImage: 'radial-gradient(circle, #000000 1px, transparent 1px)', backgroundSize: '24px 24px' }}
       />
 
       {/* Header */}
@@ -66,52 +62,53 @@ const BootcampGallery = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-[1200px] mx-auto px-6 mb-12 text-center"
+        className="max-w-[1200px] mx-auto px-6 mb-14 text-center relative z-10"
       >
-        <div
-          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-4 backdrop-blur-md"
-          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}
-        >
-          <Sparkles size={14} className="text-amber-400" />
-          <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-300">
-            Trusted By Leading Schools Across India
+        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-5 bg-purple-50 border border-purple-200/80 shadow-sm">
+          <Sparkles size={14} className="text-amber-500" />
+          <span className="text-xs font-black uppercase tracking-[0.2em] text-purple-700">
+            TRUSTED BY SCHOOL COMMUNITIES
           </span>
         </div>
 
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight">
-          Empowering Young Innovators at{' '}
-          <span
-            className="text-transparent bg-clip-text"
-            style={{ backgroundImage: 'linear-gradient(135deg, #38BDF8 0%, #A855F7 50%, #EC4899 100%)' }}
-          >
-            Partner Schools Across India
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-5 tracking-tight uppercase text-slate-900 leading-tight">
+          BRINGING PRACTICAL TECHNOLOGY{' '}
+          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            LEARNING INTO SCHOOLS.
           </span>
         </h2>
 
-        <div className="flex items-center justify-center gap-4 text-xs md:text-sm font-semibold text-slate-400">
-          <span className="flex items-center gap-1.5 text-emerald-400">
-            <CheckCircle size={14} /> 100% NEP 2020 Aligned
-          </span>
-          <span className="text-slate-600">•</span>
-          <span className="flex items-center gap-1.5 text-amber-400">
-            <Star size={14} className="fill-amber-400" /> Rated 4.9/5 by Principals
-          </span>
+        <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-8 font-medium">
+          Floyd School works alongside schools to give students meaningful exposure to modern technology through structured, mentor led and project based learning.
+        </p>
+
+        {/* Trust Badges */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-[11px] md:text-xs font-bold">
+          {['CLASSES 6 TO 12', 'EXPERT MENTORS', 'PROJECT BASED LEARNING', 'SCHOOL CAMPUS DELIVERY', 'STUDENT PROGRESS TRACKING'].map((badge) => (
+            <span
+              key={badge}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-700 shadow-sm"
+            >
+              <CheckCircle size={13} className="text-emerald-600" />
+              {badge}
+            </span>
+          ))}
         </div>
       </motion.div>
 
-      {/* Seamless Marquee */}
-      <div className="relative overflow-hidden py-4">
-        {/* Fade edges */}
+      {/* Seamless Logo Marquee */}
+      <div className="relative overflow-hidden py-4 z-10">
+        {/* Fade Edges (White to transparent) */}
         <div
           className="absolute left-0 top-0 bottom-0 w-36 z-20 pointer-events-none"
-          style={{ background: 'linear-gradient(90deg, #0A0F1D 0%, transparent 100%)' }}
+          style={{ background: 'linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0) 100%)' }}
         />
         <div
           className="absolute right-0 top-0 bottom-0 w-36 z-20 pointer-events-none"
-          style={{ background: 'linear-gradient(-90deg, #0A0F1D 0%, transparent 100%)' }}
+          style={{ background: 'linear-gradient(-90deg, #ffffff 0%, rgba(255,255,255,0) 100%)' }}
         />
 
-        {/* The track — doubled so -50% lands exactly back at the start */}
+        {/* The Track */}
         <div
           className="marquee-track flex gap-6 items-center"
           style={{ width: 'max-content' }}
@@ -119,7 +116,7 @@ const BootcampGallery = () => {
           {loopLogos.map((logo, idx) => (
             <div
               key={`${logo.id}-${idx}`}
-              className="flex-shrink-0 flex items-center justify-center w-56 h-28 px-6 py-4 rounded-2xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] border border-white/20 transition-transform duration-300 hover:scale-105 hover:-translate-y-1"
+              className="flex-shrink-0 flex items-center justify-center w-56 h-28 px-6 py-4 rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-slate-200/80 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-lg"
             >
               <img
                 src={logo.img}
@@ -130,12 +127,6 @@ const BootcampGallery = () => {
           ))}
         </div>
       </div>
-
-      {/* Bottom glowing border line */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-[2px]"
-        style={{ background: 'linear-gradient(90deg, transparent, #EC4899, #A855F7, #38BDF8, transparent)' }}
-      />
     </section>
   );
 };

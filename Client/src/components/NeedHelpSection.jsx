@@ -48,8 +48,8 @@ const NeedHelpSection = ({ variant = 'dark' }) => {
             icon: Mail,
             title: 'Email Us',
             description: 'Get detailed responses via email',
-            action: 'floydschoolhq@gmail.com',
-            copyText: 'floydschoolhq@gmail.com',
+            action: 'info@floydschool.in',
+            copyText: 'info@floydschool.in',
             color: 'from-violet-500 to-purple-500',
             highlight: 'Official'
         },

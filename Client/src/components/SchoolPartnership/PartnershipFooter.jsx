@@ -5,36 +5,44 @@ const FOOTER_LINKS = [
   {
     heading: 'Programs',
     links: [
-      { name: 'AI Lab', href: '#programs' },
-      { name: 'Coding Lab', href: '#programs' },
-      { name: 'Robotics Lab', href: '#programs' },
-      { name: 'Innovation Lab', href: '#programs' },
-      { name: 'Startup Lab', href: '#programs' },
+      { name: 'AI & Machine Learning', href: '#online-focus' },
+      { name: 'Coding & Web Development', href: '#online-focus' },
+      { name: 'Cybersecurity', href: '#online-focus' },
+      { name: 'IoT & Robotics', href: '#online-focus' },
+      { name: 'Custom Program', href: '#partner-form' },
     ],
   },
   {
-    heading: 'Partnership',
+    heading: 'Schools',
     links: [
-      { name: 'Partner With Us', href: '#partner-form' },
-      { name: 'Curriculum Integration', href: '#models' },
-      { name: 'After School Bootcamps', href: '#models' },
-      { name: 'Innovation Hub Setup', href: '#models' },
-      { name: 'Book Free Trial', href: '#partner-form' },
+      { name: 'Partnership Model', href: '#why-us' },
+      { name: '1 Day Immersion', href: '#roadmap' },
+      { name: 'In-School Delivery', href: '#timeline' },
+      { name: 'Campus Support', href: '#ecosystem' },
+    ],
+  },
+  {
+    heading: 'Students',
+    links: [
+      { name: 'Student Projects', href: '#student-projects' },
+      { name: 'Learning Journey', href: '#roadmap' },
+      { name: 'Certification', href: '#roadmap' },
+      { name: 'Hackathons', href: '/hackathon' },
     ],
   },
   {
     heading: 'Company',
     links: [
-      { name: 'About Floyd School', href: '/about' },
-      { name: 'Host a Session', href: '#partner-form' },
-      { name: 'Courses', href: '/course' },
+      { name: 'About Floyd', href: '/about' },
       { name: 'Contact Us', href: '#partner-form' },
+      { name: 'Terms & Conditions', href: '/terms' },
+      { name: 'Privacy Policy', href: '/privacy' },
     ],
   },
 ];
 
 const SOCIAL = [
-  { icon: Instagram, href: 'https://instagram.com/floydschool.in', label: 'Instagram' },
+  { icon: Instagram, href: 'https://instagram.com/floydschoolhq', label: 'Instagram' },
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
   { icon: Twitter, href: '#', label: 'Twitter' },
 ];
@@ -51,28 +59,28 @@ const PartnershipFooter = () => {
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-16 pb-6">
         {/* Top section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 mb-16">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center gap-2">
               <img
                 src="/logo-white.png"
-                alt="Floyd School"
+                alt="Floyd School of Technology"
                 className="h-8 w-auto object-contain"
               />
             </div>
-            <p className="sp-body text-slate-400 text-sm leading-relaxed max-w-xs">
-              Empowering the next generation of innovators with AI, Coding, Robotics, and future skills education, delivered directly at your school campus.
+            <p className="sp-body text-slate-400 text-sm leading-relaxed max-w-sm">
+              Floyd School brings practical technology education into schools, helping students explore, build and develop the skills they need for a technology driven future.
             </p>
             {/* Contact */}
             <div className="space-y-2.5">
-              <a href="tel:+918368801220" className="flex items-center gap-2.5 text-slate-400 hover:text-slate-200 transition-colors sp-body text-sm">
+              <a href="tel:+918368801220" className="flex items-center gap-2.5 text-slate-400 hover:text-slate-200 transition-colors sp-body text-sm font-medium">
                 <Phone size={14} style={{ color: '#6C63FF' }} />
                 +91 8368801220
               </a>
-              <a href="mailto:floydschoolhq@gmail.com" className="flex items-center gap-2.5 text-slate-400 hover:text-slate-200 transition-colors sp-body text-sm">
+              <a href="mailto:info@floydschool.in" className="flex items-center gap-2.5 text-slate-400 hover:text-slate-200 transition-colors sp-body text-sm font-medium">
                 <Mail size={14} style={{ color: '#00D4FF' }} />
-                floydschoolhq@gmail.com
+                info@floydschool.in
               </a>
             </div>
             {/* Social */}
@@ -97,19 +105,19 @@ const PartnershipFooter = () => {
           {/* Links */}
           {FOOTER_LINKS.map((group) => (
             <div key={group.heading}>
-              <h4 className="sp-heading font-bold text-white text-sm mb-5">{group.heading}</h4>
+              <h4 className="sp-heading font-black text-white text-xs uppercase tracking-widest mb-5">{group.heading}</h4>
               <ul className="space-y-3">
                 {group.links.map((link) => (
                   <li key={link.name}>
                     {link.href.startsWith('#') ? (
                       <button
                         onClick={() => scrollTo(link.href)}
-                        className="sp-body text-slate-400 hover:text-slate-200 text-sm transition-colors"
+                        className="sp-body text-slate-400 hover:text-white text-xs transition-colors cursor-pointer text-left"
                       >
                         {link.name}
                       </button>
                     ) : (
-                      <a href={link.href} className="sp-body text-slate-400 hover:text-slate-200 text-sm transition-colors">
+                      <a href={link.href} className="sp-body text-slate-400 hover:text-white text-xs transition-colors">
                         {link.name}
                       </a>
                     )}
@@ -122,21 +130,22 @@ const PartnershipFooter = () => {
 
         {/* Bottom copyright bar */}
         <div className="pt-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <p className="sp-body text-slate-500 text-xs">
-            © {new Date().getFullYear()} Floyd School. All rights reserved.
+          <p className="sp-body text-slate-500 text-xs font-medium">
+            © {new Date().getFullYear()} Floyd School of Technology. All rights reserved.
           </p>
-          <div className="flex items-center gap-1.5 sp-body text-slate-500 text-xs">
-            <span>Built with</span>
-            <span className="text-red-500">♥</span>
-            <span>to empower students across India</span>
+          <div className="flex items-center gap-1.5 sp-body text-slate-500 text-xs font-medium">
+            <span>EVERY STUDENT HAS A DESTINATION. WE FIND THE SHORTEST PATH.</span>
           </div>
         </div>
 
         {/* Giant Centered Footer Branding Banner */}
         <div className="pt-4 pb-2 text-center overflow-hidden border-t border-white/5">
-          <h1 className="text-[10vw] font-black uppercase tracking-tight leading-none whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/10 select-none">
+          <h1 className="text-[7.5vw] font-black uppercase tracking-tight leading-none whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/10 select-none">
             FLOYD SCHOOL
           </h1>
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-slate-400 mt-2">
+            EVERY STUDENT HAS A DESTINATION. WE FIND THE SHORTEST PATH.
+          </p>
         </div>
       </div>
     </footer>
